@@ -1,0 +1,71 @@
+# Relay Policy Tracker — relevance gates + impact scoring rubric
+# Portable spec, same two-step shape as grant-finder scoring.yaml: GATES first, then a
+# weighted score mapped to a recommendation. Applied by the Claude judgment layer inside
+# the /relay-policy command. Calibrated by config/relay-profile facts (grant-finder's copy
+# is authoritative; this tool reads ../relay-grant-finder/config/relay-profile.yaml).
+
+meta:
+  updated: "2026-08-05"
+  principle: "A loud headline must never mask a jurisdiction, stage, or relevance miss; a quiet rule change in a core topic outranks a national think-piece."
+  verify_rule: "Bill stage, latest action, effective dates, and comment deadlines come from the PRIMARY source (legislature site, register page) every run — never from a press summary. COMMENTARY items are reported as 'per <outlet>', never as fact."
+
+signal_classes:
+  LEGISLATION: "A bill or resolution in Congress or a state legislature."
+  REGULATION:  "A proposed/final rule or register notice from ED or a state agency/board."
+  AGENCY:      "Official non-rule signals: board agendas, commissioner memos, guidance, budget proposals, press releases."
+  COMMENTARY:  "Secondary sources: think tanks, advocacy, ed press. Context and early warning only."
+
+# ── STEP 1: RELEVANCE GATES ── any fail => ARCHIVE (logged, not surfaced). No score computed.
+gates:
+  - id: jurisdiction
+    rule: "Federal, or one of Relay's authorized jurisdictions (CO, CT, DE, GA, IL, NJ, NY, PA, RI, TN, TX, DC, IN; CA = pending_watch, surfaces at SCAN max). Other states only via COMMENTARY when a national trend."
+  - id: topic_floor
+    rule: "Matches >=1 taxonomy topic (config/topics.yaml). Context-tier-only matches cap at SCAN unless momentum is exceptional."
+  - id: liveness
+    rule: "LEGISLATION: current session and not dead (adjourned-without-action = ARCHIVE with a one-line note if core-tier). REGULATION: comment window open, pending finalization, or effective date in the future. COMMENTARY older than 30 days: ARCHIVE."
+  - id: dedup_cluster
+    rule: "Same underlying policy event across sources (a bill + its press coverage + a think-tank take) clusters into ONE surfaced item; the primary source leads, secondaries attach as 'coverage'."
+
+# ── STEP 2: IMPACT SCORE ── dimensions 0-5; weights sum to 100.
+# final = sum(weight_i * score_i / 5), no confidence penalty — instead, unverifiable stage/
+# deadline facts get 'UNVERIFIED' labels and cap the rec at TRACK (never ACT on unverified).
+dimensions:
+  - { id: relay_surface,     weight: 30, anchor5: "Directly regulates Relay's operations: EPP approval/accountability, cert/licensure rules, residency/apprenticeship funding, Title II, program-approval standards" }
+  - { id: momentum,          weight: 20, anchor5: "Enacted/final, or passed a chamber / final-rule stage imminent; 0-1 = introduced-and-parked, think-piece" }
+  - { id: jurisdiction_depth,weight: 15, anchor5: "Federal with direct effect, or a state where Relay has deep partnerships (NY, NJ, TX, TN, IL); 2-3 = other authorized states; 1 = CA watch / national trend" }
+  - { id: ecosystem_reach,   weight: 15, anchor5: "Reshapes funding or staffing across many districts Relay serves (formula rewrite, class-size mandate, salary floor)" }
+  - { id: actionability,     weight: 10, anchor5: "Relay can respond NOW: open comment period, testimony window, program-design opportunity, partnership angle" }
+  - { id: signal_quality,    weight: 10, anchor5: "Primary source verified this run; 0-1 = single secondary source, unconfirmed" }
+
+# ── RECOMMENDATION MAPPING ──
+recommendations:
+  - { min: 70, rec: ACT,     meaning: "Direct Relay impact with an open response window — surface at top with the deadline and a suggested next step." }
+  - { min: 50, rec: TRACK,   meaning: "Moving and plausibly impactful — follows in the digest with stage + next expected event." }
+  - { min: 30, rec: SCAN,    meaning: "Context worth one line (vibes lane)." }
+  - { min: 0,  rec: ARCHIVE, meaning: "Logged in the ledger; not surfaced." }
+overrides:
+  - "Any failed gate => ARCHIVE (name the gate)."
+  - "UNVERIFIED stage or deadline => cap at TRACK; say what's unverified."
+  - "COMMENTARY alone can never exceed SCAN — it can only raise attention on a clustered primary item."
+  - "An open comment deadline within 15 business days on a core-tier item => floor of TRACK, and say the deadline in the summary line."
+
+# ── OUTPUT FIELDS (per surfaced item) ──
+output_fields:
+  what_it_does: "1-2 plain-language sentences: what would change and for whom."
+  relay_angle: "One line: why Relay specifically should care (or 'ecosystem-level only')."
+  stage_line: "Where it is + next expected event + date, verified from primary."
+  response_window: "Comment deadline / hearing date / effective date if any, with business-days-out."
+  coverage: "Clustered secondary sources, each as 'per <outlet>' with link."
+
+# ── DIGEST STRUCTURE (consumed by the /relay-policy command) ──
+digest_lanes:
+  - "ACT — needs a decision or response (full entries)"
+  - "TRACK — moving legislation & rulemaking, grouped by jurisdiction (compact entries)"
+  - "SCAN — the vibes lane: agency signals + commentary one-liners, grouped Federal then states"
+  - "MOVEMENT — items whose stage changed since last run (auto from ledger UPDATED status)"
+  - "ARCHIVE count + audit-file pointer (never render the list)"
+
+tuning:
+  note: "This rubric is the tunable core. Revisit weights against operator feedback on the first three digests; log changes with date + rationale."
+  changelog:
+    - "2026-08-05 initial rubric (built during autonomous v1 session)."
