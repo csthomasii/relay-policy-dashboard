@@ -45,9 +45,10 @@ recommendations:
   - { min: 0,  rec: ARCHIVE, meaning: "Logged in the ledger; not surfaced." }
 overrides:
   - "Any failed gate => ARCHIVE (name the gate)."
-  - "UNVERIFIED stage or deadline => cap at TRACK; say what's unverified."
-  - "COMMENTARY alone can never exceed SCAN — it can only raise attention on a clustered primary item."
-  - "An open comment deadline within 15 business days on a core-tier item => floor of TRACK, and say the deadline in the summary line."
+  - "UNVERIFIED stage or deadline => cap at TRACK; say what's unverified. A near-term deadline that is unverified is itself an action item: verify it FIRST this run, don't just cap and move on."
+  - "COMMENTARY alone can never exceed SCAN — but COMMENTARY that cites an untracked primary document (a new rule, waiver, memo, bill) is a DISCOVERY LEAD: fetch the cited primary during judgment; if confirmed, the item enters as that primary's signal class with the outlet attached as coverage. Never let the SCAN ceiling bury a lead to a primary source."
+  - "A VERIFIED open comment/response window <=15 business days on a core-tier item => floor of ACT (raised from TRACK, 2026-08-05 cross-family critique: urgency plus direct relevance is exactly what ACT exists for). Adjacent-tier verified windows floor TRACK."
+  - "Overload partition (budget-season runs): when candidates exceed what one session can judge, process core tier first, then adjacent by jurisdiction depth (NY, NJ, TX, TN, IL first), and REPORT what was deferred — silent truncation is prohibited."
 
 # ── OUTPUT FIELDS (per surfaced item) ──
 output_fields:
@@ -69,3 +70,4 @@ tuning:
   note: "This rubric is the tunable core. Revisit weights against operator feedback on the first three digests; log changes with date + rationale."
   changelog:
     - "2026-08-05 initial rubric (built during autonomous v1 session)."
+    - "2026-08-05 cross-family critique pass (GPT-5.6-sol + Gemini 3.6 Flash, convergent findings): verified core window <=15bd now floors ACT; commentary-as-discovery-lead rule; overload partition rule; near-deadline unverified = verify-first. Pipeline-side same day: LegiScan change_hash folded into movement hash (catches committee substitutes); getSearch full-text leg (catches cert provisions in generically-titled bills); deadline-window re-surfacing of unchanged items; per-source zero-yield health warnings."
