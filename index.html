@@ -975,7 +975,7 @@ function openPanel(i){
       <button class="tbtn" id="pdismiss" data-i="${i}">${t.dismissed?"↩ Restore":"Dismiss"}</button>
     </div>
     <dl class="kv">
-      <dt>What it does</dt><dd>${esc(r.desc)}</dd>
+      <dt>Summary</dt><dd>${esc(r.desc)}</dd>
       ${r.angle?`<dt>Relay angle</dt><dd class="angle">${esc(r.angle)}</dd>`:""}
       ${r.action?`<dt>Latest action</dt><dd>${esc(r.action)}${r.action_date?` <span style="color:var(--faint)">(${esc(r.action_date)})</span>`:""}</dd>`:""}
       ${r.deadline?`<dt>Response window</dt><dd>${fmtDue(r,true)}</dd>`:""}
