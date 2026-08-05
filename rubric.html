@@ -73,9 +73,10 @@ updated 2026-08-05 · <a href="index.html">back to dashboard</a></div></header>
 <tr><td class=num>≥ 0</td><td><span class='pill p-ARCHIVE'>ARCHIVE</span></td><td>Logged in the ledger; not surfaced.</td></tr>
 </table><h3 style='margin:14px 0 4px'>Overrides</h3><ul>
 <li>Any failed gate =&gt; ARCHIVE (name the gate).</li>
-<li>UNVERIFIED stage or deadline =&gt; cap at TRACK; say what&#x27;s unverified.</li>
-<li>COMMENTARY alone can never exceed SCAN — it can only raise attention on a clustered primary item.</li>
-<li>An open comment deadline within 15 business days on a core-tier item =&gt; floor of TRACK, and say the deadline in the summary line.</li>
+<li>UNVERIFIED stage or deadline =&gt; cap at TRACK; say what&#x27;s unverified. A near-term deadline that is unverified is itself an action item: verify it FIRST this run, don&#x27;t just cap and move on.</li>
+<li>COMMENTARY alone can never exceed SCAN — but COMMENTARY that cites an untracked primary document (a new rule, waiver, memo, bill) is a DISCOVERY LEAD: fetch the cited primary during judgment; if confirmed, the item enters as that primary&#x27;s signal class with the outlet attached as coverage. Never let the SCAN ceiling bury a lead to a primary source.</li>
+<li>A VERIFIED open comment/response window &lt;=15 business days on a core-tier item =&gt; floor of ACT (raised from TRACK, 2026-08-05 cross-family critique: urgency plus direct relevance is exactly what ACT exists for). Adjacent-tier verified windows floor TRACK.</li>
+<li>Overload partition (budget-season runs): when candidates exceed what one session can judge, process core tier first, then adjacent by jurisdiction depth (NY, NJ, TX, TN, IL first), and REPORT what was deferred — silent truncation is prohibited.</li>
 </ul>
 <h2>Per-item output fields</h2><table><tr><th>Field</th><th>Contents</th></tr>
 <tr><td class=k>what_it_does</td><td>1-2 plain-language sentences: what would change and for whom.</td></tr>
@@ -94,6 +95,7 @@ updated 2026-08-05 · <a href="index.html">back to dashboard</a></div></header>
 <h2>Tuning</h2>
 <p class=note>This rubric is the tunable core. Revisit weights against operator feedback on the first three digests; log changes with date + rationale.</p><ul class=note>
 <li>2026-08-05 initial rubric (built during autonomous v1 session).</li>
+<li>2026-08-05 cross-family critique pass (GPT-5.6-sol + Gemini 3.6 Flash, convergent findings): verified core window &lt;=15bd now floors ACT; commentary-as-discovery-lead rule; overload partition rule; near-deadline unverified = verify-first. Pipeline-side same day: LegiScan change_hash folded into movement hash (catches committee substitutes); getSearch full-text leg (catches cert provisions in generically-titled bills); deadline-window re-surfacing of unchanged items; per-source zero-yield health warnings.</li>
 </ul>
 <footer>Generated from <code>config/impact.yaml</code> by
 <code>runner/render_rubric.py</code> — edit the YAML, not this page. ·
