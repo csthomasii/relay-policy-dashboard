@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Relay Policy Watch — Legislation &amp; Regulation Dashboard</title>
+<style>
+  :root{
+    /* Relay brand — Brand & Communications Guide (March 2023). Primary: Pacific #2C49A4,
+       Sea #6D97C9, Prussian #1D3557, Crimson #B30838. Token block shared with the
+       relay-grant-finder funding dashboard so the two pages read as one family. */
+    --bg:#FFFFFF; --ink:#23272E; --head:#1D3557; --muted:#5A6472; --faint:#8A93A0;
+    --accent:#2C49A4; --crimson:#B30838; --sea:#6D97C9;
+    --tint:#E9EEF9; --hair:#E3E6EB; --chrome:#F1F3F6; --card:#FFFFFF; --row-alt:#F7F9FC;
+    --sg:#1F7A6B; --sb:#2C49A4; --sa:#8A5A00; --so:#CC3D12; --sr:#B30838;
+    --pill-act-bg:#CC3D12; --pill-act-tx:#FFFFFF;
+    --pill-trk-bg:#E4EDF8; --pill-trk-tx:#2C49A4;
+    --pill-scn-bg:#FDEBD3; --pill-scn-tx:#8A5A00;
+    --cond:"Knockout","Knockout 49 A","HelveticaNeue-CondensedBold","Helvetica Neue Condensed","Arial Narrow Bold","Arial Narrow",Impact,sans-serif;
+    --sans:"Helvetica Neue",Helvetica,Arial,-apple-system,BlinkMacSystemFont,sans-serif;
+    --editorial:"Adobe Garamond Pro",Garamond,"Iowan Old Style",Georgia,"Times New Roman",serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14.5px;line-height:1.5}
+  .wrap{max-width:1260px;margin:0 auto;padding:32px 22px 64px}
+  header{position:relative;border-bottom:3px solid var(--accent);padding:10px 0 14px 18px;margin-bottom:8px}
+  header::before{content:"";position:absolute;left:0;top:0;bottom:14px;width:2px;background:var(--crimson)}
+  header::after{content:"";position:absolute;left:8px;top:-6px;width:180px;height:1px;background:var(--sea)}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .eyebrow .of{font-family:var(--editorial);font-style:italic;text-transform:lowercase;letter-spacing:.06em}
+  h1{font-family:var(--cond);font-size:30px;font-weight:700;text-transform:uppercase;letter-spacing:.015em;color:var(--head);margin:0 0 6px;font-stretch:condensed}
+  h1 .slash{color:var(--crimson);font-weight:700}
+  .sub{color:var(--muted);font-size:13.5px}
+  .sub strong{color:var(--head)}
+  a.rubric{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--tint)}
+  .tagpill{display:inline-block;background:var(--tint);color:var(--accent);border-radius:11px;padding:2px 9px;font-size:12px;font-weight:600;vertical-align:middle}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin:18px 0 16px}
+  .stat{border:1px solid var(--hair);border-top:3px solid var(--sea);border-radius:0 0 6px 6px;padding:9px 14px;background:var(--card)}
+  .stat b{font-family:var(--cond);font-stretch:condensed;font-size:22px;display:block;line-height:1.1;color:var(--head)}
+  .stat span{color:var(--muted);font-size:12px}
+  .stat.s-o{border-top-color:var(--so)}.stat.s-o b{color:var(--so)}
+  .stat.s-b{border-top-color:var(--sb)}.stat.s-b b{color:var(--sb)}
+  .stat.s-a{border-top-color:var(--sa)}.stat.s-a b{color:var(--sa)}
+  .bars{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 4px}
+  .bars button{font-size:12.5px;font-weight:600;color:var(--muted);background:var(--bg);border:1px solid var(--hair);border-radius:8px;padding:5px 13px;cursor:pointer}
+  .bars button:hover{color:var(--accent);border-color:var(--accent)}
+  .bars button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .bars .lbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);align-self:center;margin-right:2px}
+  .note{color:var(--muted);font-size:12.5px;margin:6px 0 10px}
+  .scroll{overflow-x:auto;border:1px solid var(--hair);border-radius:8px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:1080px}
+  th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--hair);vertical-align:top}
+  th{background:var(--head);color:#B9C6DB;font-family:var(--cond);font-stretch:condensed;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;white-space:nowrap;position:sticky;top:0;z-index:2}
+  th:hover{color:#fff}
+  thead th:first-child{left:0;z-index:3}
+  td.t{position:sticky;left:0;z-index:1;background:var(--card);box-shadow:1px 0 0 var(--hair);font-size:14px;font-weight:600;max-width:320px;min-width:240px}
+  td.t a{color:var(--head);text-decoration:none;border-bottom:1px solid var(--hair)}
+  td.t a:hover{color:var(--accent);border-color:var(--accent)}
+  td.t .desc{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:2px}
+  tr.alt td{background:var(--row-alt)}
+  tr.alt td.t{background:var(--row-alt)}
+  tbody tr:hover td{background:var(--tint)}
+  tbody tr.detail td{background:var(--chrome);color:var(--muted);font-size:12.5px;padding:6px 11px 10px 34px;border-bottom:1px solid var(--hair)}
+  tbody tr.detail:hover td{background:var(--chrome)}
+  .exp{border:1px solid var(--hair);background:var(--card);color:var(--muted);border-radius:4px;width:20px;height:20px;line-height:1;cursor:pointer;margin-right:6px;font-size:10px;vertical-align:middle;padding:0}
+  .exp:hover{color:var(--accent);border-color:var(--accent)}
+  .exp[aria-expanded="true"]{color:var(--accent)}
+  h2.sec{font-family:var(--cond);font-stretch:condensed;font-size:19px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--head);margin:26px 0 6px;border-left:2px solid var(--crimson);padding-left:10px}
+  .rec{display:inline-block;border-radius:11px;padding:2px 8px;font-size:11px;font-weight:700;white-space:nowrap}
+  /* Color is reserved for attention: ACT = act-now orange, deadline ≤15bd amber / ≤5bd crimson.
+     TRACK/SCAN pills are tinted-neutral; normal cells stay ink. */
+  .r-ACT{background:var(--pill-act-bg);color:var(--pill-act-tx)}
+  .r-TRACK{background:var(--pill-trk-bg);color:var(--pill-trk-tx)}
+  .r-SCAN{background:var(--pill-scn-bg);color:var(--pill-scn-tx)}
+  .cls{font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--muted);white-space:nowrap}
+  .cls.leg{color:var(--sb)} .cls.reg{color:var(--sg)} .cls.agn{color:var(--sa)} .cls.com{color:var(--faint)}
+  .mov{color:var(--so);font-weight:700;font-size:11px;white-space:nowrap}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  th.num{text-align:right}
+  .impact{font-family:var(--cond);font-stretch:condensed;font-weight:700}
+  .days{font-weight:600}
+  .d-warn{color:var(--sa)} .d-crit{color:var(--sr)}
+  .un{color:var(--faint);font-style:italic}
+  .stage{font-size:12px;color:var(--muted);white-space:nowrap}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .empty{padding:40px;text-align:center;color:var(--faint)}
+  footer{color:var(--faint);font-size:12px;margin-top:20px;border-top:1px solid var(--hair);padding-top:12px}
+  footer .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:6px 18px}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#14243A;--ink:#E8ECF2;--head:#E8ECF2;--muted:#9FB0C7;--faint:#7C8BA3;
+      --accent:#8FB4E8;--crimson:#F26B7E;--sea:#4A6C9C;
+      --tint:#223655;--hair:#2C3D58;--chrome:#1B2C47;--card:#1B2C47;--row-alt:#182944;
+      --sg:#63C7B2;--sb:#8FB4E8;--sa:#FFAC5F;--so:#F2854B;--sr:#F26B7E;
+      --pill-act-bg:#CC3D12;--pill-act-tx:#FFF;
+      --pill-trk-bg:#1F3050;--pill-trk-tx:#8FB4E8;
+      --pill-scn-bg:#3A2E15;--pill-scn-tx:#FFAC5F}
+    th{background:#0E1A2C;color:#9FB0C7}
+    th:hover{color:#E8ECF2}
+    .bars button.on{color:#0E1A2C}
+  }
+  :root[data-theme="dark"]{--bg:#14243A;--ink:#E8ECF2;--head:#E8ECF2;--muted:#9FB0C7;--faint:#7C8BA3;
+    --accent:#8FB4E8;--crimson:#F26B7E;--sea:#4A6C9C;
+    --tint:#223655;--hair:#2C3D58;--chrome:#1B2C47;--card:#1B2C47;--row-alt:#182944;
+    --sg:#63C7B2;--sb:#8FB4E8;--sa:#FFAC5F;--so:#F2854B;--sr:#F26B7E;
+    --pill-act-bg:#CC3D12;--pill-act-tx:#FFF;
+    --pill-trk-bg:#1F3050;--pill-trk-tx:#8FB4E8;
+    --pill-scn-bg:#3A2E15;--pill-scn-tx:#FFAC5F}
+  :root[data-theme="dark"] th{background:#0E1A2C;color:#9FB0C7}
+  :root[data-theme="dark"] .bars button.on{color:#0E1A2C}
+  :root[data-theme="light"]{--bg:#FFFFFF;--ink:#23272E;--head:#1D3557;--muted:#5A6472;--faint:#8A93A0;
+    --accent:#2C49A4;--crimson:#B30838;--sea:#6D97C9;
+    --tint:#E9EEF9;--hair:#E3E6EB;--chrome:#F1F3F6;--card:#FFFFFF;--row-alt:#F7F9FC;
+    --sg:#1F7A6B;--sb:#2C49A4;--sa:#8A5A00;--so:#CC3D12;--sr:#B30838;
+    --pill-act-bg:#CC3D12;--pill-act-tx:#FFFFFF;
+    --pill-trk-bg:#E4EDF8;--pill-trk-tx:#2C49A4;
+    --pill-scn-bg:#FDEBD3;--pill-scn-tx:#8A5A00}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Relay Graduate School <span class="of">of</span> Education</div>
+  <h1>Policy Watch <span class="slash">/</span> Legislation &amp; Regulation</h1>
+  <div class="sub">K-12 &amp; educator-policy movement across the federal government and Relay's 13 jurisdictions ·
+    criteria: <a class="rubric" href="rubric.html">impact rubric</a> ·
+    <span class="tagpill">Work/Relay/PolicyWatch</span></div>
+</header>
+
+<div class="stats" id="stats" aria-live="polite"></div>
+
+<div class="bars" role="group" aria-label="Recommendation filter">
+  <span class="lbl">Rec</span>
+  <button data-f="rec" data-v="all" class="on">All</button>
+  <button data-f="rec" data-v="ACT">Act</button>
+  <button data-f="rec" data-v="TRACK">Track</button>
+  <button data-f="rec" data-v="SCAN">Scan</button>
+</div>
+<div class="bars" role="group" aria-label="Signal class filter">
+  <span class="lbl">Class</span>
+  <button data-f="cls" data-v="all" class="on">All</button>
+  <button data-f="cls" data-v="LEGISLATION">Legislation</button>
+  <button data-f="cls" data-v="REGULATION">Regulation</button>
+  <button data-f="cls" data-v="AGENCY">Agency</button>
+  <button data-f="cls" data-v="COMMENTARY">Commentary</button>
+</div>
+<div class="bars" role="group" aria-label="Jurisdiction filter" id="jurisbar">
+  <span class="lbl">Where</span>
+  <button data-f="jur" data-v="all" class="on">All</button>
+</div>
+<p class="note">Colored deadlines mean an open response window: <span class="d-warn">≤15 business days</span> ·
+  <span class="d-crit">≤5 business days</span>. Commentary rows are secondary sources — attributed, never authoritative.
+  ▸ expands the full summary and Relay angle.</p>
+
+<div class="scroll">
+<table id="tbl" aria-describedby="tblnote">
+  <thead><tr>
+    <th data-k="title" aria-sort="none">Item</th>
+    <th data-k="rec" aria-sort="none">Rec</th>
+    <th data-k="impact" class="num" aria-sort="descending">Impact</th>
+    <th data-k="cls" aria-sort="none">Class</th>
+    <th data-k="jur" aria-sort="none">Where</th>
+    <th data-k="stage" aria-sort="none">Stage</th>
+    <th data-k="days" class="num" aria-sort="none">Window</th>
+    <th data-k="action_date" aria-sort="none">Last action</th>
+    <th data-k="source" aria-sort="none">Source</th>
+  </tr></thead>
+  <tbody id="tb"></tbody>
+</table>
+</div>
+<div class="empty" id="empty" hidden>No items yet — run <code>/relay-policy</code> to populate this dashboard.</div>
+<div class="sr-only" id="announce" aria-live="polite"></div>
+
+<footer>
+  <div class="grid">
+    <div><b>Updated:</b> <span id="updated">never — awaiting first run</span></div>
+    <div><b>Coverage:</b> Federal + CO CT DE GA IL NJ NY PA RI TN TX DC IN</div>
+    <div><b>Pipeline:</b> relay-policy-tracker (weekly /relay-policy)</div>
+    <div><b>Sibling:</b> Relay Public Funding dashboard (relay-grant-finder)</div>
+  </div>
+</footer>
+</div>
+
+<script>
+// DATA is edited in place by each /relay-policy run — never rebuild this page from scratch.
+// Row schema: {title, url, desc, angle, rec:ACT|TRACK|SCAN, impact:0-100, cls, jur, stage,
+//   deadline:"YYYY-MM-DD"|"", days:int|null, action:"...", action_date:"YYYY-MM-DD",
+//   source:"...", movement:""|"a -> b", coverage:[{outlet,url}]}
+const DATA = [
+ {
+  "title": "NY Regents plan first-in-the-nation competency-based diploma",
+  "url": "https://www.nysed.gov/news/2026/board-regents-and-state-education-department-announce-plan-move-toward-first-nation",
+  "desc": "Board of Regents and NYSED announced a plan to move New York toward a competency-based high school diploma \u2014 a first-in-the-nation overhaul of graduation measures.",
+  "angle": "Reshapes what NY teachers and leaders must be prepared to teach and assess; expect downstream changes to educator-prep expectations and Regents agenda items. Relay's largest jurisdiction.",
+  "rec": "TRACK",
+  "impact": 62,
+  "cls": "AGENCY",
+  "jur": "NY",
+  "stage": "announced-plan",
+  "deadline": "",
+  "days": null,
+  "action": "Plan announced via NYSED release",
+  "action_date": "2026-08-04",
+  "source": "NYSED newsroom",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "ED rescinds portions of Title VI regulations (final rule, effective 7/24)",
+  "url": "https://www.federalregister.gov/documents/2026/07/24/2026-15019/rescinding-portions-of-the-department-of-education-title-vi-regulations-to-align-with-the-statutory",
+  "desc": "Department of Education final rule rescinding parts of its Title VI regulations (incl. disparate-impact provisions) to align with statutory text and E.O. 14281; companion rescission of race/national-origin service guidelines.",
+  "angle": "Ecosystem-level: changes the civil-rights compliance frame for every partner district; no direct Relay operational impact.",
+  "rec": "TRACK",
+  "impact": 54,
+  "cls": "REGULATION",
+  "jur": "US",
+  "stage": "final-rule",
+  "deadline": "",
+  "days": null,
+  "action": "Final rule published; effective 2026-07-24 (verified from primary)",
+  "action_date": "2026-07-24",
+  "source": "Federal Register",
+  "movement": "",
+  "coverage": [
+   {
+    "outlet": "ED press release",
+    "url": "https://www.ed.gov/about/news/press-release"
+   }
+  ]
+ },
+ {
+  "title": "NJ State Board of Examiners certification-code amendments at adoption",
+  "url": "https://www.nj.gov/education/code/proposed/",
+  "desc": "NJDOE proposed-code docket shows Examiners & Certification amendments (military science endorsement) at adoption level, plus open rulemaking petitions.",
+  "angle": "Core surface: NJ certification code is in motion. This amendment is narrow, but the active Examiners docket is the thing to watch \u2014 next NJ cert changes will appear here first.",
+  "rec": "TRACK",
+  "impact": 55,
+  "cls": "REGULATION",
+  "jur": "NJ",
+  "stage": "adoption-level",
+  "deadline": "",
+  "days": null,
+  "action": "Adoption-level document posted (PDF; verify detail before citing provisions)",
+  "action_date": "",
+  "source": "NJDOE proposed code",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "Federal role restructuring: SD 'Returning Education to the States' waiver approved",
+  "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-south-dakotas-returning-education-states-waiver",
+  "desc": "ED approved South Dakota's flexibility waiver under the 'Returning Education to the States' framework, alongside an active push to break up the federal education bureaucracy.",
+  "angle": "The standing storyline of this cycle: federal role shrinking, state discretion growing. Determines which level of government Relay's policy attention belongs at, state by state.",
+  "rec": "TRACK",
+  "impact": 56,
+  "cls": "AGENCY",
+  "jur": "US",
+  "stage": "waiver-approved",
+  "deadline": "",
+  "days": null,
+  "action": "First waiver approved; Senate resistance emerging",
+  "action_date": "2026-08-04",
+  "source": "ED press",
+  "movement": "",
+  "coverage": [
+   {
+    "outlet": "Chalkbeat",
+    "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/"
+   }
+  ]
+ },
+ {
+  "title": "TEA appoints Board of Managers for Fort Worth ISD",
+  "url": "https://tea.texas.gov/about-tea/newsroom",
+  "desc": "TEA replaced Fort Worth ISD's elected board with an appointed Board of Managers and named a new superintendent; similar actions at Connally, Lake Worth, and Beaumont ISDs this period.",
+  "angle": "FWISD is an active Relay target account (grant-finder district tier). Governance takeover resets decision-makers and procurement posture; expect strategy/priorities shifts.",
+  "rec": "TRACK",
+  "impact": 50,
+  "cls": "AGENCY",
+  "jur": "TX",
+  "stage": "state-takeover",
+  "deadline": "",
+  "days": null,
+  "action": "Board of Managers + new superintendent announced",
+  "action_date": "",
+  "source": "TEA newsroom",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "PSLF/TEPSLF certification & application forms \u2014 comment window open",
+  "url": "https://www.federalregister.gov/documents/2026/07/13/2026-14053/agency-information-collection-activities-comment-request-public-service-loan-forgiveness-pslf-and",
+  "desc": "ED information-collection comment request on PSLF/TEPSLF certification and application forms; comments due September 11, 2026 (verified from primary).",
+  "angle": "Form-level, not program rules \u2014 but PSLF mechanics matter to Relay's teacher-candidates' finances. Low lift to comment if the forms create friction for educators.",
+  "rec": "SCAN",
+  "impact": 42,
+  "cls": "REGULATION",
+  "jur": "US",
+  "stage": "comment-open",
+  "deadline": "2026-09-11",
+  "days": 26,
+  "action": "ICR comment request published",
+  "action_date": "2026-07-13",
+  "source": "Federal Register",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "Federal borrowing caps squeeze principal pipelines and grad programs (per EdWeek, AEI)",
+  "url": "https://www.edweek.org/policy-politics/the-principal-pipeline-could-contract-under-new-federal-borrowing-caps/2026/07",
+  "desc": "Per EdWeek: new federal graduate borrowing caps could contract principal-preparation pipelines. Per AEI: graduate schools are already cutting tuition as loan limits take effect; states are weighing their own graduate loan programs.",
+  "angle": "Directly relevant to Relay's MAT/NPAF enrollment economics. Commentary-only this run (capped at SCAN); watch for the implementing regs/guidance to surface as primary items.",
+  "rec": "SCAN",
+  "impact": 48,
+  "cls": "COMMENTARY",
+  "jur": "US",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "2026-07-30",
+  "source": "per EdWeek / per AEI",
+  "movement": "",
+  "coverage": [
+   {
+    "outlet": "AEI",
+    "url": "https://www.aei.org/category/education/feed/"
+   }
+  ]
+ },
+ {
+  "title": "AACTE: lawsuit update on federal EPP funding; national educator-workforce call to action",
+  "url": "https://aacte.org/news/press-releases/",
+  "desc": "Per AACTE: update on the 2025 lawsuit protecting federal funding for educator-preparation programs (with NCTR and MACTE); separately, a national call for federal leadership on the educator workforce, and a response to NCTQ's reading-prep report.",
+  "angle": "Relay's trade association signaling on the exact federal funding streams (SEED/TQP-adjacent) Relay draws on. Secondary source \u2014 track the litigation docket itself if stakes rise.",
+  "rec": "SCAN",
+  "impact": 45,
+  "cls": "COMMENTARY",
+  "jur": "US",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "2026-08-01",
+  "source": "per AACTE",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "NYSED names Senior Deputy Commissioner for Education Policy",
+  "url": "https://www.nysed.gov/news/2026",
+  "desc": "Ceylane Meyers-Ruff appointed NYSED Senior Deputy Commissioner for Education Policy.",
+  "angle": "Personnel-is-policy in Relay's largest jurisdiction; relevant contact for cert/EPP policy conversations.",
+  "rec": "SCAN",
+  "impact": 38,
+  "cls": "AGENCY",
+  "jur": "NY",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "NYSED newsroom",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "English-learner grant program returns under new oversight (per EdWeek)",
+  "url": "https://www.edweek.org/policy-politics.rss",
+  "desc": "Per EdWeek: the federal English-learner grant (National Professional Development-line) returns this fall with new oversight terms.",
+  "angle": "NPD is on Relay's federal search-term list (bilingual/ELL educator prep) \u2014 a funding signal for the grant-finder side; cross-reference next /relay-grants run.",
+  "rec": "SCAN",
+  "impact": 44,
+  "cls": "COMMENTARY",
+  "jur": "US",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "per EdWeek",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "Proposed federal grant rules could add political oversight of education research (per FutureEd)",
+  "url": "https://www.future-ed.org/feed/",
+  "desc": "Per FutureEd: proposed federal grant rules would increase political oversight of education research grants.",
+  "angle": "If real, the underlying proposed rule affects evaluation/research components of Relay's federal grants. Find and verify the primary NPRM next run.",
+  "rec": "SCAN",
+  "impact": 40,
+  "cls": "COMMENTARY",
+  "jur": "US",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "per FutureEd",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "Teacher turnover's long rise; enrollment-decline geography (per Chalkbeat, Bellwether)",
+  "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+  "desc": "Per Chalkbeat: multi-year rise in teacher turnover has reshaped classrooms. Per Bellwether: enrollment decline is uneven \u2014 exurban districts boom while cores shrink, squeezing budgets.",
+  "angle": "Demand-side context for Relay's pipeline programs: turnover sustains demand for prep; enrollment decline reshapes which districts are hiring.",
+  "rec": "SCAN",
+  "impact": 36,
+  "cls": "COMMENTARY",
+  "jur": "US",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "per Chalkbeat / per Bellwether",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "NYC: Mamdani names 13 school board members (per Chalkbeat)",
+  "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+  "desc": "Per Chalkbeat: NYC's mayor named 13 members to the school board, cementing control of the nation's largest district.",
+  "angle": "Relay's flagship partner district under consolidated new leadership \u2014 partnership and procurement posture may shift.",
+  "rec": "SCAN",
+  "impact": 38,
+  "cls": "COMMENTARY",
+  "jur": "NY",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "per Chalkbeat",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "Workforce Pell approved in Iowa; McMahon call to action to university boards",
+  "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-nations-first-workforce-pell-grant-program-iowa",
+  "desc": "ED approved the nation's first Workforce Pell program (Iowa) and the Secretary issued a national call to action to university presidents and governing boards.",
+  "angle": "Higher-ed funding architecture moving; Workforce Pell precedent worth one line for Relay's IHE planning.",
+  "rec": "SCAN",
+  "impact": 34,
+  "cls": "AGENCY",
+  "jur": "US",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "ED press",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "TN SBE pending-rules docket active (chapter 0520 items)",
+  "url": "https://www.tn.gov/sbe/rules--policies-and-guidance/pending-rules-and-policies.html",
+  "desc": "TN State Board of Education's pending rules page shows active chapter 0520 rulemaking; specific items need a direct read (page is nav-heavy to a plain client).",
+  "angle": "TN educator-prep and school rules originate here; wire a closer parse next iteration and check the docket against Relay's TN programs.",
+  "rec": "SCAN",
+  "impact": 35,
+  "cls": "REGULATION",
+  "jur": "TN",
+  "stage": "pending",
+  "deadline": "",
+  "days": null,
+  "action": "",
+  "action_date": "",
+  "source": "TN SBE",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "GA: 'Excellent Teacher Preparation Act' (HB1107) \u2014 PASSED",
+  "url": "https://legiscan.com/GA/bill/HB1107/2025",
+  "desc": "Georgia enacted HB1107, the Excellent Teacher Preparation Act (passed 2026-05-05, per LegiScan); a Senate paid-student-teaching study committee (SR545) also stood up.",
+  "angle": "A rewrite of teacher-prep law in an authorized Relay state. Read the enacted text next run: program-approval, clinical, and funding provisions may touch Relay's GA operations directly.",
+  "rec": "TRACK",
+  "impact": 66,
+  "cls": "LEGISLATION",
+  "jur": "GA",
+  "stage": "passed",
+  "deadline": "",
+  "days": null,
+  "action": "Passed (per LegiScan masterlist; verify enacted text from GA Legis next run)",
+  "action_date": "2026-05-05",
+  "source": "GA General Assembly via LegiScan",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "CO: Teacher Recruitment Education & Preparation program phase-out signed (HB1357)",
+  "url": "https://legiscan.com/CO/bill/HB1357/2026",
+  "desc": "Colorado's governor signed HB1357 phasing out the TREP program (2026-06-04, per LegiScan).",
+  "angle": "A state educator-pipeline funding stream winding down in a Relay jurisdiction \u2014 check whether any Relay candidates or district partners used TREP dollars, and what replaces it.",
+  "rec": "TRACK",
+  "impact": 58,
+  "cls": "LEGISLATION",
+  "jur": "CO",
+  "stage": "passed",
+  "deadline": "",
+  "days": null,
+  "action": "Governor signed (per LegiScan)",
+  "action_date": "2026-06-04",
+  "source": "CO General Assembly via LegiScan",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "NJ: 13-bill certification-reform docket incl. clinical-practice reduction",
+  "url": "https://www.njleg.state.nj.us/bill-search",
+  "desc": "NJ's session carries a dense educator-certification docket: 'Teacher Certification Reform Act' (A2562), bills to reduce clinical-practice requirements (A2377/S3243), Grow-Your-Own programs (S2020, A2040/S2582), veteran and reciprocity pathways \u2014 all at introduced stage (per LegiScan).",
+  "angle": "The deepest cert-reform activity in any Relay state. Clinical-practice reduction bills would directly change Relay NJ's program requirements; pair with the NJ Examiners rulemaking already tracked.",
+  "rec": "TRACK",
+  "impact": 60,
+  "cls": "LEGISLATION",
+  "jur": "NJ",
+  "stage": "introduced",
+  "deadline": "",
+  "days": null,
+  "action": "Docket seeded to ledger; movement will surface per-bill",
+  "action_date": "2026-02-19",
+  "source": "NJ Legislature via LegiScan",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "IL: educator-licensure act passed (SB1947); student-teaching stipend engrossed (HB1375)",
+  "url": "https://legiscan.com/IL/bill/SB1947/2025",
+  "desc": "Illinois passed SB1947 (educator licensure, Public Act, 2025-08-01) and HB1375 (student-teaching stipend) is engrossed; Grow-Your-Own and licensure bills pending (per LegiScan).",
+  "angle": "Stipend-for-student-teaching would change residency economics in a deep Relay state; the enacted licensure act needs a text read for cert-requirement changes.",
+  "rec": "TRACK",
+  "impact": 57,
+  "cls": "LEGISLATION",
+  "jur": "IL",
+  "stage": "passed",
+  "deadline": "",
+  "days": null,
+  "action": "SB1947 Public Act 104-xxxx; HB1375 engrossed 2026-03-04 (per LegiScan)",
+  "action_date": "2026-03-04",
+  "source": "IL General Assembly via LegiScan",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "TN: active educator-licensure bill cluster (Title 49 Ch. 5)",
+  "url": "https://legiscan.com/TN/bill/HB1658/2025",
+  "desc": "Six TN educator-licensure bills introduced Mar-Apr 2026 (HB1117/SB1917, HB1658, HB1888, SB1709, SB2109), plus a teacher bill pair enacted May 2025 (HB1323/SB1311). Masterlist titles are caption-style \u2014 contents UNVERIFIED.",
+  "angle": "TN licensure code is in active motion; contents unknown until bill text is read. Flagging for a text pull next run before any judgment.",
+  "rec": "SCAN",
+  "impact": 44,
+  "cls": "LEGISLATION",
+  "jur": "TN",
+  "stage": "introduced",
+  "deadline": "",
+  "days": null,
+  "action": "Cluster seeded; text verification queued",
+  "action_date": "2026-04-20",
+  "source": "TN General Assembly via LegiScan",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "title": "NY: bilingual 'Teachers of Tomorrow' recruitment bill engrossed (S02657)",
+  "url": "https://legiscan.com/NY/bill/S02657/2025",
+  "desc": "NY S02657 establishing a bilingual teachers-of-tomorrow recruitment/retention program is engrossed (per LegiScan); RI is separately extending teacher certifications fee-free (S2212 engrossed) and studying pathway expansion.",
+  "angle": "Bilingual-educator pipeline funding in Relay's largest state aligns with Relay's bilingual/ELL prep programs.",
+  "rec": "SCAN",
+  "impact": 46,
+  "cls": "LEGISLATION",
+  "jur": "NY",
+  "stage": "engrossed",
+  "deadline": "",
+  "days": null,
+  "action": "Engrossed 2026-01-28 (per LegiScan)",
+  "action_date": "2026-01-28",
+  "source": "NY Senate via LegiScan",
+  "movement": "",
+  "coverage": []
+ }
+];
+const META = {updated: "2026-08-05 (first run + LegiScan activation: 1,314 candidates → 21 surfaced; 1,073 state bills baselined)"};
+
+const RECO = {ACT:0, TRACK:1, SCAN:2};
+const CLSA = {LEGISLATION:["leg","LEG"], REGULATION:["reg","REG"], AGENCY:["agn","AGY"], COMMENTARY:["com","COM"]};
+let filt = {rec:"all", cls:"all", jur:"all"};
+let sortK = "impact", sortDir = -1;
+
+function fmtDays(d){
+  if(d===null||d===undefined||d==="") return "<span class='un'>—</span>";
+  if(d<0) return "<span class='un'>closed</span>";
+  const c = d<=5?"d-crit":(d<=15?"d-warn":"");
+  return `<span class="days ${c}">${d} bd</span>`;
+}
+function rowsFiltered(){
+  return DATA.filter(r =>
+    (filt.rec==="all"||r.rec===filt.rec) &&
+    (filt.cls==="all"||r.cls===filt.cls) &&
+    (filt.jur==="all"||r.jur===filt.jur));
+}
+function sortRows(rows){
+  const k=sortK, dir=sortDir;
+  return rows.slice().sort((a,b)=>{
+    let x=a[k], y=b[k];
+    if(k==="rec"){x=RECO[x];y=RECO[y];}
+    if(k==="days"){x=(a.days===null||a.days===undefined)?9999:a.days; y=(b.days===null||b.days===undefined)?9999:b.days;}
+    if(typeof x==="string") return dir*String(x).localeCompare(String(y));
+    return dir*((x||0)-(y||0));
+  });
+}
+function esc(s){return String(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function render(){
+  const rows = sortRows(rowsFiltered());
+  const tb = document.getElementById("tb");
+  tb.innerHTML = rows.map((r,i)=>{
+    const [cc, cl] = CLSA[r.cls]||["com",r.cls];
+    const mov = r.movement?` <span class="mov" title="${esc(r.movement)}">▲ moved</span>`:"";
+    const cov = (r.coverage||[]).map(c=>`per <a href="${esc(c.url)}">${esc(c.outlet)}</a>`).join(" · ");
+    const det = `${esc(r.desc)}${r.angle?` <b>Relay angle:</b> ${esc(r.angle)}`:""}${cov?` <b>Coverage:</b> ${cov}`:""}`;
+    return `<tr class="${i%2?"alt":""}">
+      <td class="t"><button class="exp" aria-expanded="false" aria-label="Expand summary" onclick="tog(this)">▸</button><a href="${esc(r.url)}">${esc(r.title)}</a>${mov}<div class="desc">${esc(r.desc)}</div></td>
+      <td><span class="rec r-${r.rec}">${r.rec}</span></td>
+      <td class="num impact">${r.impact??""}</td>
+      <td><span class="cls ${cc}">${cl}</span></td>
+      <td>${esc(r.jur)}</td>
+      <td class="stage">${esc(r.stage||"—")}</td>
+      <td class="num">${fmtDays(r.days)}${r.deadline?`<div class="stage">${esc(r.deadline)}</div>`:""}</td>
+      <td class="stage">${esc(r.action_date||"—")}<div class="desc">${esc((r.action||"").slice(0,90))}</div></td>
+      <td class="stage">${esc(r.source)}</td>
+    </tr>
+    <tr class="detail" hidden><td colspan="9">${det}</td></tr>`;
+  }).join("");
+  document.getElementById("empty").hidden = DATA.length>0;
+  document.querySelector(".scroll").style.display = DATA.length?"" :"none";
+  stats(rows);
+}
+function tog(btn){
+  const tr = btn.closest("tr"), det = tr.nextElementSibling;
+  const open = det.hasAttribute("hidden");
+  det.toggleAttribute("hidden", !open);
+  btn.setAttribute("aria-expanded", String(open));
+  btn.textContent = open?"▾":"▸";
+}
+function stats(visible){
+  const n = c=>DATA.filter(r=>r.rec===c).length;
+  const windows = DATA.filter(r=>typeof r.days==="number"&&r.days>=0&&r.days<=15).length;
+  const moved = DATA.filter(r=>r.movement).length;
+  document.getElementById("stats").innerHTML = `
+    <div class="stat s-o"><b>${n("ACT")}</b><span>Act now</span></div>
+    <div class="stat s-b"><b>${n("TRACK")}</b><span>Tracking</span></div>
+    <div class="stat s-a"><b>${n("SCAN")}</b><span>Scan / vibes</span></div>
+    <div class="stat"><b>${windows}</b><span>Open windows ≤15 bd</span></div>
+    <div class="stat"><b>${moved}</b><span>Moved since last run</span></div>`;
+  if(META.updated) document.getElementById("updated").textContent = META.updated;
+}
+function jurisBar(){
+  const bar = document.getElementById("jurisbar");
+  [...new Set(DATA.map(r=>r.jur))].sort((a,b)=>a==="US"?-1:b==="US"?1:a.localeCompare(b))
+    .forEach(j=>{
+      const b=document.createElement("button");
+      b.dataset.f="jur"; b.dataset.v=j; b.textContent=j;
+      bar.appendChild(b);
+    });
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".bars button"); if(!b) return;
+  filt[b.dataset.f]=b.dataset.v;
+  b.parentElement.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));
+  render();
+  document.getElementById("announce").textContent=`Filtered: ${rowsFiltered().length} items`;
+});
+document.querySelectorAll("th").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k=th.dataset.k; if(!k) return;
+    if(sortK===k) sortDir*=-1; else {sortK=k; sortDir=(k==="impact")?-1:1;}
+    document.querySelectorAll("th").forEach(h=>h.setAttribute("aria-sort", h===th?(sortDir===1?"ascending":"descending"):"none"));
+    render();
+    document.getElementById("announce").textContent=`Sorted by ${th.textContent}`;
+  });
+});
+jurisBar(); render();
+</script>
+</body>
+</html>
