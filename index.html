@@ -175,6 +175,36 @@
   .verified{font-size:11px;color:var(--faint);margin-top:10px}
   .verified a{color:var(--accent)}
 
+  /* ── Team triage (repo-backed) ── */
+  .starbtn{border:0;background:none;cursor:pointer;font-size:16px;color:var(--faint);padding:0 2px;line-height:1}
+  .starbtn.on{color:#E8A631}
+  .starbtn:hover{color:#E8A631}
+  .unread{width:7px;height:7px;border-radius:50%;background:var(--accent);display:inline-block;flex:none}
+  .card.dim{opacity:.55}
+  .syncchip{font-size:11.5px;font-weight:600;white-space:nowrap}
+  .syncchip .st-ok{color:var(--sg)} .syncchip .st-warn{color:var(--sa)} .syncchip .st-err{color:var(--sr)}
+  .notebox{width:100%;min-height:64px;border:1px solid var(--hair);border-radius:8px;background:var(--bg);color:var(--ink);padding:8px 10px;font-family:var(--sans);font-size:13px;resize:vertical}
+  .notebox:focus{border-color:var(--accent);outline:none}
+  .tbtns{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
+  .tbtn{border:1px solid var(--hair);background:var(--panel);color:var(--muted);border-radius:8px;padding:6px 12px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+  .tbtn:hover{color:var(--accent);border-color:var(--accent)}
+  .tbtn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .tbtn.primary:hover{filter:brightness(1.1)}
+  .attrib{font-size:11px;color:var(--faint);margin-top:4px}
+  .modal-scrim{position:fixed;inset:0;background:rgba(14,26,44,.5);z-index:80;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:40px 14px}
+  .modal-scrim.open{display:flex}
+  .modal{background:var(--panel);border-radius:12px;box-shadow:var(--shadow-lg);max-width:560px;width:100%;padding:22px 24px 26px;position:relative}
+  .modal h2{font-family:var(--cond);font-stretch:condensed;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--head);margin:0 0 4px;border-left:3px solid var(--crimson);padding-left:10px}
+  .modal h3{font-size:13.5px;font-weight:700;color:var(--head);margin:18px 0 4px}
+  .modal p,.modal li{font-size:13px;color:var(--muted);line-height:1.55;margin:6px 0}
+  .modal ol{padding-left:20px;margin:6px 0}
+  .modal .close{position:absolute;top:12px;right:14px}
+  .modal input{width:100%;height:34px;border:1px solid var(--hair);border-radius:8px;background:var(--bg);color:var(--ink);padding:0 10px;font-size:13px;margin:2px 0 8px}
+  .modal input:focus{border-color:var(--accent);outline:none}
+  .modal .warn{background:var(--pill-scn-bg);color:var(--pill-scn-tx);border-radius:8px;padding:9px 12px;font-size:12px;margin:10px 0}
+  .modal label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+  .modal code{background:var(--chrome);border-radius:4px;padding:1px 5px;font-size:12px}
+
   /* ── Responsive ── */
   .menubtn{display:none}
   @media (max-width:1100px){.layout{grid-template-columns:200px minmax(0,1fr)}.rail{display:none}}
@@ -204,6 +234,7 @@
   </div>
   <div class="spacer"></div>
   <span class="updated" id="updated"></span>
+  <button class="iconbtn syncchip" id="syncchip" aria-haspopup="dialog" title="Team sync — click for setup &amp; help">…</button>
   <button class="iconbtn" id="themebtn" aria-label="Toggle theme">◐</button>
 </div>
 
@@ -247,6 +278,43 @@
   <div class="pbody" id="pbody"></div>
 </section>
 <div class="sr-only" aria-live="polite" id="announce"></div>
+
+<div class="modal-scrim" id="helpscrim">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="helptitle">
+    <button class="iconbtn close" id="helpclose" aria-label="Close">✕</button>
+    <h2 id="helptitle">Team sync — how it works</h2>
+    <p>Stars <span style="color:#E8A631">★</span>, notes, and dismissals on this dashboard are <b>shared with the whole team</b>. They're stored in a small file that lives alongside this page on GitHub — there's no separate account or app. (What you've <i>read</i> is personal and stays on your own computer.)</p>
+
+    <h3>Just browsing?</h3>
+    <p>Nothing to set up. You already see the team's stars and notes. You can star and write notes too — they'll be remembered in this browser and shared once a save key is added.</p>
+
+    <h3>Want your changes to save for the whole team?</h3>
+    <p>You need a one-time "save key" from GitHub (free account required). It takes about two minutes:</p>
+    <ol>
+      <li>Sign in at <b>github.com</b>, click your photo (top-right) → <b>Settings</b>.</li>
+      <li>Scroll to <b>Developer settings</b> (bottom of the left menu) → <b>Personal access tokens</b> → <b>Fine-grained tokens</b> → <b>Generate new token</b>.</li>
+      <li>Name it <code>Policy Watch</code>. Set expiration to 90 days (you'll repeat this when it expires).</li>
+      <li>Under <b>Repository access</b> choose <b>Only select repositories</b> and pick <code>relay-policy-dashboard</code>.</li>
+      <li>Under <b>Permissions → Repository permissions</b>, set <b>Contents</b> to <b>Read and write</b>. Leave everything else alone.</li>
+      <li>Click <b>Generate token</b> and copy the long code that starts with <code>github_pat_</code>.</li>
+      <li>Paste it below, add your name, and click Save. Done — your stars and notes now save for everyone.</li>
+    </ol>
+
+    <div class="warn">Heads-up: this dashboard's GitHub home is public, so notes are visible to anyone who finds it — keep them operational ("we should comment on this"), never confidential. Your save key is stored only in this browser and can only touch this one dashboard.</div>
+
+    <label for="whoin">Your name (shown next to your notes)</label>
+    <input id="whoin" placeholder="e.g. Cliff">
+    <label for="tokin">Save key (github_pat_…)</label>
+    <input id="tokin" type="password" placeholder="paste your save key here" autocomplete="off">
+    <div class="tbtns">
+      <button class="tbtn primary" id="savesettings">Save</button>
+      <button class="tbtn" id="syncnowbtn">Sync now</button>
+      <button class="tbtn" id="exportbtn">Copy my unsaved changes</button>
+      <button class="tbtn" id="cleartok">Forget key</button>
+    </div>
+    <p class="attrib" id="settingsmsg"></p>
+  </div>
+</div>
 
 <script>
 // ── DATA is edited in place by each /relay-policy run — never rebuild this page. ──
@@ -650,6 +718,81 @@ const DATA = [
 ];
 const META = {updated: "2026-08-05 · 1,314 candidates scanned · 21 surfaced"};
 
+// ── Team triage (repo-backed): stars/notes/dismissals shared via triage.json in the
+//    dashboard's own GitHub repo; read-state stays per-viewer in localStorage. ──
+const REPO = "csthomasii/relay-policy-dashboard", TRIAGE_API =
+  `https://api.github.com/repos/${REPO}/contents/triage.json`;
+let T = {items:{}}, tDirty = new Set(), tTimer = null, syncState = "loading";
+const tok = () => localStorage.getItem("pw_token")||"";
+const who = () => localStorage.getItem("pw_name")||"";
+const READ = new Set(JSON.parse(localStorage.getItem("pw_read")||"[]"));
+const iid = r => { let h=5381, s=(r.url||"")+"|"+r.title;
+  for(let i=0;i<s.length;i++) h=((h<<5)+h+s.charCodeAt(i))>>>0; return "i"+h.toString(36); };
+const tGet = r => T.items[iid(r)]||{};
+const b64d = s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\n/g,"")),c=>c.charCodeAt(0)));
+const b64e = s => { const b=new TextEncoder().encode(s); let x=""; b.forEach(c=>x+=String.fromCharCode(c)); return btoa(x); };
+function tSet(r, patch){
+  const id = iid(r);
+  T.items[id] = Object.assign({}, T.items[id], patch,
+    {t: (r.title||"").slice(0,90), by: who()||undefined, at: new Date().toISOString()});
+  tDirty.add(id);
+  localStorage.setItem("pw_pending", JSON.stringify(Object.fromEntries([...tDirty].map(k=>[k,T.items[k]]))));
+  schedSync(); setSync();
+}
+function markRead(r){ const id=iid(r); if(READ.has(id)) return;
+  READ.add(id); localStorage.setItem("pw_read", JSON.stringify([...READ])); }
+async function loadTriage(){
+  try{
+    const h = {Accept:"application/vnd.github+json"};
+    if(tok()) h.Authorization = "Bearer "+tok();
+    const res = await fetch(TRIAGE_API, {headers:h});
+    if(res.ok){ const j = await res.json();
+      try{ const parsed = JSON.parse(b64d(j.content)); if(parsed && parsed.items) T = parsed; }catch(e){} }
+  }catch(e){}
+  try{ const p = JSON.parse(localStorage.getItem("pw_pending")||"null");
+    if(p){ Object.assign(T.items, p); Object.keys(p).forEach(k=>tDirty.add(k)); } }catch(e){}
+  syncState = tok() ? (tDirty.size ? "dirty" : "ok") : "readonly";
+  setSync(); renderNav(); renderFeed(); renderRail();
+}
+async function syncNow(){
+  if(!tok()){ setSync(); return; }
+  if(!tDirty.size){ syncState="ok"; setSync(); return; }
+  syncState = "saving"; setSync();
+  try{
+    const h = {Accept:"application/vnd.github+json", Authorization:"Bearer "+tok()};
+    let base = {items:{}}, sha = null;
+    const cur = await fetch(TRIAGE_API, {headers:h});
+    if(cur.ok){ const j = await cur.json(); sha = j.sha;
+      try{ const parsed = JSON.parse(b64d(j.content)); if(parsed&&parsed.items) base = parsed; }catch(e){} }
+    for(const k of tDirty) base.items[k] = T.items[k];
+    base.updated = new Date().toISOString();
+    const body = {message:"triage: update via dashboard"+(who()?" ("+who()+")":""),
+                  content: b64e(JSON.stringify(base,null,1))};
+    if(sha) body.sha = sha;
+    const put = await fetch(TRIAGE_API, {method:"PUT",
+      headers:{...h,"Content-Type":"application/json"}, body: JSON.stringify(body)});
+    if(put.ok){ T = base; tDirty.clear(); localStorage.removeItem("pw_pending"); syncState="ok"; }
+    else if(put.status===409 || put.status===422){ syncState="dirty"; schedSync(); }
+    else if(put.status===401 || put.status===403){ syncState="badtoken"; }
+    else { syncState="error"; }
+  }catch(e){ syncState="error"; }
+  setSync();
+}
+function schedSync(){ clearTimeout(tTimer); tTimer = setTimeout(syncNow, 2500); }
+function setSync(){
+  const el = document.getElementById("syncchip"); if(!el) return;
+  const m = {
+    loading:  ["…","","Loading team notes"],
+    readonly: ["Team notes: viewing","","Viewing shared notes — click to enable saving"],
+    ok:       ["Team sync ✓","st-ok","All changes saved for the team"],
+    dirty:    [tDirty.size+" unsaved","st-warn","Changes not yet saved — click for help"],
+    saving:   ["Saving…","st-warn","Saving to the team file"],
+    badtoken: ["Save key invalid","st-err","Your save key was rejected — click to fix"],
+    error:    ["Sync error","st-err","Couldn't reach GitHub — will retry on next change"],
+  }[syncState]||["…","",""];
+  el.innerHTML = `<span class="${m[1]}">${m[0]}</span>`; el.title = m[2];
+}
+
 // ── App state ──
 const CLS = {LEGISLATION:["leg","LEG","var(--sb)"], REGULATION:["reg","REG","var(--sg)"],
              AGENCY:["agn","AGY","var(--sa)"], COMMENTARY:["com","COM","var(--faint)"]};
@@ -683,19 +826,27 @@ function filtered(){
   let rows = DATA.slice();
   if(state.view==="windows") rows = rows.filter(r=>typeof r.days==="number"&&r.days>=0);
   if(state.view==="moved") rows = rows.filter(r=>r.movement);
+  if(state.view==="starred") rows = rows.filter(r=>tGet(r).star);
+  if(state.view==="dismissed") rows = rows.filter(r=>tGet(r).dismissed);
+  else rows = rows.filter(r=>!tGet(r).dismissed);
   if(state.cls) rows = rows.filter(r=>r.cls===state.cls);
   if(state.jur) rows = rows.filter(r=>r.jur===state.jur);
   if(state.q){
     const q = state.q.toLowerCase();
-    rows = rows.filter(r=>(r.title+" "+r.desc+" "+(r.angle||"")+" "+(r.source||"")+" "+r.jur).toLowerCase().includes(q));
+    rows = rows.filter(r=>(r.title+" "+r.desc+" "+(r.angle||"")+" "+(r.source||"")+" "+r.jur+" "+(tGet(r).note||"")).toLowerCase().includes(q));
   }
   return rows;
 }
 
 function card(r){
-  return `<article class="card" tabindex="0" role="button" aria-haspopup="dialog" data-i="${DATA.indexOf(r)}">
-    <div class="row1">${pills(r)}
+  const t = tGet(r);
+  return `<article class="card ${t.dismissed?"dim":""}" tabindex="0" role="button" aria-haspopup="dialog" data-i="${DATA.indexOf(r)}">
+    <div class="row1">
+      ${READ.has(iid(r))?"":'<span class="unread" title="Unread"></span>'}
+      ${pills(r)}
+      ${t.note?'<span class="tag" title="Has a team note">✎ note</span>':""}
       <span class="impact-mini"><span class="bar"><i style="width:${Math.min(100,r.impact||0)}%"></i></span><span class="v">${r.impact??""}</span></span>
+      <button class="starbtn ${t.star?"on":""}" data-star="${DATA.indexOf(r)}" aria-label="${t.star?"Unstar":"Star"}" title="Star for the team">${t.star?"★":"☆"}</button>
     </div>
     <div class="title">${esc(r.title)}</div>
     <div class="desc">${esc(r.desc)}</div>
@@ -736,7 +887,9 @@ function renderFeed(){
   document.getElementById("vsub").textContent = {
     feed:"Everything surfaced by the latest weekly scan, ranked by recommendation and impact.",
     windows:"Open comment and response windows, soonest first. Amber ≤15 business days, red ≤5.",
-    moved:"Items whose stage or latest action changed since the previous run."
+    moved:"Items whose stage or latest action changed since the previous run.",
+    starred:"Items the team has starred. Stars sync through the dashboard's GitHub home.",
+    dismissed:"Items the team dismissed — hidden from other views, restorable from the detail panel."
   }[state.view]||"";
   document.getElementById("announce").textContent = rows.length+" items shown";
 }
@@ -750,10 +903,14 @@ function navBtn(label, key, val, count, dot){
 function renderNav(){
   const w = DATA.filter(r=>typeof r.days==="number"&&r.days>=0).length;
   const m = DATA.filter(r=>r.movement).length;
+  const st = DATA.filter(r=>tGet(r).star).length;
+  const dz = DATA.filter(r=>tGet(r).dismissed).length;
   document.getElementById("viewnav").innerHTML =
-    navBtn("Feed","view","feed",DATA.length) +
+    navBtn("Feed","view","feed",DATA.filter(r=>!tGet(r).dismissed).length) +
     navBtn("Response windows","view","windows",w) +
-    navBtn("Moved this run","view","moved",m);
+    navBtn("Moved this run","view","moved",m) +
+    navBtn("★ Starred","view","starred",st) +
+    (dz?navBtn("Dismissed","view","dismissed",dz):"");
   document.getElementById("clsnav").innerHTML =
     navBtn("All classes","cls","",undefined) +
     Object.keys(CLS).map(c=>{
@@ -803,13 +960,20 @@ function stepper(r){
 
 function openPanel(i){
   const r = DATA[i]; if(!r) return;
+  markRead(r);
+  const t = tGet(r);
   document.getElementById("ppills").innerHTML = pills(r);
   document.getElementById("ptitle").textContent = r.title;
   const cov = (r.coverage||[]).map(c=>`per <a href="${esc(c.url)}">${esc(c.outlet)}</a>`).join(" · ");
+  const attrib = (t.by||t.at)?`<div class="attrib">Last touched${t.by?" by "+esc(t.by):""}${t.at?" · "+esc(t.at.slice(0,10)):""}</div>`:"";
   document.getElementById("pbody").innerHTML = `
     <div class="impactbig"><span class="n">${r.impact??"—"}</span>
       <span class="bar"><i style="width:${Math.min(100,r.impact||0)}%"></i></span></div>
     ${stepper(r)}
+    <div class="tbtns">
+      <button class="tbtn" id="pstar" data-i="${i}">${t.star?"★ Unstar":"☆ Star for team"}</button>
+      <button class="tbtn" id="pdismiss" data-i="${i}">${t.dismissed?"↩ Restore":"Dismiss"}</button>
+    </div>
     <dl class="kv">
       <dt>What it does</dt><dd>${esc(r.desc)}</dd>
       ${r.angle?`<dt>Relay angle</dt><dd class="angle">${esc(r.angle)}</dd>`:""}
@@ -818,6 +982,11 @@ function openPanel(i){
       ${r.movement?`<dt>Movement</dt><dd class="mov">▲ ${esc(r.movement)}</dd>`:""}
       ${cov?`<dt>Coverage</dt><dd class="cov">${cov}</dd>`:""}
       <dt>Source</dt><dd>${esc(r.source)}</dd>
+      <dt>Team note</dt><dd>
+        <textarea class="notebox" id="pnote" placeholder="Add a note for the team — visible to anyone who can see this dashboard">${esc(t.note||"")}</textarea>
+        <div class="tbtns"><button class="tbtn primary" id="psavenote" data-i="${i}">Save note</button></div>
+        ${attrib}
+      </dd>
     </dl>
     <a class="srcbtn" href="${esc(r.url)}" target="_blank" rel="noopener">Open primary source ↗</a>
     <div class="verified">Facts verified per the <a href="rubric.html">impact rubric</a>; commentary items are secondary sources, attributed as such.</div>`;
@@ -831,7 +1000,16 @@ function closePanel(){
 }
 
 // ── Events ──
+function openHelp(){
+  document.getElementById("whoin").value = who();
+  document.getElementById("tokin").value = tok();
+  document.getElementById("settingsmsg").textContent = "";
+  document.getElementById("helpscrim").classList.add("open");
+}
 document.addEventListener("click", e=>{
+  const sb = e.target.closest(".starbtn");
+  if(sb){ e.stopPropagation(); const r = DATA[+sb.dataset.star];
+    tSet(r, {star: !tGet(r).star}); renderNav(); renderFeed(); return; }
   const nb = e.target.closest(".nav button");
   if(nb){
     const k = nb.dataset.k, v = nb.dataset.v;
@@ -842,8 +1020,33 @@ document.addEventListener("click", e=>{
     if(window.innerWidth<=760) document.getElementById("side").classList.remove("open");
     return;
   }
+  if(e.target.id==="pstar"){ const r=DATA[+e.target.dataset.i];
+    tSet(r,{star:!tGet(r).star}); renderNav(); renderFeed(); openPanel(+e.target.dataset.i); return; }
+  if(e.target.id==="pdismiss"){ const r=DATA[+e.target.dataset.i];
+    tSet(r,{dismissed:!tGet(r).dismissed}); renderNav(); renderFeed(); closePanel(); return; }
+  if(e.target.id==="psavenote"){ const r=DATA[+e.target.dataset.i];
+    tSet(r,{note:document.getElementById("pnote").value.slice(0,1000)}); renderFeed();
+    e.target.textContent="Saved ✓"; setTimeout(()=>{e.target.textContent="Save note";},1500); return; }
+  if(e.target.id==="syncchip"){ openHelp(); return; }
+  if(e.target.id==="helpclose"||e.target.id==="helpscrim"){ document.getElementById("helpscrim").classList.remove("open"); return; }
+  if(e.target.id==="savesettings"){
+    const n=document.getElementById("whoin").value.trim(), k=document.getElementById("tokin").value.trim();
+    if(n) localStorage.setItem("pw_name",n);
+    if(k) localStorage.setItem("pw_token",k);
+    syncState = tok() ? (tDirty.size?"dirty":"ok") : "readonly"; setSync();
+    document.getElementById("settingsmsg").textContent = tok()
+      ? "Saved. Your changes will now sync for the team." : "Saved your name. Add a save key to sync changes.";
+    if(tok()&&tDirty.size) syncNow();
+    return; }
+  if(e.target.id==="syncnowbtn"){ syncNow(); document.getElementById("settingsmsg").textContent="Syncing…"; return; }
+  if(e.target.id==="exportbtn"){
+    navigator.clipboard.writeText(JSON.stringify(Object.fromEntries([...tDirty].map(k=>[k,T.items[k]])),null,1));
+    document.getElementById("settingsmsg").textContent="Unsaved changes copied — paste them to whoever runs the weekly update."; return; }
+  if(e.target.id==="cleartok"){ localStorage.removeItem("pw_token");
+    syncState="readonly"; setSync();
+    document.getElementById("settingsmsg").textContent="Save key forgotten on this browser."; return; }
   const c = e.target.closest("[data-i]");
-  if(c){ openPanel(+c.dataset.i); return; }
+  if(c && c.classList.contains("card")||c&&c.classList.contains("wline")){ openPanel(+c.dataset.i); return; }
   if(e.target.id==="scrim"||e.target.id==="pclose"||e.target.closest("#pclose")) closePanel();
   if(e.target.id==="menubtn") document.getElementById("side").classList.toggle("open");
   if(e.target.id==="themebtn"){
@@ -854,8 +1057,10 @@ document.addEventListener("click", e=>{
   }
 });
 document.addEventListener("keydown", e=>{
-  if(e.key==="Escape"){ closePanel(); document.getElementById("side").classList.remove("open"); }
-  if(e.key==="/" && document.activeElement.tagName!=="INPUT"){ e.preventDefault(); document.getElementById("q").focus(); }
+  if(e.key==="Escape"){ closePanel(); document.getElementById("side").classList.remove("open");
+    document.getElementById("helpscrim").classList.remove("open"); }
+  if(e.key==="/" && document.activeElement.tagName!=="INPUT" && document.activeElement.tagName!=="TEXTAREA"){
+    e.preventDefault(); document.getElementById("q").focus(); }
   if((e.key==="Enter"||e.key===" ") && document.activeElement.classList?.contains("card")){
     e.preventDefault(); openPanel(+document.activeElement.dataset.i);
   }
@@ -863,7 +1068,7 @@ document.addEventListener("keydown", e=>{
 document.getElementById("q").addEventListener("input", e=>{ state.q = e.target.value.trim(); renderFeed(); });
 
 document.getElementById("updated").textContent = META.updated ? "Updated "+META.updated : "Awaiting first run";
-renderNav(); renderFeed(); renderRail();
+renderNav(); renderFeed(); renderRail(); setSync(); loadTriage();
 </script>
 </body>
 </html>
