@@ -178,6 +178,44 @@
   .starbtn:active{transform:scale(.9)}
   .emptyview{padding:56px 20px;text-align:center;color:var(--faint)}
 
+  /* ── Archive: the longitudinal record, opened deliberately ──
+     Deliberately unlike the feed. The feed is a triage surface (scannable rows,
+     one line each); the archive is a reading surface (per-item timelines). Same
+     hairlines and mono data type so it reads as the same instrument. */
+  .arch{background:var(--panel);border:1px solid var(--hair);border-radius:10px;
+    box-shadow:var(--sh-1);padding:12px 14px 6px;margin:0 0 10px}
+  .archhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 2px}
+  .archhead .at{font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;
+    flex:1 1 240px;min-width:0}
+  .archhead .at:hover{color:var(--accent-ink);text-decoration:underline}
+  .archspan{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap}
+  .archlive{font-size:10.5px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--ok)}
+  .archgone{font-size:10.5px;font-weight:650;letter-spacing:.03em;text-transform:uppercase;
+    color:var(--faint)}
+  .tl{list-style:none;margin:8px 0 0;padding:0}
+  .tl li{display:flex;gap:11px;padding:0 0 10px;position:relative}
+  /* Connector runs between dots, not past the last one. */
+  .tl li:not(:last-child)::before{content:"";position:absolute;left:60px;top:15px;bottom:-1px;
+    width:1px;background:var(--hair)}
+  .tldate{font-family:var(--mono);font-size:11px;color:var(--faint);width:50px;
+    flex:none;text-align:right;padding-top:2px}
+  .tldot{width:7px;height:7px;flex:none;margin-top:6px;border-radius:50%;
+    background:var(--line);position:relative;z-index:1;
+    box-shadow:0 0 0 3px var(--panel)}
+  .tl li.k-first .tldot{background:var(--accent)}
+  .tl li.k-gone .tldot{background:transparent;border:1px solid var(--line)}
+  .tlbody{min-width:0;flex:1}
+  .tlkind{font-size:11px;font-weight:650;color:var(--muted)}
+  .tlnote{font-family:var(--serif);font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:1px}
+  .tlchg{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:2px}
+  .tlchg li{display:block;padding:0;font-family:var(--mono);font-size:11px;color:var(--faint)}
+  .tlchg li::before{content:none}
+  .tlchg b{font-weight:600;color:var(--muted)}
+  .tlchg .ar{color:var(--line);padding:0 6px}
+  .archnote{font-family:var(--serif);font-size:12.5px;color:var(--faint);
+    border-top:1px solid var(--hair);margin-top:14px;padding-top:10px}
+
   /* entrance (first render only; cumulative stagger capped in JS) */
   .entering .row{animation:rise var(--t-3) var(--e-out) both;animation-delay:var(--d,0ms)}
   @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -505,6 +543,7 @@
 //   dims:{name:0-100,...}, commentUrl (verified submission route).
 const DATA = [
  {
+  "id": "govinfo_bills:ab48d7fea49d1d70",
   "title": "S. 5046 — bar on transferring ED offices/functions to other federal agencies (reported, Senate Calendar No. 541)",
   "url": "https://www.govinfo.gov/app/details/BILLS-119s5046rs",
   "desc": "Bipartisan Senate bill barring the Secretary of Education from entering or implementing interagency agreements that move the functions of four ED offices — Elementary & Secondary Education, Postsecondary Education, Special Education & Rehabilitative Services, and Indian Education — to other federal agencies. Covers grant administration, technical assistance, enforcement, data collection, and grantee monitoring. Exempts arrangements in effect on Feb 1, 2025 and their like-for-like renewals. Section 2 adds quarterly public cost reporting on every interagency agreement signed since Feb 1, 2025, and withholds the Secretary's travel funds until those reports are delivered.",
@@ -524,6 +563,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "legiscan:2102324",
   "title": "GA: 'Excellent Teacher Preparation Act' (HB1107) — PASSED",
   "url": "https://legiscan.com/GA/bill/HB1107/2025",
   "desc": "Georgia enacted HB1107, the Excellent Teacher Preparation Act (passed 2026-05-05, per LegiScan); a Senate paid-student-teaching study committee (SR545) also stood up.",
@@ -542,6 +582,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "nysed_news:53b4b4f5421c671a",
   "title": "NY Regents plan first-in-the-nation competency-based diploma",
   "url": "https://www.nysed.gov/news/2026/board-regents-and-state-education-department-announce-plan-move-toward-first-nation",
   "desc": "Board of Regents and NYSED announced a plan to move New York toward a competency-based high school diploma — a first-in-the-nation overhaul of graduation measures.",
@@ -560,6 +601,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:2ff301c3",
   "title": "NJ: 13-bill certification-reform docket incl. clinical-practice reduction",
   "url": "https://www.njleg.state.nj.us/bill-search",
   "desc": "NJ's session carries a dense educator-certification docket: 'Teacher Certification Reform Act' (A2562), bills to reduce clinical-practice requirements (A2377/S3243), Grow-Your-Own programs (S2020, A2040/S2582), veteran and reciprocity pathways — all at introduced stage (per LegiScan).",
@@ -578,6 +620,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "legiscan:2140927",
   "title": "CO: Teacher Recruitment Education & Preparation program phase-out signed (HB1357)",
   "url": "https://legiscan.com/CO/bill/HB1357/2026",
   "desc": "Colorado's governor signed HB1357 phasing out the TREP program (2026-06-04, per LegiScan).",
@@ -596,6 +639,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "legiscan:1960239",
   "title": "IL: educator-licensure act passed (SB1947); student-teaching stipend engrossed (HB1375)",
   "url": "https://legiscan.com/IL/bill/SB1947/2025",
   "desc": "Illinois passed SB1947 (educator licensure, Public Act, 2025-08-01) and HB1375 (student-teaching stipend) is engrossed; Grow-Your-Own and licensure bills pending (per LegiScan).",
@@ -614,6 +658,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "ed_press:23a70572f4f32747",
   "title": "Federal role restructuring: 'Returning Education to the States' campaign continues",
   "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-south-dakotas-returning-education-states-waiver",
   "desc": "ED's 'Returning Education to the States' push continues: South Dakota's flexibility waiver approved (July), and Secretary McMahon took the tour to Pennsylvania on Aug 6, 2026.",
@@ -641,6 +686,7 @@ const DATA = [
   ]
  },
  {
+  "id": "x:9a5d65d",
   "title": "NJ State Board of Examiners certification-code amendments at adoption",
   "url": "https://www.nj.gov/education/code/proposed/",
   "desc": "NJDOE proposed-code docket shows Examiners & Certification amendments (military science endorsement) at adoption level, plus open rulemaking petitions.",
@@ -659,6 +705,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "fedreg:2026-15019",
   "title": "ED rescinds portions of Title VI regulations (final rule, effective 7/24)",
   "url": "https://www.federalregister.gov/documents/2026/07/24/2026-15019/rescinding-portions-of-the-department-of-education-title-vi-regulations-to-align-with-the-statutory",
   "desc": "Department of Education final rule rescinding parts of its Title VI regulations (incl. disparate-impact provisions) to align with statutory text and E.O. 14281; companion rescission of race/national-origin service guidelines.",
@@ -682,6 +729,7 @@ const DATA = [
   ]
  },
  {
+  "id": "fedreg:2026-14933",
   "title": "Borrower Defense to Loan Repayment universal forms — comment window closes Aug 24",
   "url": "https://www.federalregister.gov/documents/2026/07/23/2026-14933/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
   "desc": "Federal Student Aid information-collection request seeking an extension without change of the approved Borrower Defense to Loan Repayment universal forms (OMB control number 1845-0163, docket ED-2026-SCC-1651). No substantive change to the forms is proposed. Comments due August 24, 2026 (verified from the Federal Register notice).",
@@ -702,6 +750,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:1f857256",
   "title": "TEA appoints Board of Managers for Fort Worth ISD",
   "url": "https://tea.texas.gov/about-tea/newsroom",
   "desc": "TEA replaced Fort Worth ISD's elected board with an appointed Board of Managers and named a new superintendent; similar actions at Connally, Lake Worth, and Beaumont ISDs this period.",
@@ -720,6 +769,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "the74:ea8303f9136ce7ac",
   "title": "California budget: ~$700M for teacher stipends and training, $218M for paid pregnancy leave",
   "url": "https://www.the74million.org/article/teachers-have-some-big-wins-in-this-years-california-budget-here-are-their-victories/",
   "desc": "Per The 74, California's enacted budget includes roughly $700 million for teacher stipends and training and $218 million toward paid pregnancy leave, building on more than $1 billion spent since 2018 on recruitment and retention.",
@@ -739,6 +789,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "the74:5e89eca52ad30b94",
   "title": "Texas ESA program: 85,000+ families in year one",
   "url": "https://www.the74million.org/article/which-families-are-using-esas-heres-what-we-know-about-texas-first-school-vouchers/",
   "desc": "Per The 74, more than 85,000 families are participating in Texas' first-year education savings account program, citing a new state report; white families are the largest share of participants so far. Enrollment figures are still being finalized by state officials — treat as preliminary.",
@@ -758,6 +809,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "edweek_policy:8851f96f727bdd3a",
   "title": "Federal borrowing caps squeeze principal pipelines and grad programs (per EdWeek, AEI)",
   "url": "https://www.edweek.org/policy-politics/the-principal-pipeline-could-contract-under-new-federal-borrowing-caps/2026/07",
   "desc": "Per EdWeek: new federal graduate borrowing caps could contract principal-preparation pipelines. Per AEI: graduate schools are already cutting tuition as loan limits take effect; states are weighing their own graduate loan programs.",
@@ -781,6 +833,7 @@ const DATA = [
   ]
  },
  {
+  "id": "legiscan:1934979",
   "title": "NY: bilingual 'Teachers of Tomorrow' recruitment bill engrossed (S02657)",
   "url": "https://legiscan.com/NY/bill/S02657/2025",
   "desc": "NY S02657 establishing a bilingual teachers-of-tomorrow recruitment/retention program is engrossed (per LegiScan); RI is separately extending teacher certifications fee-free (S2212 engrossed) and studying pathway expansion.",
@@ -799,6 +852,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:7c92c720",
   "title": "AACTE: lawsuit update on federal EPP funding; national educator-workforce call to action",
   "url": "https://aacte.org/news/press-releases/",
   "desc": "Per AACTE: update on the 2025 lawsuit protecting federal funding for educator-preparation programs (with NCTR and MACTE); separately, a national call for federal leadership on the educator workforce, and a response to NCTQ's reading-prep report.",
@@ -817,6 +871,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:6a1bb2fa",
   "title": "English-learner grant program returns under new oversight (per EdWeek)",
   "url": "https://www.edweek.org/policy-politics.rss",
   "desc": "Per EdWeek: the federal English-learner grant (National Professional Development-line) returns this fall with new oversight terms.",
@@ -835,6 +890,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "legiscan:2078343",
   "title": "TN: active educator-licensure bill cluster (Title 49 Ch. 5)",
   "url": "https://legiscan.com/TN/bill/HB1658/2025",
   "desc": "Six TN educator-licensure bills introduced Mar-Apr 2026 (HB1117/SB1917, HB1658, HB1888, SB1709, SB2109), plus a teacher bill pair enacted May 2025 (HB1323/SB1311). Masterlist titles are caption-style — contents UNVERIFIED.",
@@ -853,6 +909,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "fedreg:2026-14053",
   "title": "PSLF/TEPSLF certification & application forms — comment window open",
   "url": "https://www.federalregister.gov/documents/2026/07/13/2026-14053/agency-information-collection-activities-comment-request-public-service-loan-forgiveness-pslf-and",
   "desc": "ED information-collection comment request on PSLF/TEPSLF certification and application forms; comments due September 11, 2026 (verified from primary).",
@@ -871,6 +928,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "gpee_ga:3d29f43d923d0372",
   "title": "Georgia Milestones 2025-26 results released",
   "url": "https://gpee.org/2025-2026-georgia-milestones-results-released/",
   "desc": "Per the Georgia Partnership for Excellence in Education, GaDOE released 2025-26 Georgia Milestones results for mathematics, science, and social studies on Aug 6, 2026. Underlying GaDOE data release not yet fetched.",
@@ -890,6 +948,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:4cdcdef4",
   "title": "Proposed federal grant rules could add political oversight of education research (per FutureEd)",
   "url": "https://www.future-ed.org/feed/",
   "desc": "Per FutureEd: proposed federal grant rules would increase political oversight of education research grants.",
@@ -908,6 +967,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:5773a68e",
   "title": "NYSED names Senior Deputy Commissioner for Education Policy",
   "url": "https://www.nysed.gov/news/2026",
   "desc": "Ceylane Meyers-Ruff appointed NYSED Senior Deputy Commissioner for Education Policy.",
@@ -926,6 +986,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:8a041afa",
   "title": "NYC: Mamdani names 13 school board members (per Chalkbeat)",
   "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
   "desc": "Per Chalkbeat: NYC's mayor named 13 members to the school board, cementing control of the nation's largest district.",
@@ -944,6 +1005,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "x:ef64cca6",
   "title": "Teacher turnover's long rise; enrollment-decline geography (per Chalkbeat, Bellwether)",
   "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
   "desc": "Per Chalkbeat: multi-year rise in teacher turnover has reshaped classrooms. Per Bellwether: enrollment decline is uneven — exurban districts boom while cores shrink, squeezing budgets.",
@@ -962,6 +1024,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "tn_pending_rules:92f441c550f56519",
   "title": "TN SBE pending-rules docket active (chapter 0520 items)",
   "url": "https://www.tn.gov/sbe/rules--policies-and-guidance/pending-rules-and-policies.html",
   "desc": "TN State Board of Education's pending rules page shows active chapter 0520 rulemaking; specific items need a direct read (page is nav-heavy to a plain client).",
@@ -980,6 +1043,7 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "ed_press:498b1b5eaff067a5",
   "title": "Workforce Pell approved in Iowa; McMahon call to action to university boards",
   "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-nations-first-workforce-pell-grant-program-iowa",
   "desc": "ED approved the nation's first Workforce Pell program (Iowa) and the Secretary issued a national call to action to university presidents and governing boards.",
@@ -998,6 +1062,578 @@ const DATA = [
   "coverage": []
  }
 ];
+// ── HISTORY: the longitudinal record (derived from state/scored-*.json by
+//    runner/history.py; never pruned). DATA is the current board; this is the
+//    memory behind it, read only by the Archive view. ──
+const HISTORY = {
+ "meta": {
+  "runs": 2,
+  "date_range": [
+   "2026-08-05",
+   "2026-08-07"
+  ],
+  "items_tracked": 26,
+  "ledger_keyed": 17,
+  "editorial_keyed": 9,
+  "events": 27,
+  "by_kind": {
+   "first-seen": 26,
+   "changed": 1,
+   "left-board": 0
+  }
+ },
+ "items": [
+  {
+   "id": "ed_press:23a70572f4f32747",
+   "title": "Federal role restructuring: 'Returning Education to the States' campaign continues",
+   "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-south-dakotas-returning-education-states-waiver",
+   "jur": "US",
+   "cls": "AGENCY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "ed_press:23a70572f4f32747",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "waiver-approved",
+     "note": "First waiver approved; Senate resistance emerging",
+     "changes": []
+    },
+    {
+     "date": "2026-08-07",
+     "id": "ed_press:23a70572f4f32747",
+     "kind": "changed",
+     "rec": "TRACK",
+     "stage": "waiver-approved",
+     "note": "SD waiver approved -> tour continues (PA stop)",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "First waiver approved; Senate resistance emerging",
+       "to": "Secretary McMahon tour stop in Pennsylvania (ED press release)"
+      },
+      {
+       "field": "action_date",
+       "label": "Action date",
+       "from": "2026-08-04",
+       "to": "2026-08-06"
+      },
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "",
+       "to": "SD waiver approved -> tour continues (PA stop)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "govinfo_bills:ab48d7fea49d1d70",
+   "title": "S. 5046 — bar on transferring ED offices/functions to other federal agencies (reported, Senate Calendar No. 541)",
+   "url": "https://www.govinfo.gov/app/details/BILLS-119s5046rs",
+   "jur": "US",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-07",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-07",
+     "id": "govinfo_bills:ab48d7fea49d1d70",
+     "kind": "first-seen",
+     "rec": "ACT",
+     "stage": "reported",
+     "note": "Reported by Sen. Cassidy from HELP with an amendment, Aug 4 2026; placed on Senate Calendar No. 541. Introduced July 21 2026 by Sen. Kaine (D-VA) with Collins (R-ME), Murkowski (R-AK), Baldwin (D-WI), Hassan (D-NH), Van Hollen (D-MD). Verified from GPO primary text.",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "fedreg:2026-14933",
+   "title": "Borrower Defense to Loan Repayment universal forms — comment window closes Aug 24",
+   "url": "https://www.federalregister.gov/documents/2026/07/23/2026-14933/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
+   "jur": "US",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-07",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-07",
+     "id": "fedreg:2026-14933",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "comment-open",
+     "note": "Submitted to the Office of Management and Budget for review; 30-day public comment period open",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "the74:ea8303f9136ce7ac",
+   "title": "California budget: ~$700M for teacher stipends and training, $218M for paid pregnancy leave",
+   "url": "https://www.the74million.org/article/teachers-have-some-big-wins-in-this-years-california-budget-here-are-their-victories/",
+   "jur": "CA",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-07",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-07",
+     "id": "the74:ea8303f9136ce7ac",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Enacted state budget covered by The 74",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "the74:5e89eca52ad30b94",
+   "title": "Texas ESA program: 85,000+ families in year one",
+   "url": "https://www.the74million.org/article/which-families-are-using-esas-heres-what-we-know-about-texas-first-school-vouchers/",
+   "jur": "TX",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-07",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-07",
+     "id": "the74:5e89eca52ad30b94",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "State first-year participation report covered by The 74",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "gpee_ga:3d29f43d923d0372",
+   "title": "Georgia Milestones 2025-26 results released",
+   "url": "https://gpee.org/2025-2026-georgia-milestones-results-released/",
+   "jur": "GA",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-07",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-07",
+     "id": "gpee_ga:3d29f43d923d0372",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "GaDOE assessment data release, per GPEE",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "nysed_news:53b4b4f5421c671a",
+   "title": "NY Regents plan first-in-the-nation competency-based diploma",
+   "url": "https://www.nysed.gov/news/2026/board-regents-and-state-education-department-announce-plan-move-toward-first-nation",
+   "jur": "NY",
+   "cls": "AGENCY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "nysed_news:53b4b4f5421c671a",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "announced-plan",
+     "note": "Plan announced via NYSED release",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "fedreg:2026-15019",
+   "title": "ED rescinds portions of Title VI regulations (final rule, effective 7/24)",
+   "url": "https://www.federalregister.gov/documents/2026/07/24/2026-15019/rescinding-portions-of-the-department-of-education-title-vi-regulations-to-align-with-the-statutory",
+   "jur": "US",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "fedreg:2026-15019",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "final-rule",
+     "note": "Final rule published; effective 2026-07-24 (verified from primary)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:9a5d65d",
+   "title": "NJ State Board of Examiners certification-code amendments at adoption",
+   "url": "https://www.nj.gov/education/code/proposed/",
+   "jur": "NJ",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:9a5d65d",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "adoption-level",
+     "note": "Adoption-level document posted (PDF; verify detail before citing provisions)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:1f857256",
+   "title": "TEA appoints Board of Managers for Fort Worth ISD",
+   "url": "https://tea.texas.gov/about-tea/newsroom",
+   "jur": "TX",
+   "cls": "AGENCY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:1f857256",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "state-takeover",
+     "note": "Board of Managers + new superintendent announced",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "fedreg:2026-14053",
+   "title": "PSLF/TEPSLF certification & application forms — comment window open",
+   "url": "https://www.federalregister.gov/documents/2026/07/13/2026-14053/agency-information-collection-activities-comment-request-public-service-loan-forgiveness-pslf-and",
+   "jur": "US",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "fedreg:2026-14053",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "comment-open",
+     "note": "ICR comment request published",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "edweek_policy:8851f96f727bdd3a",
+   "title": "Federal borrowing caps squeeze principal pipelines and grad programs (per EdWeek, AEI)",
+   "url": "https://www.edweek.org/policy-politics/the-principal-pipeline-could-contract-under-new-federal-borrowing-caps/2026/07",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "edweek_policy:8851f96f727bdd3a",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:7c92c720",
+   "title": "AACTE: lawsuit update on federal EPP funding; national educator-workforce call to action",
+   "url": "https://aacte.org/news/press-releases/",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:7c92c720",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:5773a68e",
+   "title": "NYSED names Senior Deputy Commissioner for Education Policy",
+   "url": "https://www.nysed.gov/news/2026",
+   "jur": "NY",
+   "cls": "AGENCY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:5773a68e",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:6a1bb2fa",
+   "title": "English-learner grant program returns under new oversight (per EdWeek)",
+   "url": "https://www.edweek.org/policy-politics.rss",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:6a1bb2fa",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:4cdcdef4",
+   "title": "Proposed federal grant rules could add political oversight of education research (per FutureEd)",
+   "url": "https://www.future-ed.org/feed/",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:4cdcdef4",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:ef64cca6",
+   "title": "Teacher turnover's long rise; enrollment-decline geography (per Chalkbeat, Bellwether)",
+   "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:ef64cca6",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:8a041afa",
+   "title": "NYC: Mamdani names 13 school board members (per Chalkbeat)",
+   "url": "https://www.chalkbeat.org/arc/outboundfeeds/rss/",
+   "jur": "NY",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:8a041afa",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "ed_press:498b1b5eaff067a5",
+   "title": "Workforce Pell approved in Iowa; McMahon call to action to university boards",
+   "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-nations-first-workforce-pell-grant-program-iowa",
+   "jur": "US",
+   "cls": "AGENCY",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "ed_press:498b1b5eaff067a5",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "tn_pending_rules:92f441c550f56519",
+   "title": "TN SBE pending-rules docket active (chapter 0520 items)",
+   "url": "https://www.tn.gov/sbe/rules--policies-and-guidance/pending-rules-and-policies.html",
+   "jur": "TN",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "tn_pending_rules:92f441c550f56519",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "pending",
+     "note": "",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "legiscan:2102324",
+   "title": "GA: 'Excellent Teacher Preparation Act' (HB1107) — PASSED",
+   "url": "https://legiscan.com/GA/bill/HB1107/2025",
+   "jur": "GA",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "legiscan:2102324",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "passed",
+     "note": "Passed (per LegiScan masterlist; verify enacted text from GA Legis next run)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "legiscan:2140927",
+   "title": "CO: Teacher Recruitment Education & Preparation program phase-out signed (HB1357)",
+   "url": "https://legiscan.com/CO/bill/HB1357/2026",
+   "jur": "CO",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "legiscan:2140927",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "passed",
+     "note": "Governor signed (per LegiScan)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:2ff301c3",
+   "title": "NJ: 13-bill certification-reform docket incl. clinical-practice reduction",
+   "url": "https://www.njleg.state.nj.us/bill-search",
+   "jur": "NJ",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "x:2ff301c3",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "introduced",
+     "note": "Docket seeded to ledger; movement will surface per-bill",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "legiscan:1960239",
+   "title": "IL: educator-licensure act passed (SB1947); student-teaching stipend engrossed (HB1375)",
+   "url": "https://legiscan.com/IL/bill/SB1947/2025",
+   "jur": "IL",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "legiscan:1960239",
+     "kind": "first-seen",
+     "rec": "TRACK",
+     "stage": "passed",
+     "note": "SB1947 Public Act 104-xxxx; HB1375 engrossed 2026-03-04 (per LegiScan)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "legiscan:2078343",
+   "title": "TN: active educator-licensure bill cluster (Title 49 Ch. 5)",
+   "url": "https://legiscan.com/TN/bill/HB1658/2025",
+   "jur": "TN",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "legiscan:2078343",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "introduced",
+     "note": "Cluster seeded; text verification queued",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "legiscan:1934979",
+   "title": "NY: bilingual 'Teachers of Tomorrow' recruitment bill engrossed (S02657)",
+   "url": "https://legiscan.com/NY/bill/S02657/2025",
+   "jur": "NY",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-08-07",
+   "events": [
+    {
+     "date": "2026-08-05",
+     "id": "legiscan:1934979",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "engrossed",
+     "note": "Engrossed 2026-01-28 (per LegiScan)",
+     "changes": []
+    }
+   ]
+  }
+ ]
+};
+
 const META = {updated: "2026-08-07 · 1,410 candidates scanned · 26 surfaced (5 new)"};
 
 // ── Team triage (repo-backed, ported from v1; same storage keys so both prototypes share
@@ -1257,9 +1893,80 @@ function renderVerdict(){
   }
 }
 
+// ── Archive rendering ──
+// Reads HISTORY, not DATA: an item stays here after it is pruned from the board.
+// Honours the class/jurisdiction facets and search so the sidebar keeps working.
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const shortDate = d => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(d||"");
+  return m ? MON[+m[2]-1] + " " + (+m[3]) : (d||"");
+};
+const spanLabel = it => it.first_seen===it.last_seen
+  ? shortDate(it.first_seen)
+  : shortDate(it.first_seen) + " – " + shortDate(it.last_seen);
+
+function archiveItems(){
+  const q = state.q.trim().toLowerCase();
+  return (HISTORY.items||[]).filter(it =>
+    (!state.cls || it.cls===state.cls) &&
+    (!state.jur || it.jur===state.jur) &&
+    (!q || (it.title||"").toLowerCase().includes(q))
+  );
+}
+
+const KIND_LABEL = {"first-seen":"Entered the tracker","changed":"Changed","left-board":"Left the board"};
+
+function archHtml(it){
+  const live = DATA.some(r => iid(r)===("i"+String(it.id).replace(/[^A-Za-z0-9_-]/g,"")));
+  const url = safeUrl(it.url);
+  const title = url
+    ? `<a class="at" href="${esc(url)}" target="_blank" rel="noopener">${esc(it.title)}</a>`
+    : `<span class="at">${esc(it.title)}</span>`;
+  const evs = it.events.slice().reverse().map(e => {
+    const kind = e.kind==="first-seen" ? "k-first" : e.kind==="left-board" ? "k-gone" : "k-chg";
+    const chg = (e.changes||[]).map(c =>
+      `<li><b>${esc(c.label)}</b> ${esc(String(c.from||"—"))}<span class="ar">→</span>${esc(String(c.to||"—"))}</li>`
+    ).join("");
+    return `<li class="${kind}">
+      <span class="tldate">${esc(shortDate(e.date))}</span>
+      <span class="tldot"></span>
+      <div class="tlbody">
+        <span class="tlkind">${esc(KIND_LABEL[e.kind]||e.kind)}</span>
+        ${e.note?`<div class="tlnote">${esc(e.note)}</div>`:""}
+        ${chg?`<ul class="tlchg">${chg}</ul>`:""}
+      </div></li>`;
+  }).join("");
+  return `<article class="arch">
+    <div class="archhead">${title}
+      <span class="mtx">${esc(it.jur==="US"?"Fed":it.jur)} · ${esc((CLS_LABEL[it.cls]||[it.cls])[0])}</span>
+      <span class="archspan">${esc(spanLabel(it))}</span>
+      <span class="${live?"archlive":"archgone"}">${live?"On the board":"Archived"}</span>
+    </div>
+    <ol class="tl">${evs}</ol>
+  </article>`;
+}
+
+function renderArchive(el){
+  const items = archiveItems();
+  const m = HISTORY.meta||{};
+  el.innerHTML = items.length
+    ? items.map(archHtml).join("") +
+      `<div class="archnote">Assembled from ${m.runs||0} run${m.runs===1?"":"s"}
+        (${esc((m.date_range||[])[0]||"—")} to ${esc((m.date_range||[])[1]||"—")}),
+        ${m.items_tracked||0} items, ${m.events||0} recorded events. Items stay here after
+        they leave the live board; nothing in this view is ever pruned.</div>`
+    : `<div class="emptyview">No archived items match — clear filters or search.</div>`;
+  document.getElementById("vtitle").textContent = "Archive";
+  document.getElementById("vcount").textContent = items.length + " item" + (items.length===1?"":"s");
+  document.getElementById("vsub").textContent =
+    "Every item the tracker has ever surfaced, with its full timeline. The feed is pruned to stay readable; this is not.";
+  announce(items.length+" archived items shown");
+}
+
 function renderFeed(){
-  const rows = filtered();
   const el = document.getElementById("feed");
+  if(state.view==="archive"){ renderArchive(el); return; }
+  const rows = filtered();
   const groups = [["ACT","Act — needs a response"],["TRACK","Track — moving policy"],["SCAN","Scan — signals"]];
   let html = "";
   if(state.view==="windows"){
@@ -1312,7 +2019,9 @@ function renderNav(){
     navBtn("Response windows","view","windows",w) +
     navBtn("Moved this run","view","moved",m) +
     navBtn("★ Starred","view","starred",st) +
-    (dz?navBtn("Dismissed","view","dismissed",dz):"");
+    (dz?navBtn("Dismissed","view","dismissed",dz):"") +
+    // Archive counts from HISTORY, not DATA — that is the whole point of it.
+    navBtn("Archive","view","archive",(HISTORY.items||[]).length);
   document.getElementById("clsnav").innerHTML =
     navBtn("All classes","cls","",undefined) +
     Object.keys(CLS_LABEL).map(c=>{
@@ -1466,7 +2175,7 @@ let palSel = 0;
 function palItems(q){
   q = q.toLowerCase();
   const items = [];
-  const views = [["Feed","feed"],["Response windows","windows"],["Moved this run","moved"],["Starred","starred"]];
+  const views = [["Feed","feed"],["Response windows","windows"],["Moved this run","moved"],["Starred","starred"],["Archive","archive"]];
   for(const [l,v] of views) items.push({label:"Go to "+l, k:"view", act:()=>{state.view=v;}});
   for(const c of Object.keys(CLS_LABEL)) items.push({label:"Filter: "+CLS_LABEL[c][0], k:"class", act:()=>{state.cls=c;}});
   for(const j of [...new Set(DATA.map(r=>r.jur))]) items.push({label:"Filter: "+(j==="US"?"Federal":j), k:"jurisdiction", act:()=>{state.jur=j;}});
