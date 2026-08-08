@@ -262,6 +262,10 @@
   .dims .db{flex:1;height:4px;border-radius:2px;background:var(--chrome);overflow:hidden}
   .dims .db i{display:block;height:100%;background:var(--accent);opacity:.6}
   .dims .dv{flex:none;width:24px;text-align:right;font-size:11.5px;color:var(--muted)}
+  .kv ul.impl,.kv ul.votes{margin:0;padding-left:16px}
+  .kv ul.impl li{margin:0 0 5px;line-height:1.5}
+  .kv ul.votes li{margin:0 0 5px;line-height:1.45;font-size:12.5px}
+  .kv ul.votes li .num{color:var(--muted)}
   .stepper{display:flex;align-items:flex-start;margin:4px 0 4px;list-style:none;padding:0}
   .step{flex:1;text-align:center;position:relative;font-size:10px;color:var(--faint);min-width:0}
   .step::before{content:"";position:absolute;top:6px;left:0;right:0;height:2px;background:var(--line)}
@@ -540,7 +544,13 @@
 //   deadline:"YYYY-MM-DD"|"", days:int|null, action:"...", action_date:"YYYY-MM-DD",
 //   source:"...", movement:""|"a -> b", coverage:[{outlet,url}]}
 // Optional per-row fields v2 uses when present: id (stable identity), status:"NEW"|"UPDATED",
-//   dims:{name:0-100,...}, commentUrl (verified submission route).
+//   dims:{name:0-100,...}, commentUrl (verified submission route),
+//   implications:[{type:"funding|compliance|program|partnership|advocacy|risk", text}],
+//   legislative:{bill_number, session, origin_chamber, committee:{name,chamber}|null,
+//     sponsors:[{name,party,role,type:"primary|cosponsor"}], cosponsor_count,
+//     party_breakdown:{P:n}, votes:[{date,motion,chamber,yea,nay,other,passed,url}],
+//     history:[{date,action,chamber}], status, status_date, detail_url, provider, fetched}
+//   (legislative is written by runner/billdetail.py --attach — API-verified, never authored).
 const DATA = [
  {
   "id": "govinfo_bills:ab48d7fea49d1d70",
@@ -558,8 +568,8 @@ const DATA = [
   "action": "Reported by Sen. Cassidy from HELP with an amendment, Aug 4 2026; placed on Senate Calendar No. 541. Introduced July 21 2026 by Sen. Kaine (D-VA) with Collins (R-ME), Murkowski (R-AK), Baldwin (D-WI), Hassan (D-NH), Van Hollen (D-MD). Verified from GPO primary text.",
   "action_date": "2026-08-04",
   "source": "GovInfo (GPO) — BILLS-119s5046rs",
-  "status": "NEW",
-  "movement": "introduced (Jul 21) -> reported with amendment, on Senate Calendar (Aug 4)",
+  "status": "",
+  "movement": "",
   "coverage": []
  },
  {
@@ -579,7 +589,130 @@ const DATA = [
   "action_date": "2026-05-05",
   "source": "GA General Assembly via LegiScan",
   "movement": "",
-  "coverage": []
+  "coverage": [],
+  "legislative": {
+   "bill_number": "HB1107",
+   "session": "2025-2026 Regular Session",
+   "origin_chamber": "House",
+   "committee": null,
+   "sponsors": [
+    {
+     "name": "Carmen Rice",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Jan Jones",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Chris Erwin",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Rick Townsend",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Scott Hilton",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Bethany Ballard",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Billy Hickman",
+     "party": "R",
+     "role": "Sen",
+     "type": "joint"
+    }
+   ],
+   "cosponsor_count": 0,
+   "party_breakdown": {
+    "R": 7
+   },
+   "votes": [
+    {
+     "date": "2026-02-26",
+     "motion": "Passage: House Vote #578",
+     "chamber": "House",
+     "yea": 166,
+     "nay": 0,
+     "other": 11,
+     "passed": true,
+     "url": "https://legiscan.com/GA/rollcall/HB1107/id/1647464"
+    },
+    {
+     "date": "2026-03-27",
+     "motion": "Motion To Table Remaining Legislation On The Rules Calendar: Senate Vote #835",
+     "chamber": "Senate",
+     "yea": 26,
+     "nay": 22,
+     "other": 6,
+     "passed": true,
+     "url": "https://legiscan.com/GA/rollcall/HB1107/id/1672015"
+    },
+    {
+     "date": "2026-03-27",
+     "motion": "Passage: Senate Vote #866",
+     "chamber": "Senate",
+     "yea": 49,
+     "nay": 0,
+     "other": 5,
+     "passed": true,
+     "url": "https://legiscan.com/GA/rollcall/HB1107/id/1672016"
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-02-20",
+     "action": "House Committee Favorably Reported By Substitute",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-02-26",
+     "action": "House Passed/Adopted By Substitute",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-03-03",
+     "action": "Senate Read and Referred",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-03-12",
+     "action": "Senate Committee Favorably Reported",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-04-10",
+     "action": "House Sent to Governor",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-05-05",
+     "action": "Act 396",
+     "chamber": ""
+    }
+   ],
+   "status": "passed",
+   "status_date": "2026-05-05",
+   "detail_url": "https://www.legis.ga.gov/legislation/72626",
+   "provider": "legiscan",
+   "fetched": "2026-08-07"
+  }
  },
  {
   "id": "nysed_news:53b4b4f5421c671a",
@@ -636,7 +769,279 @@ const DATA = [
   "action_date": "2026-06-04",
   "source": "CO General Assembly via LegiScan",
   "movement": "",
-  "coverage": []
+  "coverage": [],
+  "legislative": {
+   "bill_number": "HB1357",
+   "session": "2026 Regular Session",
+   "origin_chamber": "House",
+   "committee": null,
+   "sponsors": [
+    {
+     "name": "Emily Sirota",
+     "party": "D",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Rick Taggart",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Judith Amabile",
+     "party": "D",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Jeff Bridges",
+     "party": "D",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Kyle Brown",
+     "party": "D",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Barbara Kirkmeyer",
+     "party": "R",
+     "role": "Sen",
+     "type": "primary"
+    },
+    {
+     "name": "Lori Goldstein",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Eliza Hamrick",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Bob Marshall",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Julie McCluskie",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Amy Paschal",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Jacque Phillips",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Gretchen Rydin",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Katie Stewart",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Janice Marchman",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    }
+   ],
+   "cosponsor_count": 9,
+   "party_breakdown": {
+    "D": 13,
+    "R": 2
+   },
+   "votes": [
+    {
+     "date": "2026-04-07",
+     "motion": "House Appropriations: Refer House Bill 26-1357, as amended, to the Committee of the Whole.",
+     "chamber": "House",
+     "yea": 9,
+     "nay": 2,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1677617"
+    },
+    {
+     "date": "2026-04-07",
+     "motion": "House Appropriations: Adopt amendment J.001",
+     "chamber": "House",
+     "yea": 11,
+     "nay": 0,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1677943"
+    },
+    {
+     "date": "2026-04-11",
+     "motion": "House: Third Reading Bill",
+     "chamber": "House",
+     "yea": 47,
+     "nay": 13,
+     "other": 5,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1680453"
+    },
+    {
+     "date": "2026-04-14",
+     "motion": "Senate Appropriations: Refer House Bill 26-1357 to the Committee of the Whole.",
+     "chamber": "Senate",
+     "yea": 5,
+     "nay": 2,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1681567"
+    },
+    {
+     "date": "2026-04-16",
+     "motion": "Senate: Third Reading Bill",
+     "chamber": "Senate",
+     "yea": 34,
+     "nay": 1,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1684159"
+    },
+    {
+     "date": "2026-04-17",
+     "motion": "House: Senate Amendments Not Cncr",
+     "chamber": "House",
+     "yea": 61,
+     "nay": 1,
+     "other": 3,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1685250"
+    },
+    {
+     "date": "2026-04-27",
+     "motion": "Senate: Conference Committee Report Adopt Ccr",
+     "chamber": "Senate",
+     "yea": 35,
+     "nay": 0,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1690053"
+    },
+    {
+     "date": "2026-04-27",
+     "motion": "Senate: Conference Committee Report Repass",
+     "chamber": "Senate",
+     "yea": 35,
+     "nay": 0,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1690054"
+    },
+    {
+     "date": "2026-04-28",
+     "motion": "House: Conference Committee Report Adopt",
+     "chamber": "House",
+     "yea": 63,
+     "nay": 0,
+     "other": 2,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1690952"
+    },
+    {
+     "date": "2026-04-28",
+     "motion": "House: Conference Committee Report Repass",
+     "chamber": "House",
+     "yea": 63,
+     "nay": 0,
+     "other": 2,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1690953"
+    },
+    {
+     "date": "2026-04-23",
+     "motion": "Conference Committee &#226;&#8364;&#8221; HB26-1357: Approve the first draft conference committee report of the first conference committee on H.B. 26-1357.",
+     "chamber": "Joint",
+     "yea": 5,
+     "nay": 0,
+     "other": 1,
+     "passed": true,
+     "url": "https://legiscan.com/CO/rollcall/HB1357/id/1693515"
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-04-02",
+     "action": "Introduced In House - Assigned to Appropriations",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-04-07",
+     "action": "House Committee on Appropriations Refer Amended to House Committee of the Whole",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-04-13",
+     "action": "Introduced In Senate - Assigned to Appropriations",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-04-14",
+     "action": "Senate Committee on Appropriations Refer Unamended to Senate Committee of the Whole",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-04-27",
+     "action": "Senate Consideration of First Conference Committee Report result was to Adopt Committee Report - Repass",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-04-28",
+     "action": "House Consideration of First Conference Committee Report result was to Adopt Committee Report - Repass",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-06-03",
+     "action": "Signed by the Speaker of the House",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-06-03",
+     "action": "Signed by the President of the Senate",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-06-03",
+     "action": "Sent to the Governor",
+     "chamber": ""
+    },
+    {
+     "date": "2026-06-04",
+     "action": "Governor Signed",
+     "chamber": ""
+    }
+   ],
+   "status": "passed",
+   "status_date": "2026-06-04",
+   "detail_url": "https://leg.colorado.gov/bills/HB26-1357",
+   "provider": "legiscan",
+   "fetched": "2026-08-07"
+  }
  },
  {
   "id": "legiscan:1960239",
@@ -655,7 +1060,150 @@ const DATA = [
   "action_date": "2026-03-04",
   "source": "IL General Assembly via LegiScan",
   "movement": "",
-  "coverage": []
+  "coverage": [],
+  "legislative": {
+   "bill_number": "SB1947",
+   "session": "104th General Assembly",
+   "origin_chamber": "Senate",
+   "committee": null,
+   "sponsors": [
+    {
+     "name": "Meg Loughran Cappel",
+     "party": "D",
+     "role": "Sen",
+     "type": "primary"
+    },
+    {
+     "name": "Laura Faver Dias",
+     "party": "D",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Kimberly Lightford",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Katie Stuart",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Sharon Chung",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Michelle Mussman",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "William Davis",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    }
+   ],
+   "cosponsor_count": 5,
+   "party_breakdown": {
+    "D": 7
+   },
+   "votes": [
+    {
+     "date": "2025-04-09",
+     "motion": "Third Reading in Senate",
+     "chamber": "Senate",
+     "yea": 50,
+     "nay": 2,
+     "other": 7,
+     "passed": true,
+     "url": "https://legiscan.com/IL/rollcall/SB1947/id/1542276"
+    },
+    {
+     "date": "2025-05-22",
+     "motion": "Third Reading in House",
+     "chamber": "House",
+     "yea": 84,
+     "nay": 31,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/IL/rollcall/SB1947/id/1575845"
+    },
+    {
+     "date": "2025-05-31",
+     "motion": "Concurrence in Senate",
+     "chamber": "Senate",
+     "yea": 46,
+     "nay": 10,
+     "other": 3,
+     "passed": true,
+     "url": "https://legiscan.com/IL/rollcall/SB1947/id/1582697"
+    }
+   ],
+   "history": [
+    {
+     "date": "2025-02-06",
+     "action": "Filed with Secretary by Sen. Meg Loughran Cappel",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-02-06",
+     "action": "Referred to Assignments",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-03-12",
+     "action": "Assigned to Education",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-03-19",
+     "action": "Do Pass as Amended Education; 012-000-000",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-04-09",
+     "action": "Third Reading - Passed; 050-002-000",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-04-09",
+     "action": "Referred to Rules Committee",
+     "chamber": "H"
+    },
+    {
+     "date": "2025-04-17",
+     "action": "Assigned to Elementary & Secondary Education: Administration, Licensing & Charter Schools",
+     "chamber": "H"
+    },
+    {
+     "date": "2025-05-07",
+     "action": "Do Pass as Amended / Short Debate Elementary & Secondary Education: Administration, Licensing & Charter Schools; 009-000-000",
+     "chamber": "H"
+    },
+    {
+     "date": "2025-05-31",
+     "action": "Passed Both Houses",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-08-01",
+     "action": "Public Act . . . . . . . . . 104-0128",
+     "chamber": "S"
+    }
+   ],
+   "status": "passed",
+   "status_date": "2025-08-01",
+   "detail_url": "https://www.ilga.gov/Legislation/BillStatus?DocNum=1947&GAID=18&DocTypeID=SB&SessionID=114&GA=104",
+   "provider": "legiscan",
+   "fetched": "2026-08-07"
+  }
  },
  {
   "id": "ed_press:23a70572f4f32747",
@@ -673,7 +1221,7 @@ const DATA = [
   "action": "Secretary McMahon tour stop in Pennsylvania (ED press release)",
   "action_date": "2026-08-06",
   "source": "ED press",
-  "movement": "SD waiver approved -> tour continues (PA stop)",
+  "movement": "",
   "coverage": [
    {
     "outlet": "Chalkbeat",
@@ -732,7 +1280,7 @@ const DATA = [
   "id": "fedreg:2026-14933",
   "title": "Borrower Defense to Loan Repayment universal forms — comment window closes Aug 24",
   "url": "https://www.federalregister.gov/documents/2026/07/23/2026-14933/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
-  "desc": "Federal Student Aid information-collection request seeking an extension without change of the approved Borrower Defense to Loan Repayment universal forms (OMB control number 1845-0163, docket ED-2026-SCC-1651). No substantive change to the forms is proposed. Comments due August 24, 2026 (verified from the Federal Register notice).",
+  "desc": "Federal Student Aid information-collection request seeking an extension without change of the approved Borrower Defense to Loan Repayment universal forms (OMB control number 1845-0163, docket ED-2026-SCC-1651). No substantive change to the forms is proposed. Comments close August 24, 2026 — verified from the Federal Register API on 2026-08-08; 11 business days remain.",
   "angle": "Adjacent, not core: Relay is a Title IV graduate institution, so borrower-defense process touches it, but an extension-without-change carries no new obligation. Surfaced because the window is short, not because the substance is heavy — a no-comment decision is a legitimate one to make deliberately.",
   "rec": "TRACK",
   "impact": 52,
@@ -747,7 +1295,17 @@ const DATA = [
   "status": "UPDATED",
   "movement": "deadline window: 11 business days left",
   "commentUrl": "https://www.reginfo.gov/public/do/PRAMain",
-  "coverage": []
+  "coverage": [],
+  "implications": [
+   {
+    "type": "compliance",
+    "text": "Relay is a Title IV institution (Federal School Code 042086); the borrower-defense universal forms are the process its students would use to assert a claim. An extension without change adds no new obligation."
+   },
+   {
+    "type": "advocacy",
+    "text": "Last practical week to file a PRA comment. A deliberate no-comment decision is legitimate — but make it deliberately, not by letting the window close."
+   }
+  ]
  },
  {
   "id": "x:1f857256",
@@ -769,6 +1327,36 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "chalkbeat_national:860b8bf5cbb87463",
+  "title": "NYC reading scores fall sharply; third grade down ~14 points (per Chalkbeat)",
+  "url": "https://www.chalkbeat.org/newyork/2026/08/07/nyc-students-reading-test-scores-decline-amid-literacy-instruction-changes/",
+  "desc": "Per Chalkbeat, preliminary New York City results released Friday 2026-08-07 show reading proficiency falling roughly 14 percentage points among third graders and about 6 points across grades 3-8, where roughly half of students now read proficiently. Chalkbeat frames the decline against the city's multi-year curriculum overhaul. The underlying figures are preliminary and city-released; no state assessment report has been published, so the numbers are reported as coverage, not as verified fact.",
+  "angle": "Highest Relay-relevance item of the day. New York City is Relay's largest teacher market and elementary literacy instruction plus job-embedded coaching are core Relay products. A sharp literacy drop during a curriculum transition is exactly the conditions under which districts re-open teacher-preparation and PD contracts. Commentary ceiling holds the recommendation at SCAN until the primary data release is in hand — watch for the NYSED/NYCPS assessment release and re-score then.",
+  "implications": [
+   {
+    "type": "program",
+    "text": "Elementary literacy methods and coaching content should be checked against what NYC schools are actually implementing this year."
+   },
+   {
+    "type": "partnership",
+    "text": "A literacy-results shock is a plausible opening for district PD conversations in NYC."
+   }
+  ],
+  "rec": "SCAN",
+  "impact": 58,
+  "cls": "COMMENTARY",
+  "jur": "NY",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "Preliminary city results released (per Chalkbeat)",
+  "action_date": "2026-08-07",
+  "source": "per Chalkbeat",
+  "status": "NEW",
+  "movement": "",
+  "coverage": []
+ },
+ {
   "id": "the74:ea8303f9136ce7ac",
   "title": "California budget: ~$700M for teacher stipends and training, $218M for paid pregnancy leave",
   "url": "https://www.the74million.org/article/teachers-have-some-big-wins-in-this-years-california-budget-here-are-their-victories/",
@@ -784,7 +1372,7 @@ const DATA = [
   "action": "Enacted state budget covered by The 74",
   "action_date": "2026-08-06",
   "source": "The 74 (secondary; budget act not yet fetched)",
-  "status": "NEW",
+  "status": "",
   "movement": "",
   "coverage": []
  },
@@ -804,7 +1392,7 @@ const DATA = [
   "action": "State first-year participation report covered by The 74",
   "action_date": "2026-08-06",
   "source": "The 74 (secondary; underlying state report not yet fetched)",
-  "status": "NEW",
+  "status": "",
   "movement": "",
   "coverage": []
  },
@@ -849,7 +1437,199 @@ const DATA = [
   "action_date": "2026-01-28",
   "source": "NY Senate via LegiScan",
   "movement": "",
-  "coverage": []
+  "coverage": [],
+  "legislative": {
+   "bill_number": "S02657",
+   "session": "2025-2026 General Assembly",
+   "origin_chamber": "Senate",
+   "committee": {
+    "name": "Finance",
+    "chamber": "Senate"
+   },
+   "sponsors": [
+    {
+     "name": "Kevin Parker",
+     "party": "D",
+     "role": "Sen",
+     "type": "primary"
+    },
+    {
+     "name": "Jeremy Cooney",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Robert Jackson",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    },
+    {
+     "name": "John Liu",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Rachel May",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Lea Webb",
+     "party": "D",
+     "role": "Sen",
+     "type": "cosponsor"
+    }
+   ],
+   "cosponsor_count": 5,
+   "party_breakdown": {
+    "D": 6
+   },
+   "votes": [
+    {
+     "date": "2025-01-28",
+     "motion": "Senate Education Committee Vote",
+     "chamber": "Senate",
+     "yea": 15,
+     "nay": 0,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/NY/rollcall/S02657/id/1487301"
+    },
+    {
+     "date": "2025-02-12",
+     "motion": "Senate Floor Vote - Final Passage",
+     "chamber": "Senate",
+     "yea": 58,
+     "nay": 1,
+     "other": 4,
+     "passed": true,
+     "url": "https://legiscan.com/NY/rollcall/S02657/id/1487709"
+    },
+    {
+     "date": "2026-01-28",
+     "motion": "Senate Education Committee Vote",
+     "chamber": "Senate",
+     "yea": 15,
+     "nay": 0,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/NY/rollcall/S02657/id/1618544"
+    }
+   ],
+   "history": [
+    {
+     "date": "2025-01-22",
+     "action": "REFERRED TO EDUCATION",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-02-12",
+     "action": "PASSED SENATE",
+     "chamber": "S"
+    },
+    {
+     "date": "2025-02-12",
+     "action": "referred to education",
+     "chamber": "A"
+    },
+    {
+     "date": "2026-01-07",
+     "action": "REFERRED TO EDUCATION",
+     "chamber": "S"
+    },
+    {
+     "date": "2026-01-28",
+     "action": "REPORTED AND COMMITTED TO FINANCE",
+     "chamber": "S"
+    }
+   ],
+   "status": "engrossed",
+   "status_date": "2025-02-12",
+   "detail_url": "https://www.nysenate.gov/legislation/bills/2025/S2657",
+   "provider": "legiscan",
+   "fetched": "2026-08-07"
+  }
+ },
+ {
+  "id": "legiscan:1917961",
+  "title": "NY A01996 — state aid to offset charter school tuition payments (in committee)",
+  "url": "https://nyassembly.gov/leg/?default_fld=&bn=A01996&term=2025&Summary=Y&Actions=Y&Text=Y",
+  "desc": "Amends Education Law section 3602 to add a new subdivision 42 creating a state apportionment for school districts required to pay charter school tuition under section 2856. Eligible districts would report total charter tuition paid in the base year, and the aid would equal the positive difference between base-year tuition and 2025-26 tuition — that is, it reimburses growth in a district's charter tuition bill above the 2025-26 level. Takes effect immediately on enactment. Still in the Assembly Education Committee: referred 01/14/2025 and re-referred 01/07/2026 with no further action. Bill text and action history verified from the New York State Assembly page on 2026-08-08.",
+  "angle": "District-finance mechanics rather than an educator-preparation surface, but New York is Relay's deepest jurisdiction and charter operators are significant employers of Relay graduates. If enacted it would blunt the fiscal argument districts make against charter growth. Sponsored by Assembly Majority Leader Peoples-Stokes, which raises the ceiling on it — but two sessions in committee with no movement is the honest read.",
+  "implications": [
+   {
+    "type": "partnership",
+    "text": "Charter-sector fiscal stability in New York supports hiring demand from charter partners that employ Relay graduates."
+   }
+  ],
+  "rec": "SCAN",
+  "impact": 46,
+  "cls": "LEGISLATION",
+  "jur": "NY",
+  "stage": "in committee",
+  "deadline": "",
+  "days": null,
+  "action": "Referred to Assembly Education Committee (re-referral, new session)",
+  "action_date": "2026-01-07",
+  "source": "NY Assembly (via LegiScan)",
+  "status": "UPDATED",
+  "movement": "record details changed at LegiScan; NY Assembly primary shows no stage change",
+  "coverage": [],
+  "legislative": {
+   "bill_number": "A01996",
+   "session": "2025-2026 General Assembly",
+   "origin_chamber": "Assembly",
+   "committee": {
+    "name": "Education",
+    "chamber": "Assembly"
+   },
+   "sponsors": [
+    {
+     "name": "Crystal Peoples-Stokes",
+     "party": "D",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Tony Simone",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    },
+    {
+     "name": "Karines Reyes",
+     "party": "D",
+     "role": "Rep",
+     "type": "cosponsor"
+    }
+   ],
+   "cosponsor_count": 2,
+   "party_breakdown": {
+    "D": 3
+   },
+   "votes": [],
+   "history": [
+    {
+     "date": "2025-01-14",
+     "action": "referred to education",
+     "chamber": "A"
+    },
+    {
+     "date": "2026-01-07",
+     "action": "referred to education",
+     "chamber": "A"
+    }
+   ],
+   "status": "introduced",
+   "status_date": "2025-01-14",
+   "detail_url": "https://www.nysenate.gov/legislation/bills/2025/A1996",
+   "provider": "legiscan",
+   "fetched": "2026-08-08"
+  }
  },
  {
   "id": "x:7c92c720",
@@ -867,6 +1647,27 @@ const DATA = [
   "action": "",
   "action_date": "2026-08-01",
   "source": "per AACTE",
+  "movement": "",
+  "coverage": []
+ },
+ {
+  "id": "fedreg:2026-16259",
+  "title": "IES FY2027 research-training grant competitions announced (applications due Oct 1)",
+  "url": "https://www.federalregister.gov/documents/2026/08/10/2026-16259/notice-announcing-research-training-programs-in-the-education-sciences-research-training-programs-in",
+  "desc": "The Institute of Education Sciences is soliciting FY2027 applications across five research-training competitions — Research Training Programs in the Education Sciences (84.305B), Research Training Programs in Special Education (84.324B), Statistical and Research Methodology in Education (84.305D), and the two Using Longitudinal Data to Support State Education Policymaking programs (84.305S, 84.324S). Complete proposals are due through Grants.gov by 11:59:59 p.m. Eastern on October 1, 2026 (verified from the Federal Register API on 2026-08-08).",
+  "angle": "Funding opportunity rather than policy movement, and these competitions fund doctoral and postdoctoral methods training at research universities — not Relay's practitioner master's model. Routed here for awareness only; the grant finder is the right instrument if it warrants a look.",
+  "implications": [],
+  "rec": "SCAN",
+  "impact": 45,
+  "cls": "REGULATION",
+  "jur": "US",
+  "stage": "notice",
+  "deadline": "2026-10-01",
+  "days": 39,
+  "action": "Competition notice published; applications open",
+  "action_date": "2026-08-10",
+  "source": "Federal Register",
+  "status": "NEW",
   "movement": "",
   "coverage": []
  },
@@ -906,6 +1707,105 @@ const DATA = [
   "action_date": "2026-04-20",
   "source": "TN General Assembly via LegiScan",
   "movement": "",
+  "coverage": [],
+  "legislative": {
+   "bill_number": "HB1658",
+   "session": "114th General Assembly",
+   "origin_chamber": "House",
+   "committee": null,
+   "sponsors": [
+    {
+     "name": "Kip Capley",
+     "party": "R",
+     "role": "Rep",
+     "type": "primary"
+    },
+    {
+     "name": "Mark White",
+     "party": "R",
+     "role": "Rep",
+     "type": "cosponsor"
+    }
+   ],
+   "cosponsor_count": 1,
+   "party_breakdown": {
+    "R": 2
+   },
+   "votes": [
+    {
+     "date": "2026-02-17",
+     "motion": "HOUSE EDUCATION ADMINISTRATION SUBCOMMITTEE: Rec for pass if am by s/c ref. to Education Committee",
+     "chamber": "House",
+     "yea": 5,
+     "nay": 1,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/TN/rollcall/HB1658/id/1636142"
+    },
+    {
+     "date": "2026-03-03",
+     "motion": "HOUSE EDUCATION COMMITTEE: Rec. for pass. if am., ref. to Finance, Ways, and Means Committee",
+     "chamber": "House",
+     "yea": 11,
+     "nay": 2,
+     "other": 0,
+     "passed": true,
+     "url": "https://legiscan.com/TN/rollcall/HB1658/id/1650572"
+    }
+   ],
+   "history": [
+    {
+     "date": "2026-01-14",
+     "action": "Filed for introduction",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-01-21",
+     "action": "P2C, ref. to Education Committee",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-02-17",
+     "action": "Rec for pass if am by s/c ref. to Education Committee",
+     "chamber": "H"
+    },
+    {
+     "date": "2026-03-03",
+     "action": "Rec. for pass. if am., ref. to Finance, Ways, and Means Committee",
+     "chamber": "H"
+    }
+   ],
+   "status": "introduced",
+   "status_date": "2026-01-14",
+   "detail_url": "https://wapp.capitol.tn.gov/apps/Billinfo/Default?BillNumber=HB1658&ga=114",
+   "provider": "legiscan",
+   "fetched": "2026-08-07"
+  }
+ },
+ {
+  "id": "chalkbeat_national:6849e6a7f0afa949",
+  "title": "IL: adequacy gap widens despite funding increase; CPS ~70% adequately funded (per Chalkbeat)",
+  "url": "https://www.chalkbeat.org/chicago/2026/08/08/illinois-state-funding-numbers-released-includes-chicago-public-schools/",
+  "desc": "Per Chalkbeat, adequacy figures released by the Illinois State Board of Education show most districts further from their evidence-based-funding adequacy targets than a year ago despite a state appropriation increase; Chicago Public Schools is reported at a little over 70 percent of adequate funding. Figures are ISBE-calculated and reported secondhand — the ISBE adequacy release itself has not been verified this run.",
+  "angle": "Ecosystem-level, not a direct Relay surface. Illinois is an authorized jurisdiction and the evidence-based funding formula sets what districts can spend on staffing and professional development. A widening adequacy gap tightens the discretionary budgets Relay's district contracts sit in.",
+  "implications": [
+   {
+    "type": "risk",
+    "text": "Tighter Illinois district budgets compress discretionary PD and coaching spend."
+   }
+  ],
+  "rec": "SCAN",
+  "impact": 44,
+  "cls": "COMMENTARY",
+  "jur": "IL",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "ISBE adequacy figures released (per Chalkbeat)",
+  "action_date": "2026-08-08",
+  "source": "per Chalkbeat",
+  "status": "NEW",
+  "movement": "",
   "coverage": []
  },
  {
@@ -943,7 +1843,7 @@ const DATA = [
   "action": "GaDOE assessment data release, per GPEE",
   "action_date": "2026-08-06",
   "source": "GPEE (secondary, cites GaDOE)",
-  "status": "NEW",
+  "status": "",
   "movement": "",
   "coverage": []
  },
@@ -964,6 +1864,28 @@ const DATA = [
   "action_date": "",
   "source": "per FutureEd",
   "movement": "",
+  "coverage": []
+ },
+ {
+  "id": "fedreg:2026-16223",
+  "title": "IES borrower-interview study on federal loan repayment — comment window open",
+  "url": "https://www.federalregister.gov/documents/2026/08/10/2026-16223/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
+  "desc": "New information collection request (OMB control number 1850-NEW, docket ED-2026-SCC-0562) from the National Center for Education Evaluation at the Institute of Education Sciences, clearing telephone and virtual interviews with federal student loan borrowers for the study 'Shaping the Future of Loan Repayment: Participation and Repayment Progress in Federal Student Loan Plans.' The study asks which borrowers enroll in income-driven repayment plans and why, how long they stay, and how they understand plan features such as forgiveness, payment caps, and interest subsidies. Scope is small: 60 annual responses, 30 burden hours, a single collection. Comments close September 9, 2026 (verified from the Federal Register API on 2026-08-08).",
+  "angle": "Title of the notice reads bigger than the notice is. This is research clearance, not repayment policy — it changes no rule and imposes nothing on institutions. Logged because Relay is a Title IV school whose students carry graduate debt and because IES findings here feed later repayment rulemaking; no response warranted now.",
+  "implications": [],
+  "rec": "SCAN",
+  "impact": 40,
+  "cls": "REGULATION",
+  "jur": "US",
+  "stage": "comment-open",
+  "deadline": "2026-09-09",
+  "days": 23,
+  "action": "Submitted to the Office of Management and Budget for review; 30-day public comment period open",
+  "action_date": "2026-08-10",
+  "source": "Federal Register",
+  "status": "NEW",
+  "movement": "",
+  "commentUrl": "https://www.reginfo.gov/public/do/PRAMain",
   "coverage": []
  },
  {
@@ -1043,6 +1965,27 @@ const DATA = [
   "coverage": []
  },
  {
+  "id": "chalkbeat_national:2240c49e35d29b2a",
+  "title": "CO: public college budget cuts hit student services (per Chalkbeat)",
+  "url": "https://www.chalkbeat.org/colorado/2026/08/07/colorado-public-colleges-and-universities-budget-challenges/",
+  "desc": "Per Chalkbeat, Colorado public institutions are absorbing budget pressure — staff reductions at the Colorado School of Mines, roughly $54 million in cuts at Colorado State University Fort Collins, and Adams State drawing on endowment funds to sustain scholarships — with institutions trying to shield student services. Figures are as reported by Chalkbeat; institutional budget documents were not verified this run.",
+  "angle": "Ecosystem-only. Colorado is an authorized jurisdiction and its public institutions run the teacher-preparation programs Relay competes with and hires alongside; sustained appropriation pressure there shapes the state's educator-supply picture over a couple of cycles, not this quarter.",
+  "implications": [],
+  "rec": "SCAN",
+  "impact": 35,
+  "cls": "COMMENTARY",
+  "jur": "CO",
+  "stage": "",
+  "deadline": "",
+  "days": null,
+  "action": "Reported 2026-08-07 (per Chalkbeat)",
+  "action_date": "2026-08-07",
+  "source": "per Chalkbeat",
+  "status": "NEW",
+  "movement": "",
+  "coverage": []
+ },
+ {
   "id": "ed_press:498b1b5eaff067a5",
   "title": "Workforce Pell approved in Iowa; McMahon call to action to university boards",
   "url": "https://www.ed.gov/about/news/press-release/us-department-of-education-approves-nations-first-workforce-pell-grant-program-iowa",
@@ -1067,18 +2010,18 @@ const DATA = [
 //    memory behind it, read only by the Archive view. ──
 const HISTORY = {
  "meta": {
-  "runs": 2,
+  "runs": 3,
   "date_range": [
    "2026-08-05",
-   "2026-08-07"
+   "2026-08-08"
   ],
-  "items_tracked": 26,
-  "ledger_keyed": 17,
-  "editorial_keyed": 9,
-  "events": 27,
+  "items_tracked": 32,
+  "ledger_keyed": 22,
+  "editorial_keyed": 10,
+  "events": 35,
   "by_kind": {
-   "first-seen": 26,
-   "changed": 1,
+   "first-seen": 32,
+   "changed": 3,
    "left-board": 0
   }
  },
@@ -1090,7 +2033,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1128,6 +2071,22 @@ const HISTORY = {
        "to": "SD waiver approved -> tour continues (PA stop)"
       }
      ]
+    },
+    {
+     "date": "2026-08-08",
+     "id": "ed_press:23a70572f4f32747",
+     "kind": "changed",
+     "rec": "TRACK",
+     "stage": "waiver-approved",
+     "note": "Secretary McMahon tour stop in Pennsylvania (ED press release)",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "SD waiver approved -> tour continues (PA stop)",
+       "to": ""
+      }
+     ]
     }
    ]
   },
@@ -1138,7 +2097,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-07",
@@ -1147,6 +2106,142 @@ const HISTORY = {
      "rec": "ACT",
      "stage": "reported",
      "note": "Reported by Sen. Cassidy from HELP with an amendment, Aug 4 2026; placed on Senate Calendar No. 541. Introduced July 21 2026 by Sen. Kaine (D-VA) with Collins (R-ME), Murkowski (R-AK), Baldwin (D-WI), Hassan (D-NH), Van Hollen (D-MD). Verified from GPO primary text.",
+     "changes": []
+    },
+    {
+     "date": "2026-08-08",
+     "id": "govinfo_bills:ab48d7fea49d1d70",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "reported",
+     "note": "Reported by Sen. Cassidy from HELP with an amendment, Aug 4 2026; placed on Senate Calendar No. 541. Introduced July 21 2026 by Sen. Kaine (D-VA) with Collins (R-ME), Murkowski (R-AK), Baldwin (D-WI), Hassan (D-NH), Van Hollen (D-MD). Verified from GPO primary text.",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "introduced (Jul 21) -> reported with amendment, on Senate Calendar (Aug 4)",
+       "to": ""
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chalkbeat_national:860b8bf5cbb87463",
+   "title": "NYC reading scores fall sharply; third grade down ~14 points (per Chalkbeat)",
+   "url": "https://www.chalkbeat.org/newyork/2026/08/07/nyc-students-reading-test-scores-decline-amid-literacy-instruction-changes/",
+   "jur": "NY",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-08",
+   "last_seen": "2026-08-08",
+   "events": [
+    {
+     "date": "2026-08-08",
+     "id": "chalkbeat_national:860b8bf5cbb87463",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Preliminary city results released (per Chalkbeat)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:8aeb4aed",
+   "title": "NY A01996 — state aid to offset charter school tuition payments (in committee)",
+   "url": "https://nyassembly.gov/leg/?default_fld=&bn=A01996&term=2025&Summary=Y&Actions=Y&Text=Y",
+   "jur": "NY",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-08",
+   "last_seen": "2026-08-08",
+   "events": [
+    {
+     "date": "2026-08-08",
+     "id": "x:8aeb4aed",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "in committee",
+     "note": "Referred to Assembly Education Committee (re-referral, new session)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "fedreg:2026-16259",
+   "title": "IES FY2027 research-training grant competitions announced (applications due Oct 1)",
+   "url": "https://www.federalregister.gov/documents/2026/08/10/2026-16259/notice-announcing-research-training-programs-in-the-education-sciences-research-training-programs-in",
+   "jur": "US",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-08",
+   "last_seen": "2026-08-08",
+   "events": [
+    {
+     "date": "2026-08-08",
+     "id": "fedreg:2026-16259",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "notice",
+     "note": "Competition notice published; applications open",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "chalkbeat_national:6849e6a7f0afa949",
+   "title": "IL: adequacy gap widens despite funding increase; CPS ~70% adequately funded (per Chalkbeat)",
+   "url": "https://www.chalkbeat.org/chicago/2026/08/08/illinois-state-funding-numbers-released-includes-chicago-public-schools/",
+   "jur": "IL",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-08",
+   "last_seen": "2026-08-08",
+   "events": [
+    {
+     "date": "2026-08-08",
+     "id": "chalkbeat_national:6849e6a7f0afa949",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "ISBE adequacy figures released (per Chalkbeat)",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "fedreg:2026-16223",
+   "title": "IES borrower-interview study on federal loan repayment — comment window open",
+   "url": "https://www.federalregister.gov/documents/2026/08/10/2026-16223/agency-information-collection-activities-submission-to-the-office-of-management-and-budget-for",
+   "jur": "US",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-08",
+   "last_seen": "2026-08-08",
+   "events": [
+    {
+     "date": "2026-08-08",
+     "id": "fedreg:2026-16223",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "comment-open",
+     "note": "Submitted to the Office of Management and Budget for review; 30-day public comment period open",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "chalkbeat_national:2240c49e35d29b2a",
+   "title": "CO: public college budget cuts hit student services (per Chalkbeat)",
+   "url": "https://www.chalkbeat.org/colorado/2026/08/07/colorado-public-colleges-and-universities-budget-challenges/",
+   "jur": "CO",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-08",
+   "last_seen": "2026-08-08",
+   "events": [
+    {
+     "date": "2026-08-08",
+     "id": "chalkbeat_national:2240c49e35d29b2a",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Reported 2026-08-07 (per Chalkbeat)",
      "changes": []
     }
    ]
@@ -1158,7 +2253,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-07",
@@ -1178,7 +2273,7 @@ const HISTORY = {
    "jur": "CA",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-07",
@@ -1198,7 +2293,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-07",
@@ -1218,7 +2313,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-07",
@@ -1238,7 +2333,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1258,7 +2353,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1278,7 +2373,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1298,7 +2393,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1318,7 +2413,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1338,7 +2433,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1358,7 +2453,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1378,7 +2473,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1398,7 +2493,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1418,7 +2513,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1438,7 +2533,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1458,7 +2553,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1478,7 +2573,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1498,7 +2593,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1518,7 +2613,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1538,7 +2633,7 @@ const HISTORY = {
    "jur": "CO",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1558,7 +2653,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1578,7 +2673,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1598,7 +2693,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1618,7 +2713,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-08-07",
+   "last_seen": "2026-08-08",
    "events": [
     {
      "date": "2026-08-05",
@@ -1634,7 +2729,7 @@ const HISTORY = {
  ]
 };
 
-const META = {updated: "2026-08-07 · 1,410 candidates scanned · 26 surfaced (5 new)"};
+const META = {updated: "2026-08-08 · 1,454 candidates scanned · 32 surfaced (6 new)"};
 
 // ── Team triage (repo-backed, ported from v1; same storage keys so both prototypes share
 //    state). Shared via triage.json in the dashboard's own GitHub repo; read-state per-viewer. ──
@@ -2101,6 +3196,33 @@ function openPanel(i){
   const movedTxt = r.movement ? `<p class="movedline">Moved: ${esc(r.movement)}${r.action_date?` (${esc(r.action_date)})`:""}</p>` : "";
   const dims = r.dims ? `<div class="dims">${Object.entries(r.dims).map(([k,v])=>
     `<div class="dr"><span class="dl">${esc(k)}</span><span class="db"><i style="width:${Math.min(100,+v||0)}%"></i></span><span class="dv num">${esc(String(v))}</span></div>`).join("")}</div>` : "";
+  const IMPL_LABEL = {funding:"Funding", compliance:"Compliance", program:"Program",
+    partnership:"Partnership", advocacy:"Advocacy", risk:"Risk"};
+  const impl = (r.implications||[]).length ? `<dt>Implications for Relay</dt><dd><ul class="impl">${
+    r.implications.map(im=>`<li><b>${esc(IMPL_LABEL[im.type]||im.type||"")}</b>${im.type?": ":""}${esc(im.text||"")}</li>`).join("")}</ul></dd>` : "";
+  let legis = "";
+  if(r.legislative){
+    const g = r.legislative;
+    const prim = (g.sponsors||[]).filter(s=>s.type!=="cosponsor");
+    const spNames = prim.slice(0,6).map(s=>esc(s.name)+(s.party?` (${esc(s.party)})`:"")).join(", ")
+      + (prim.length>6?` +${prim.length-6} more`:"");
+    const pb = Object.entries(g.party_breakdown||{}).filter(([k])=>k!=="?").map(([k,v])=>v+k).join("/");
+    const cosp = g.cosponsor_count?`; ${g.cosponsor_count} cosponsors${pb?` (${pb})`:""}`:"";
+    const origin = [g.origin_chamber?`${esc(g.origin_chamber)} bill`:"",
+      g.committee?`in ${esc(g.committee.name)}${g.committee.chamber?` (${esc(g.committee.chamber)})`:""}`:"",
+      g.session?esc(g.session):""].filter(Boolean).join(" · ");
+    const votes = (g.votes||[]).map(v=>{
+      const tally = v.yea!=null?`<b class="num">${v.yea}–${v.nay}</b>`:"recorded vote";
+      const res = v.passed==null?"":(v.passed?" ✓":" ✗ failed");
+      const lk = safeUrl(v.url)?` <a href="${esc(safeUrl(v.url))}" target="_blank" rel="noopener">roll call ↗</a>`:"";
+      return `<li><span class="num">${esc(v.date||"")}</span> ${esc(v.chamber||"")}: ${esc(v.motion||"")} — ${tally}${res}${lk}</li>`;
+    }).join("");
+    legis =
+      (origin?`<dt>Origin</dt><dd>${origin}</dd>`:"") +
+      (prim.length?`<dt>Sponsors</dt><dd>${spNames}${cosp}</dd>`:"") +
+      (votes?`<dt>Votes</dt><dd><ul class="votes">${votes}</ul>`
+        + `<div class="attrib">Per ${g.provider==="legiscan"?"LegiScan":"Congress.gov"}${g.fetched?`, fetched ${esc(g.fetched)}`:""}</div></dd>`:"");
+  }
   document.getElementById("pbody").innerHTML = `
     <div class="impactbig"><span class="n num">${r.impact??"—"}</span>
       <span class="bar"><i style="width:${Math.min(100,r.impact||0)}%"></i></span></div>
@@ -2114,6 +3236,8 @@ function openPanel(i){
     <dl class="kv">
       ${r.angle?`<dt>Relay angle</dt><dd class="angle">${esc(r.angle)}</dd>`:""}
       <dt>Summary</dt><dd>${esc(r.desc)}</dd>
+      ${impl}
+      ${legis}
       ${r.action?`<dt>Latest action</dt><dd>${esc(r.action)}${r.action_date?` <span style="color:var(--faint)" class="num">(${esc(r.action_date)})</span>`:""}</dd>`:""}
       ${r.deadline?`<dt>Response window</dt><dd>${fmtDue(r,true)}</dd>`:""}
       ${cov?`<dt>Coverage</dt><dd class="cov">${cov}</dd>`:""}
