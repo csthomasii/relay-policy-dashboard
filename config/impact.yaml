@@ -52,8 +52,24 @@ overrides:
 
 # ── OUTPUT FIELDS (per surfaced item) ──
 output_fields:
-  what_it_does: "1-2 plain-language sentences: what would change and for whom."
+  what_it_does: >-
+    Memo-grade summary, 2-6 sentences scaled to impact: the MECHANISM (what it funds,
+    bars, requires, repeals, enables, defunds), WHO is affected, dollar amounts and
+    effective dates when stated, and any carve-outs. ACT/TRACK items get the full
+    treatment; SCAN items 1-2 sentences. Written to be lifted verbatim into a daily or
+    weekly memo (runner/compose_memo.py), so it must stand alone without the dashboard.
   relay_angle: "One line: why Relay specifically should care (or 'ecosystem-level only')."
+  relay_implications: >-
+    For ACT/TRACK items: a short typed list derived from what_it_does + relay-profile
+    facts, each entry {type: funding|compliance|program|partnership|advocacy|risk,
+    text: one concrete operational implication}. Omit types with nothing real to say —
+    an empty list on a SCAN item is correct, a padded list is not. Row field:
+    `implications`.
+  legislative: >-
+    LEGISLATION items: sponsors, origin chamber, committee, and roll-call vote tallies
+    come ONLY from runner/billdetail.py's cache (state/bill-detail.json, attached to
+    rows as `legislative` via --attach). API-sourced = citable; never hand-author this
+    block, never fill gaps from memory — a bill without detail simply has no block.
   stage_line: "Where it is + next expected event + date, verified from primary."
   response_window: "Comment deadline / hearing date / effective date if any, with business-days-out."
   coverage: "Clustered secondary sources, each as 'per <outlet>' with link."
@@ -71,3 +87,4 @@ tuning:
   changelog:
     - "2026-08-05 initial rubric (built during autonomous v1 session)."
     - "2026-08-05 cross-family critique pass (GPT-5.6-sol + Gemini 3.6 Flash, convergent findings): verified core window <=15bd now floors ACT; commentary-as-discovery-lead rule; overload partition rule; near-deadline unverified = verify-first. Pipeline-side same day: LegiScan change_hash folded into movement hash (catches committee substitutes); getSearch full-text leg (catches cert provisions in generically-titled bills); deadline-window re-surfacing of unchanged items; per-source zero-yield health warnings."
+    - "2026-08-07 usability pass (operator-directed): what_it_does formalized as memo-grade (mechanism verbs, affected parties, amounts); relay_implications typed list added; legislative metadata block (sponsors/chamber/committee/votes) sourced exclusively from runner/billdetail.py — verified-only, never authored. Memo compiler (runner/compose_memo.py) added downstream."
