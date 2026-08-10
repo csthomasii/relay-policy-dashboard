@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Relay Policy Watch — Impact Rubric</title><style>
   :root{--bg:#FFFFFF;--ink:#23272E;--head:#1D3557;--muted:#5A6472;--faint:#8A93A0;
     --accent:#2C49A4;--crimson:#B30838;--sea:#6D97C9;--tint:#E9EEF9;--hair:#E3E6EB;
@@ -79,8 +79,10 @@ updated 2026-08-05 · <a href="index.html">back to dashboard</a></div></header>
 <li>Overload partition (budget-season runs): when candidates exceed what one session can judge, process core tier first, then adjacent by jurisdiction depth (NY, NJ, TX, TN, IL first), and REPORT what was deferred — silent truncation is prohibited.</li>
 </ul>
 <h2>Per-item output fields</h2><table><tr><th>Field</th><th>Contents</th></tr>
-<tr><td class=k>what_it_does</td><td>1-2 plain-language sentences: what would change and for whom.</td></tr>
+<tr><td class=k>what_it_does</td><td>Memo-grade summary, 2-6 sentences scaled to impact: the MECHANISM (what it funds, bars, requires, repeals, enables, defunds), WHO is affected, dollar amounts and effective dates when stated, and any carve-outs. ACT/TRACK items get the full treatment; SCAN items 1-2 sentences. Written to be lifted verbatim into a daily or weekly memo (runner/compose_memo.py), so it must stand alone without the dashboard.</td></tr>
 <tr><td class=k>relay_angle</td><td>One line: why Relay specifically should care (or &#x27;ecosystem-level only&#x27;).</td></tr>
+<tr><td class=k>relay_implications</td><td>For ACT/TRACK items: a short typed list derived from what_it_does + relay-profile facts, each entry {type: funding|compliance|program|partnership|advocacy|risk, text: one concrete operational implication}. Omit types with nothing real to say — an empty list on a SCAN item is correct, a padded list is not. Row field: `implications`.</td></tr>
+<tr><td class=k>legislative</td><td>LEGISLATION items: sponsors, origin chamber, committee, and roll-call vote tallies come ONLY from runner/billdetail.py&#x27;s cache (state/bill-detail.json, attached to rows as `legislative` via --attach). API-sourced = citable; never hand-author this block, never fill gaps from memory — a bill without detail simply has no block.</td></tr>
 <tr><td class=k>stage_line</td><td>Where it is + next expected event + date, verified from primary.</td></tr>
 <tr><td class=k>response_window</td><td>Comment deadline / hearing date / effective date if any, with business-days-out.</td></tr>
 <tr><td class=k>coverage</td><td>Clustered secondary sources, each as &#x27;per &lt;outlet&gt;&#x27; with link.</td></tr>
@@ -96,6 +98,7 @@ updated 2026-08-05 · <a href="index.html">back to dashboard</a></div></header>
 <p class=note>This rubric is the tunable core. Revisit weights against operator feedback on the first three digests; log changes with date + rationale.</p><ul class=note>
 <li>2026-08-05 initial rubric (built during autonomous v1 session).</li>
 <li>2026-08-05 cross-family critique pass (GPT-5.6-sol + Gemini 3.6 Flash, convergent findings): verified core window &lt;=15bd now floors ACT; commentary-as-discovery-lead rule; overload partition rule; near-deadline unverified = verify-first. Pipeline-side same day: LegiScan change_hash folded into movement hash (catches committee substitutes); getSearch full-text leg (catches cert provisions in generically-titled bills); deadline-window re-surfacing of unchanged items; per-source zero-yield health warnings.</li>
+<li>2026-08-07 usability pass (operator-directed): what_it_does formalized as memo-grade (mechanism verbs, affected parties, amounts); relay_implications typed list added; legislative metadata block (sponsors/chamber/committee/votes) sourced exclusively from runner/billdetail.py — verified-only, never authored. Memo compiler (runner/compose_memo.py) added downstream.</li>
 </ul>
 <footer>Generated from <code>config/impact.yaml</code> by
 <code>runner/render_rubric.py</code> — edit the YAML, not this page. ·
