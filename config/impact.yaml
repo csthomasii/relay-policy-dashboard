@@ -70,6 +70,37 @@ output_fields:
     come ONLY from runner/billdetail.py's cache (state/bill-detail.json, attached to
     rows as `legislative` via --attach). API-sourced = citable; never hand-author this
     block, never fill gaps from memory — a bill without detail simply has no block.
+  text_analysis: >-
+    For ACT-lane LEGISLATION items (and any bill where change-direction matters):
+    a section-level read of what the bill text actually changes, sourced from
+    runner/billtext.py output (state/bill-texts/<id>/excerpt.md — amendment markup
+    preserved as <<+added+>>/<<-deleted->> where the state serves HTML). Row field:
+    `text_analysis`, an object {doc, read_date, scope, findings} where findings is a
+    list of {section, cite, change, direction: expands|restricts|neutral|procedural,
+    relay_relevance}. `scope` states honestly what was read (e.g. "topic-relevant
+    sections only, N of M") — a partial read is fine, an unscoped claim is not.
+    Direction verdicts come ONLY from marked additions/deletions or explicit
+    amendatory language, never inferred from a synopsis. This is the field that
+    retires "direction not yet established" caveats — write it when the text has
+    been read, and only then.
+  leader_brief: >-
+    Plain-language briefing for senior leaders who are not policy specialists. Authored
+    for every ACT item and for TRACK items that are NEW, UPDATED, or moved this run;
+    carried forward unchanged on later runs until the underlying facts change. Row
+    field: `leader_brief`, an object {headline, summary, implications, questions}.
+    `headline` (optional) is a plain-language retitle used as the briefing heading when
+    the board title leans on jargon (bill numbers stay; "omnibus"/"enrolled"/"Calendar
+    No." go). `summary`
+    (2-4 sentences) says what happened and where it stands in everyday words: spell
+    out every acronym on first use, translate procedural jargon ("enrolled" -> "passed
+    both chambers, now on the Governor's desk"), no statute citations, no assumed
+    policy background. `implications` (1-3 sentences of prose — distinct from the
+    typed `implications` list) says what it could mean for Relay in operational terms.
+    `questions` (1-3 strings) are the questions the item invites leadership to
+    consider — strategy, risk, resourcing, timing decisions that are theirs to make —
+    never reading-comprehension restatements. Same no-fabrication rule as every other
+    field: the brief restates only facts verified this run; it introduces no new
+    entities, numbers, or dates.
   stage_line: "Where it is + next expected event + date, verified from primary."
   response_window: "Comment deadline / hearing date / effective date if any, with business-days-out."
   coverage: "Clustered secondary sources, each as 'per <outlet>' with link."
@@ -88,3 +119,5 @@ tuning:
     - "2026-08-05 initial rubric (built during autonomous v1 session)."
     - "2026-08-05 cross-family critique pass (GPT-5.6-sol + Gemini 3.6 Flash, convergent findings): verified core window <=15bd now floors ACT; commentary-as-discovery-lead rule; overload partition rule; near-deadline unverified = verify-first. Pipeline-side same day: LegiScan change_hash folded into movement hash (catches committee substitutes); getSearch full-text leg (catches cert provisions in generically-titled bills); deadline-window re-surfacing of unchanged items; per-source zero-yield health warnings."
     - "2026-08-07 usability pass (operator-directed): what_it_does formalized as memo-grade (mechanism verbs, affected parties, amounts); relay_implications typed list added; legislative metadata block (sponsors/chamber/committee/votes) sourced exclusively from runner/billdetail.py — verified-only, never authored. Memo compiler (runner/compose_memo.py) added downstream."
+    - "2026-08-11 leadership layer (operator-directed): leader_brief field added — plain-language summary + prose implications + questions for consideration, authored for ACT items and fresh/moved TRACK items, rendered by compose_memo.py --mode leaders into a standalone leadership briefing."
+    - "2026-08-11 text deep-read (operator-directed, same day): runner/billtext.py fetches actual bill text (LegiScan getBillText / GovInfo), preserves amendment markup, segments sections, emits topic-filtered judgment excerpts; text_analysis field added for section-level change-direction verdicts. First use: IL HB5552 enrolled text — resolved the open loosening-vs-tightening question."
