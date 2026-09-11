@@ -89,10 +89,10 @@
   .search input:focus{border-color:var(--accent)}
   .search .ic{position:absolute;left:9px;top:6px;color:var(--faint);font-size:13px;pointer-events:none}
   .search .kbd{position:absolute;right:7px;top:5px}
-  kbd{border:1px solid var(--hair);font-size:10px;color:var(--faint);padding:1px 5px;
+  kbd{border:1px solid var(--hair);font-size:11px;color:var(--faint);padding:1px 5px;
     background:var(--chrome);font-family:var(--mono)}
   .topbar .spacer{flex:1}
-  .updated{font-family:var(--mono);font-size:10px;color:var(--faint);white-space:nowrap;letter-spacing:.03em}
+  .updated{font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap;letter-spacing:.03em}
   .iconbtn{border:1px solid var(--hair);background:var(--panel);color:var(--muted);height:30px;
     min-width:30px;padding:0 9px;cursor:pointer;font-size:13px;
     transition:color var(--t-1) var(--e-out),border-color var(--t-1) var(--e-out),transform var(--t-1) var(--e-out)}
@@ -112,7 +112,7 @@
   /* ── Sidebar ── */
   .side{border-right:1px solid var(--hair);background:var(--bg);padding:14px 10px 20px;position:sticky;top:48px;
     height:calc(100vh - 48px);overflow-y:auto}
-  .navlbl{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--faint);margin:18px 8px 6px;
+  .navlbl{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);margin:18px 8px 6px;
     letter-spacing:.18em;text-transform:uppercase}
   .nav{display:flex;flex-direction:column;gap:1px}
   .nav button{display:flex;align-items:center;gap:8px;width:100%;text-align:left;border:0;background:none;color:var(--muted);
@@ -123,7 +123,7 @@
   .nav button.on{background:var(--tint);color:var(--accent-ink);font-weight:600;box-shadow:inset 2px 0 0 var(--accent)}
   .nav .n{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--faint)}
   .nav button.on .n{color:var(--accent-ink)}
-  .side .foot{margin-top:22px;padding:12px 8px;font-family:var(--mono);font-size:9px;color:var(--faint);
+  .side .foot{margin-top:22px;padding:12px 8px;font-family:var(--mono);font-size:11px;color:var(--faint);
     border-top:1px solid var(--hair);line-height:1.8;letter-spacing:.02em}
   .side .foot a{color:var(--accent-ink);text-decoration:none}
 
@@ -131,7 +131,7 @@
   .rail{border-bottom:1px solid var(--rule);background:var(--chrome);padding:12px clamp(18px,3vw,34px) 14px;
     display:grid;grid-template-rows:auto auto;grid-auto-flow:column;grid-auto-columns:1fr;column-gap:48px;
     position:static;height:auto;overflow:visible;border-left:0}
-  .rail h3{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--faint);margin:0 0 8px;
+  .rail h2.was-h3{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);margin:0 0 8px;
     letter-spacing:.2em;text-transform:uppercase}
   #windows{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 18px}
   .wline{display:flex;gap:12px;align-items:center;padding:5px 8px 7px 0;border-bottom:0;cursor:pointer;
@@ -141,7 +141,7 @@
   .wline .d b{display:block;font-family:var(--mono);font-size:20px;line-height:1.05;font-weight:600;color:var(--accent-ink)}
   .wline .d span{font-family:var(--mono);font-size:8px;color:var(--faint);letter-spacing:.08em;text-transform:uppercase}
   .wline .t{font-size:11px;color:var(--muted);line-height:1.35}
-  .wline .t small{font-family:var(--mono);color:var(--faint);font-size:9px}
+  .wline .t small{font-family:var(--mono);color:var(--faint);font-size:11px}
   #movedlist{display:flex;flex-direction:column;gap:2px}
   #movedlist .wline{padding:3px 8px 3px 0}
   .railnote{font-size:10.5px;color:var(--faint);padding:2px 0}
@@ -163,7 +163,7 @@
   .verdict .lead{font-family:var(--serif);font-weight:700;font-size:16.5px;letter-spacing:-.01em}
   .verdict.alert .lead{color:var(--urgent)}
   .vchip{border:1px solid var(--hair);background:var(--bg);color:var(--muted);padding:3px 10px;
-    font-family:var(--mono);font-size:10px;cursor:pointer;min-height:24px;letter-spacing:.04em;
+    font-family:var(--mono);font-size:11px;cursor:pointer;min-height:24px;letter-spacing:.04em;
     transition:border-color var(--t-1) var(--e-out),color var(--t-1) var(--e-out)}
   .vchip:hover{border-color:var(--accent);color:var(--accent-ink)}
   .vchip b{font-weight:700;color:var(--ink)}
@@ -180,9 +180,9 @@
 
   .group{margin:26px 0 2px}
   .group button{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;cursor:pointer;padding:6px 0;
-    min-height:28px;color:var(--muted);font-family:var(--mono);font-size:10px;font-weight:600;text-align:left;
+    min-height:28px;color:var(--muted);font-family:var(--mono);font-size:11px;font-weight:600;text-align:left;
     letter-spacing:.16em;text-transform:uppercase}
-  .group .car{display:inline-block;transition:transform var(--t-2) var(--e-out);font-size:10px;color:var(--faint)}
+  .group .car{display:inline-block;transition:transform var(--t-2) var(--e-out);font-size:11px;color:var(--faint)}
   .group.closed .car{transform:rotate(-90deg)}
   .group .n{color:var(--accent-ink);font-weight:500;font-family:var(--mono)}
   .group .rule{flex:1;height:1px;background:var(--hair)}
@@ -208,19 +208,19 @@
   .mtx{font-family:var(--mono);font-size:9.5px;color:var(--faint);white-space:nowrap;letter-spacing:.04em}
   .impn{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--accent-ink);min-width:22px;text-align:right}
   .noteic{color:var(--faint);font-size:12px;flex:none}
-  .pill{display:inline-block;font-family:var(--mono);padding:2px 8px;font-size:9px;font-weight:700;
+  .pill{display:inline-block;font-family:var(--mono);padding:2px 8px;font-size:11px;font-weight:700;
     white-space:nowrap;flex:none;text-align:center;letter-spacing:.1em;text-transform:uppercase}
   .p-ACT{background:var(--act-bg);color:var(--act-tx)}
   .p-TRACK{background:var(--trk-bg);color:var(--trk-tx)}
   .p-SCAN{background:none;border:1px solid var(--line);color:var(--scn-tx);padding:1px 7px}
-  .tier{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--muted);flex:none;letter-spacing:.08em}
+  .tier{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--muted);flex:none;letter-spacing:.08em}
   .tier-TRACK{color:var(--accent-ink)}
-  .chip{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--muted);background:var(--chrome);
+  .chip{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted);background:var(--chrome);
     border:1px solid var(--hair);padding:2px 7px;white-space:nowrap;flex:none;letter-spacing:.05em}
-  .badge-new{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--accent-ink);background:var(--tint);
+  .badge-new{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent-ink);background:var(--tint);
     padding:1px 6px;flex:none;letter-spacing:.08em;text-transform:uppercase}
   .mov{color:var(--accent-ink);font-weight:650;font-size:11px;white-space:nowrap;flex:none}
-  .due{font-family:var(--mono);font-weight:700;font-size:10px;white-space:nowrap;letter-spacing:.03em}
+  .due{font-family:var(--mono);font-weight:700;font-size:11px;white-space:nowrap;letter-spacing:.03em}
   .due.warn{color:var(--warn)} .due.crit{color:var(--urgent)} .due.ok{color:var(--muted);font-weight:450}
   .unread{width:6px;height:6px;border-radius:50%;background:var(--accent);display:inline-block;flex:none}
   .starbtn{border:0;background:none;cursor:pointer;font-size:15px;color:var(--faint);padding:2px 4px;line-height:1;flex:none;
@@ -241,8 +241,8 @@
     flex:1 1 240px;min-width:0}
   .archhead .at:hover{color:var(--accent-ink);text-decoration:underline}
   .archspan{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap}
-  .archlive{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ok)}
-  .archgone{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+  .archlive{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ok)}
+  .archgone{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
   .tl{list-style:none;margin:8px 0 0;padding:0}
   .tl li{display:flex;gap:11px;padding:0 0 10px;position:relative}
   .tl li:not(:last-child)::before{content:"";position:absolute;left:60px;top:15px;bottom:-1px;width:1px;background:var(--hair)}
@@ -282,7 +282,7 @@
   .phead .close{position:absolute;top:6px;right:12px;background:var(--panel);border:1px solid var(--line);
     box-shadow:var(--sh-1)}
   .pbody{padding:18px 22px 26px;overflow:visible;flex:none}
-  .kv dt{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--faint);margin-bottom:4px;
+  .kv dt{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);margin-bottom:4px;
     letter-spacing:.18em;text-transform:uppercase}
   .kv dd{margin:0 0 14px;font-family:var(--sans);font-size:13.5px;color:var(--ink);overflow-wrap:anywhere}
   .kv dd.angle{font-family:var(--serif);font-size:15.5px;font-style:italic;color:var(--ink);
@@ -320,7 +320,7 @@
   .cov a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid var(--tint)}
   .actions{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 16px}
   .btn{display:inline-flex;align-items:center;border:1px solid var(--line);background:none;color:var(--muted);
-    padding:8px 14px;font-family:var(--mono);font-size:10px;font-weight:600;cursor:pointer;text-decoration:none;
+    padding:8px 14px;font-family:var(--mono);font-size:11px;font-weight:600;cursor:pointer;text-decoration:none;
     min-height:32px;letter-spacing:.08em;text-transform:uppercase;
     transition:all var(--t-1) var(--e-out)}
   .btn:hover{color:var(--accent-ink);border-color:var(--accent-ink)}
@@ -350,7 +350,7 @@
     font-size:14px;outline:none;font-family:var(--sans)}
   .pal .list{max-height:320px;overflow-y:auto;padding:6px}
   .pal .it{display:flex;align-items:center;gap:10px;padding:8px 12px;cursor:pointer;font-size:13px;color:var(--ink)}
-  .pal .it .k{color:var(--faint);font-family:var(--mono);font-size:10px;margin-left:auto;flex:none;letter-spacing:.06em}
+  .pal .it .k{color:var(--faint);font-family:var(--mono);font-size:11px;margin-left:auto;flex:none;letter-spacing:.06em}
   .pal .it.sel{background:var(--tint);color:var(--accent-ink)}
   .pal .none{padding:14px;color:var(--faint);font-size:13px}
 
@@ -361,7 +361,7 @@
   .modal{background:var(--bg);border:1px solid var(--rule);box-shadow:var(--sh-3);max-width:560px;width:100%;
     padding:24px 26px 28px;position:relative}
   .modal h2{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);margin:0 0 4px;letter-spacing:-.015em}
-  .modal h3{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--ink);margin:20px 0 6px;
+  .modal h2.was-h3{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ink);margin:20px 0 6px;
     letter-spacing:.16em;text-transform:uppercase}
   .modal p,.modal li{font-family:var(--serif);font-size:13.5px;color:var(--muted);line-height:1.6;margin:6px 0}
   .modal ol{padding-left:20px;margin:6px 0}
@@ -370,12 +370,12 @@
     background:var(--panel);color:var(--ink);padding:0 10px;font-size:13px;margin:2px 0 8px}
   .modal input:focus{border-color:var(--accent);outline:none}
   .modal .warn{background:color-mix(in srgb,var(--warn) 12%,var(--panel));color:var(--warn);padding:9px 12px;font-size:12px;margin:10px 0}
-  .modal label{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--faint);letter-spacing:.14em;text-transform:uppercase}
+  .modal label{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--faint);letter-spacing:.14em;text-transform:uppercase}
   .modal code{background:var(--chrome);padding:1px 5px;font-size:12px;font-family:var(--mono)}
   .modal .keys{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:12.5px;color:var(--muted);margin:8px 0}
   .modal .tog{display:flex;align-items:center;gap:8px;margin:10px 0;font-size:13px;color:var(--ink)}
   .tbtns{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
-  .syncchip{font-family:var(--mono);font-size:10px;font-weight:600;white-space:nowrap;letter-spacing:.03em}
+  .syncchip{font-family:var(--mono);font-size:11px;font-weight:600;white-space:nowrap;letter-spacing:.03em}
   .syncchip .st-ok{color:var(--ok)} .syncchip .st-warn{color:var(--warn)} .syncchip .st-err{color:var(--urgent)}
 
   /* ── Responsive ── */
@@ -482,9 +482,9 @@
   </main>
 
   <aside class="rail" aria-label="Response windows and movement">
-    <h3>Response windows</h3>
+    <h2 class="was-h3">Response windows</h2>
     <div id="windows"></div>
-    <h3>Moved this run</h3>
+    <h2 class="was-h3">Moved this run</h2>
     <div id="movedlist"></div>
   </aside>
 </div>
@@ -514,7 +514,7 @@
     <button class="iconbtn close" id="helpclose" aria-label="Close">✕</button>
     <h2 id="helptitle">Help — shortcuts &amp; team sync</h2>
 
-    <h3>Keyboard shortcuts</h3>
+    <h2 class="was-h3">Keyboard shortcuts</h2>
     <div class="keys">
       <span><kbd>↑</kbd> <kbd>↓</kbd> (or <kbd>J</kbd>/<kbd>K</kbd>)</span><span>Move through items</span>
       <span><kbd>Enter</kbd></span><span>Open selected item</span>
@@ -532,7 +532,7 @@
     </div>
     <p>Arrow keys, Tab, Enter and Escape always work. Single-letter shortcuts only act on the selected item and never fire while you're typing.</p>
 
-    <h3>Team sync — how it works</h3>
+    <h2 class="was-h3">Team sync — how it works</h2>
     <p>Stars <span style="color:#D99A06">★</span>, notes, and dismissals are <b>shared with the whole team</b>. They're stored in a small file that lives alongside this page on GitHub — no separate account or app. (What you've <i>read</i> is personal and stays on your own computer.)</p>
     <p><b>Just browsing?</b> Nothing to set up. You already see the team's stars and notes.</p>
     <p><b>Want your changes to save for the whole team?</b> You need a one-time "save key" from GitHub (free account required). It takes about two minutes:</p>
@@ -838,12 +838,12 @@ const DATA = [
   "cls": "REGULATION",
   "source": "TEA / State Board for Educator Certification",
   "stage": "comment-open",
-  "status": "UPDATED",
-  "movement": "comment-open -> adoption item posted (SBEC 09-18, staff recommends no changes)",
+  "status": null,
+  "movement": null,
   "action": "Adoption item posted: the September 18, 2026 SBEC agenda (read this run from the TEA meeting page and the Item 6 PDF) carries 'Adoption of Proposed Amendments to 19 TAC Chapter 229' as Item 6 under Discussion and Action. Staff recommend no changes since published as proposed, with additional changes possible at the meeting based on public comment; the motion approves adoption subject to State Board of Education review, with a proposed effective date of December 27, 2026 (20 days after filing the adoption notice with the Texas Register). Comments received through the September 14 close are provided to the Board under separate cover, and registered oral and written comment is taken at the meeting. The same agenda opens a four-year rule review of Chapter 233 (Categories of Classroom Teaching Certificates, Item 4) and proposes an amendment to §231.1 on personnel-assignment criteria (Item 5).",
   "action_date": "2026-09-10",
   "deadline": "2026-09-14",
-  "days": 2,
+  "days": 1,
   "impact": 90,
   "rec": "ACT",
   "desc": "The State Board for Educator Certification proposes amendments to all six operative sections of 19 Texas Administrative Code Chapter 229, the rules that assign every Texas educator preparation program (EPP) its annual accreditation status under the Accountability System for Educator Preparation (ASEP). Four changes carry real consequence. (1) The Accredited threshold drops: §229.4(b)(1) would require 80% of possible ASEP Index points, replacing the current 85% — the bracketed deletion '[85%]' appears in the proposed rule text. (2) The status ladder is restructured. Today a program between 80% and 85% is Accredited-Warned and anything under 80% is Accredited-Probation; under the proposal the first year below 80% is Accredited-Warned and only the second and later consecutive years below 80% are Accredited-Probation (§229.4(b)(3)(A), (b)(4)(A)) — one additional year before probation attaches. (3) New §229.5(b) makes a continuing EPP review under §228.13 MANDATORY whenever a program is assigned Accredited-Warned or Accredited-Probation, satisfied by an in-process review if one is already under way. The fiscal note prices that review at $4,500 per program, paid by the EPP: of nine programs that scored below 80% on the 2024-2025 ASEP Index, five had been Accredited the prior year and one was already due its five-year review, so TEA models four discretionary reviews, $18,000 in new EPP cost and $18,000 in new state revenue. (4) New reporting: Figure 19 TAC §229.3(f)(1) adds 'EPP contact information' — names, email addresses and phone numbers of the EPP's legal authority, chief operating officer and governing body chair, due by August 1 each year through the Educator Certification Online System, and the figure states these 'must be three separate people.' New §229.2(19) and (23) define 'governing body' (including at minimum its chairperson) and 'legal authority' (the person with final decision-making authority — dean, director, owner, executive director, superintendent or program director). §229.7(b)(4) and (c) then route accreditation-status notices to all three roles and let the legal authority request an informal review. Also proposed: the first year a redesigned principal or teacher survey replaces a prior survey is report-only and not used for accreditation (§229.4(a)(2), (a)(5)), because both surveys are being revised to track the updated T-TESS observation rubric; and beginning in 2026-2027, candidates are evaluated against the Chapter 228 Subchapter F field-supervision frequency and duration requirements effective September 1, 2026 (§229.4(a)(4)(A)(ii)). New definitions align 'host teacher' and 'intern mentor teacher' with §228.2. The comment period runs August 14 through September 14, 2026; SBEC will also take registered oral and written comment at its September 2026 meeting.",
@@ -1268,15 +1268,15 @@ const DATA = [
   "source": "legiscan_ga",
   "stage": "passed",
   "status": "UPDATED",
-  "action": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; the 2026-09-10 Commission agenda (read this run) carries 'Preview of Rules and Proposed Rules Adoption'; rules effective 2026-10-15 if adopted",
+  "action": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission met 2026-09-10 on 'Preview of Rules and Proposed Rules Adoption'; no report or minutes posted as of 2026-09-11 08:00 ET (Commission page re-read this run); rules effective 2026-10-15 if adopted.",
   "action_date": "2026-08-29",
   "deadline": "2026-09-10",
-  "days": 0,
+  "days": -1,
   "impact": 88,
   "rec": "ACT",
   "desc": "House Bill 1030, passed by both chambers and effective 2026-07-01, enacts the 'Math Matters Act' at O.C.G.A. 20-2-153.2 and amends the Professional Standards Commission's certification statute at O.C.G.A. 20-2-200. On the school side it requires the State Board of Education to adopt content standards for middle and high school advanced math courses, requires every local education agency to establish advanced math courses, sets minimum core math instruction time in grades four and five, mandates parent notification and annual reporting, and prohibits waivers. On the educator-preparation side — the part that reaches Relay — it does two things. First, it requires the Professional Standards Commission to revise the standards for acquiring and maintaining teacher certification in elementary education to include developmentally appropriate evidence-based math instruction, and requires the Georgia Assessments for Certification of Educators (GACE), or any successor certification assessment, to be aligned with evidence-based literacy instruction AND evidence-based math instruction. Second, it adds a new program-approval standard at O.C.G.A. 20-2-200(b): the Commission must create standards ensuring that postsecondary students completing ELEMENTARY education teacher certification programs graduate with training that effectively teaches the four strands of mathematical proficiency (real-world problem solving, procedural fluency, conceptual understanding, productive dispositions), implements evidence-based math instruction, provides effective instruction and interventions for students needing intervention, and uses student data to make instructional decisions. That standard sits alongside the existing 20-2-200(b)(2) mandatory-coursework requirements (differentiated instruction; fundamental reading skills including phonemic awareness, phonics, fluency, vocabulary and comprehension) and the existing 20-2-200(b)(3) approval of alternative-certification programs. UPDATE 2026-08-21: the rulemaking this act ordered is now real. At its July 9, 2026 meeting the Professional Standards Commission initiated amendments to Rule 505-3-.14 (Elementary Education P-5 Program), 505-3-.27 (Mathematics Education Program), and 505-3-.92 (K-5 Mathematics Endorsement) to add the Math Matters Act requirements. The proposed 505-3-.14 text (verified from the posted rule PDF) writes the four strands of mathematical proficiency, evidence-based math instruction, intervention, and data-based instructional decisions directly into program content standard 3. Public comment runs 2026-07-31 through 2026-08-29 (written comments to the GaPSC Executive Secretary via RulesComments@GaPSC.com or mail); the Commission takes up adoption at its September 10 meeting, with an effective date of October 15, 2026 if adopted.",
   "angle": "Georgia is one of Relay's authorized jurisdictions and Relay's Georgia programs are approved by the same Professional Standards Commission this act directs. The new 20-2-200(b) standard is a program-approval requirement, not a district mandate: it changes what an approved elementary-preparation program must teach, which is Relay's curriculum surface directly. The GACE alignment change moves the certification assessment Relay's Georgia completers sit for.",
-  "stage_line": "Enacted (effective 2026-07-01); implementing GaPSC program rules at adoption — Commission vote today, 2026-09-10 at 1:15 pm (result not posted at run time; verify 09-11), effective 2026-10-15 if adopted. Still UNVERIFIED: the enrolled text's ambiguous GACE alignment date ('July 1, 2025 2028').",
+  "stage_line": "Enacted (effective 2026-07-01); implementing GaPSC program rules — adoption vote held 2026-09-10, result NOT posted as of 09-11 08:00 ET; verify Monday 09-14. Effective 2026-10-15 if adopted.",
   "text_analysis": {
    "doc": "HB 1030 (AS PASSED HOUSE AND SENATE), legis.ga.gov document 247871",
    "read_date": "2026-08-14",
@@ -1336,7 +1336,7 @@ const DATA = [
   ],
   "leader_brief": {
    "headline": "Georgia has told its teacher-certification agency to rewrite elementary preparation standards around math — including for us",
-   "summary": "Georgia's Math Matters Act ordered the Professional Standards Commission — the agency that approves Relay's Georgia programs — to rewrite elementary preparation standards around math. That rewrite is now on paper: the Commission published proposed rule amendments adding the law's math requirements (the four strands of mathematical proficiency, evidence-based math instruction, intervention, and using student data) to the elementary program standards, the public comment window closed August 29 and the Commission votes on adoption September 10. If adopted, the rules take effect October 15, 2026.",
+   "summary": "Georgia's Math Matters Act ordered the Professional Standards Commission — the agency that approves Relay's Georgia programs — to rewrite elementary preparation standards around math. That rewrite is now on paper: the Commission published proposed rule amendments adding the law's math requirements (the four strands of mathematical proficiency, evidence-based math instruction, intervention, and using student data) to the elementary program standards, the public comment window closed August 29 and the Commission votes on adoption September 10. If adopted, the rules take effect October 15, 2026. Update, September 11: the Commission met on September 10 as scheduled; no report or minutes were posted by the morning of September 11, so the adoption result is unconfirmed until we check again on Monday, September 14.",
    "implications": "This is the moment the requirement becomes concrete for our Georgia elementary program: once adopted, program reviewers can ask us to evidence math training against the new standard. The comment window is the one chance to shape the wording before it is fixed.",
    "questions": [
     "Should our Georgia elementary math methods coursework be mapped against the proposed standard now, so we know the gap before the rule takes effect October 15?",
@@ -2149,7 +2149,7 @@ const DATA = [
   "action": "Comp. became Pub. Ch. 1056; effective 2026-05-22",
   "action_date": "2026-05-27",
   "deadline": "2028-08-01",
-  "days": 489,
+  "days": 492,
   "impact": 78,
   "rec": "ACT",
   "desc": "HB0545 / SB0677, approved 2026-05-26 as Public Chapter 1056, effective 2026-05-22. It adds a new section to Tenn. Code Ann. Title 49, Chapter 1, Part 2. Subsection (a) requires the Department of Education to provide at least one professional development course giving asynchronous instruction on the use of artificial intelligence in the classroom, made available at no cost to teachers in grades six through twelve, usable to earn professional development points; the course CONTENT must be created by an entity with experience in a related subject area, such as computer science or another science, technology, engineering and mathematics field. Subsection (b) makes it a requirement rather than an offer: by 2028-08-01, or within two years of becoming licensed as a teacher in Tennessee, whichever is later, teachers in grades 6-12 MUST complete at least one department-approved professional development course providing asynchronous instruction on classroom use of artificial intelligence. Every LEA and public charter school must approve professional development points for a teacher's completion of at least one department-approved artificial intelligence training, under the State Board of Education's educator licensure policies and rules.",
@@ -3255,7 +3255,7 @@ const DATA = [
   "action": "Signed by the Governor",
   "action_date": "2026-06-04",
   "deadline": "2027-01-01",
-  "days": 77,
+  "days": 80,
   "impact": 69,
   "rec": "TRACK",
   "desc": "Substitute House Bill 5323, signed 2026-06-04 as Public Act 26-139, 14 sections. Section 10 (effective from passage) requires the Commissioner of Education, by 2027-01-01, to redesign Connecticut's high school mathematics pathways around four named tracks — science, technology, engineering and mathematics; data science and statistics; quantitative reasoning; and workforce and applied mathematics — and, in consultation with the Connecticut Educator Preparation and Certification Board established under Conn. Gen. Stat. 10-150b, to develop guidelines for the role of mathematics specialists supporting math interventions in schools. The same section requires the Commissioner, by 2027-01-01, to develop a list of professional development providers to support implementation of high-quality mathematics instruction and to explore the feasibility of launching MathConn, a professional learning series for educators. Section 2 (effective 2026-07-01) directs the Connecticut Advisory Council for School Administrator Professional Standards, with the Connecticut Association of Schools, to establish a new school administrator mentorship pilot program, report the implementation plan by 2027-07-01, run the pilot in identified districts from the 2027-28 school year, and report results with recommendations by 2029-01-01. Section 11 (effective 2026-07-01) rewrites Conn. Gen. Stat. 10-222c, the pre-employment review every board of education, charter governing council, magnet operator and nonpublic supervisory agent must run before offering a position with direct student contact; the bracketed text in the enrolled act removes the exception that had let an applicant omit an abuse, neglect or sexual misconduct investigation where the investigation found all allegations unsubstantiated.",
@@ -5057,7 +5057,7 @@ const DATA = [
   "jur": "US",
   "stage": "comment-closed",
   "deadline": "2026-08-31",
-  "days": 0,
+  "days": -1,
   "action": "30-day comment window under the Paperwork Reduction Act closed August 31, 2026; ED/OMB review is the next step",
   "action_date": "2026-07-31",
   "source": "Federal Register",
@@ -5694,7 +5694,7 @@ const DATA = [
   "jur": "US",
   "stage": "comment-closed",
   "deadline": "2026-08-24",
-  "days": 0,
+  "days": -1,
   "action": "Comment window closed 2026-08-24; ED review of comments underway",
   "action_date": "2026-07-23",
   "source": "Federal Register",
@@ -5872,13 +5872,17 @@ const DATA = [
   "action": "Wind-down reported (per The 74, 2026-08-10)",
   "action_date": "2026-08-10",
   "source": "per The 74",
-  "status": null,
+  "status": "UPDATED",
   "movement": null,
   "coverage": [
    {
     "outlet": "FutureEd",
     "title": "What Happens When Tutoring and EdTech Vendors' Pay Depends on Student Results?",
     "url": "https://www.future-ed.org/what-happens-when-ed-tech-vendors-pay-depends-on-student-results/"
+   },
+   {
+    "outlet": "Chalkbeat Ideas column (the rise, fall and possible future of high-dosage tutoring)",
+    "url": "https://www.chalkbeat.org/2026/09/10/high-dosage-tutoring-during-pandemic-learning-loss-results/"
    }
   ],
   "implications": [
@@ -6113,7 +6117,7 @@ const DATA = [
   "jur": "US",
   "stage": "notice",
   "deadline": "2026-10-01",
-  "days": 15,
+  "days": 14,
   "action": "Competition notice published; applications open",
   "action_date": "2026-08-10",
   "source": "Federal Register",
@@ -6583,7 +6587,7 @@ const DATA = [
  },
  {
   "id": "fedreg:2026-14053",
-  "title": "PSLF/TEPSLF certification & application forms — comment window open",
+  "title": "PSLF/TEPSLF certification & application forms — comment window closes today, Sept 11",
   "url": "https://www.federalregister.gov/documents/2026/07/13/2026-14053/agency-information-collection-activities-comment-request-public-service-loan-forgiveness-pslf-and",
   "desc": "ED information-collection comment request on PSLF/TEPSLF certification and application forms; comments due September 11, 2026 (verified from primary).",
   "angle": "Form-level, not program rules — but PSLF mechanics matter to Relay's teacher-candidates' finances. Low lift to comment if the forms create friction for educators.",
@@ -6593,13 +6597,14 @@ const DATA = [
   "jur": "US",
   "stage": "comment-open",
   "deadline": "2026-09-11",
-  "days": 1,
-  "action": "ICR comment request published",
+  "days": 0,
+  "action": "ICR comment request published 2026-07-13; comments due on or before September 11, 2026 (DATES paragraph re-read from the Federal Register full text this run; docket ED-2026-SCC-2443)",
   "action_date": "2026-07-13",
   "source": "Federal Register",
   "movement": null,
   "coverage": [],
-  "status": null
+  "status": "UPDATED",
+  "stage_line": "Comment window closes today, 2026-09-11 (verified from the notice text this run). Next: OMB review of the emergency-processed forms."
  },
  {
   "id": "legiscan:1957235",
@@ -6879,7 +6884,7 @@ const DATA = [
   "jur": "US",
   "stage": "comment-closed",
   "deadline": "2026-09-09",
-  "days": 0,
+  "days": -1,
   "action": "Comment window closes 2026-09-09 (today; re-verified from the Federal Register API 2026-09-09). No action pending on it.",
   "action_date": "2026-08-10",
   "source": "Federal Register",
@@ -7352,8 +7357,8 @@ const DATA = [
   "action": "Rulemaking opened at the 2026-09-09 State Board meeting per Chalkbeat; two CDE draft versions presented; rules to be finalized by end of December 2026, effective 2027-28. The CDE rulemaking page (read this run) does not yet list a homeschool ruleset or hearing date; the sweep's 'hearing noticed for October 14-15' claim is NOT confirmed (that date is the READ Act rules hearing).",
   "action_date": "2026-09-10",
   "source": "Chalkbeat Colorado (secondary); prior entries 2026-08-14 and 2026-09-04 attached as coverage",
-  "status": "UPDATED",
-  "movement": "dissolution reported -> State Board rulemaking opened (per Chalkbeat)",
+  "status": null,
+  "movement": null,
   "implications": [],
   "coverage": [
    {
@@ -7538,6 +7543,14 @@ const DATA = [
    {
     "outlet": "Fordham Institute, 2026-09-09 (screens, AI and grade inflation 'hollowing out' high school; LAUSD screen-time policy)",
     "url": "https://fordhaminstitute.org/national/commentary/screens-ai-and-grade-inflation-are-hollowing-out-american-high"
+   },
+   {
+    "outlet": "Bellwether (AI adoption plans for schools and nonprofits: three lessons from 30+ projects)",
+    "url": "https://bellwether.org/blog/ai-adoption-plans-for-schools-and-nonprofits-three-lessons/"
+   },
+   {
+    "outlet": "Bellwether (How to build an AI plan for your school or nonprofit: a starter guide)",
+    "url": "https://bellwether.org/publications/how-to-build-an-ai-plan/"
    }
   ]
  },
@@ -7669,7 +7682,7 @@ const DATA = [
   "jur": "US",
   "stage": "comment-open",
   "deadline": "2026-10-06",
-  "days": 18,
+  "days": 17,
   "action": "Proposed rule published 2026-08-07; 60-day public comment period open",
   "action_date": "2026-08-07",
   "source": "Federal Register",
@@ -8013,7 +8026,7 @@ const DATA = [
   "jur": "US",
   "stage": "comment-open",
   "deadline": "2026-09-21",
-  "days": 7,
+  "days": 6,
   "action": "NPRM published in the Federal Register; public comment period open through September 21, 2026",
   "action_date": "2026-08-20",
   "source": "Federal Register",
@@ -8129,10 +8142,10 @@ const DATA = [
   "source": "ga_psc_meetings",
   "stage": "comment-open",
   "status": "UPDATED",
-  "action": "Adoption vote today: the Commission meets 2026-09-10 at 1:15 pm on 'Preview of Rules and Proposed Rules Adoption' (agenda read 09-04); the GaPSC proposed-rules page still shows the package as initiated July 9 with a proposed effective date of October 15, 2026, and no Commission report for today's meeting was posted at run time. The Educator Preparation and Certification Committee Report for 2026-09-09 (read this run) records that the Committee recommends Developmental Approval of the Artificial Intelligence for Educators Endorsement and the Foundations of Artificial Intelligence in Education Micro-Endorsement for both Middle Georgia RESA and Northwest Georgia RESA.",
+  "action": "Commission met 2026-09-10 (1:15 pm) on 'Preview of Rules and Proposed Rules Adoption'. As of 2026-09-11 08:00 ET the GaPSC Commission page lists only the 09-10 agenda, the 09-09 EPCC report and the EERC chart for September — no Commission report or minutes — and the proposed-rules page still carries the July package at the 2026-10-15 proposed effective date. Vote result unverified; check Monday 09-14.",
   "action_date": "2026-09-10",
   "deadline": "2026-09-10",
-  "days": 0,
+  "days": -1,
   "impact": 72,
   "rec": "ACT",
   "commentUrl": "https://www.gapsc.com/Commission/Rules/Proposed/proposedRules.aspx",
@@ -8158,7 +8171,7 @@ const DATA = [
   ],
   "leader_brief": {
    "headline": "Georgia votes September 10 on its new Artificial Intelligence teaching credential; two regional agencies are already approved to offer it",
-   "summary": "Georgia's teacher-certification agency votes on September 10 on the rule package it proposed in July: a new Artificial Intelligence for Educators endorsement (a formal credential teachers can add) with a lighter micro-endorsement tier, and a route that lets already-certified teachers add elementary grades by passing a test instead of completing an elementary preparation program. The public comment period closed August 29. The agency's preparation committee agenda for September 9 already lists two Regional Educational Service Agencies as approved providers of the AI endorsement programs, so providers are being approved ahead of the vote. Changes take effect October 15. Update, September 10: the vote is today; the Commission's preparation committee met September 9 and recommended approving the first two providers of the new endorsement, both regional education service agencies, before the rule itself is adopted.",
+   "summary": "Georgia's teacher-certification agency votes on September 10 on the rule package it proposed in July: a new Artificial Intelligence for Educators endorsement (a formal credential teachers can add) with a lighter micro-endorsement tier, and a route that lets already-certified teachers add elementary grades by passing a test instead of completing an elementary preparation program. The public comment period closed August 29. The agency's preparation committee agenda for September 9 already lists two Regional Educational Service Agencies as approved providers of the AI endorsement programs, so providers are being approved ahead of the vote. Changes take effect October 15. Update, September 10: the vote is today; the Commission's preparation committee met September 9 and recommended approving the first two providers of the new endorsement, both regional education service agencies, before the rule itself is adopted. Update, September 11: the Commission met as scheduled on September 10, but as of the morning of September 11 it has not posted a report, minutes, or any notice of the outcome, and its proposed-rules page still shows the package as pending with the October 15 effective date; we will confirm the result on Monday, September 14.",
    "implications": "The AI endorsement is a program opportunity in a state where we already operate, and the market is forming now rather than after the vote; the first approved providers are the state's regional service agencies, which serve the same districts we would. The elementary test-in route cuts the other way: it creates a path into elementary teaching that bypasses programs like ours. Two more rewrites, a literacy coaching endorsement and an overhaul of school-leader certification, are queued for October.",
    "questions": [
     "Do we want to be among the early approved providers of Georgia's AI endorsement, and if so, who scopes the program against the posted standards this month?",
@@ -8192,7 +8205,7 @@ const DATA = [
   "legislative": null,
   "text_analysis": null,
   "movement": null,
-  "stage_line": "Comment closed 2026-08-29; adoption vote today, 2026-09-10 at 1:15 pm (result not posted at run time; verify 09-11), effective 2026-10-15 if adopted. The 09-09 committee report moves the two RESA provider programs from 'administratively approved' on the agenda to a committee recommendation for Developmental Approval, ahead of the rule's adoption."
+  "stage_line": "Comment closed 2026-08-29; adoption vote held 2026-09-10 — result NOT posted as of 09-11 08:00 ET (Commission page and proposed-rules page re-read this run; sweep found no press). Effective 2026-10-15 if adopted. The 09-09 EPCC report recommends Developmental Approval for the Middle GA and NW GA RESA AI-endorsement programs."
  },
  {
   "id": "fedreg:2026-17081",
@@ -8247,7 +8260,7 @@ const DATA = [
   "action": "Meeting notice published 2026-08-21; written statements and oral-comment requests due 2026-09-16",
   "action_date": "2026-08-21",
   "deadline": "2026-09-16",
-  "days": 4,
+  "days": 3,
   "impact": 44,
   "rec": "SCAN",
   "desc": "NACIQI — the federal advisory committee that reviews accreditor recognition under 34 CFR 602 — meets September 23-24 to review renewal applications from six accreditors (including SACSCOC and the APA, which is seeking a scope expansion to master's-level psychology programs) plus one compliance report. Neither of Relay's accreditors (MSCHE, CAEP) is on this agenda. Members of the public may request 3-minute oral comments or file written statements on issues within NACIQI's authority by September 16.",
@@ -8348,7 +8361,7 @@ const DATA = [
   "jur": "US",
   "stage": "comment-open",
   "deadline": "2026-09-23",
-  "days": 9,
+  "days": 8,
   "action": "NPRM published in the Federal Register 2026-08-24; public comment period open through September 23, 2026",
   "action_date": "2026-08-24",
   "source": "Federal Register",
@@ -8444,9 +8457,14 @@ const DATA = [
   "action": "Reported 2026-08-27; gubernatorial decision pending",
   "action_date": "2026-08-27",
   "source": "Chalkbeat",
-  "status": null,
+  "status": "UPDATED",
   "movement": null,
-  "coverage": []
+  "coverage": [
+   {
+    "outlet": "Education Week (AFC report: the federal tax-credit scholarship program could raise $37.6B at 20% donor uptake, rivaling Title I plus IDEA)",
+    "url": "https://www.edweek.org/policy-politics/could-trumps-school-choice-program-rival-title-i-or-idea-in-size/2026/09"
+   }
+  ]
  },
  {
   "id": "osse_news:4c93b2d6655cfc2d",
@@ -8639,6 +8657,10 @@ const DATA = [
    {
     "outlet": "Chalkbeat New York, 2026-09-09 (five questions as schools open: AI ban as an early test, enrollment down 16% since 2017-18, class-size and paraprofessional promises)",
     "url": "https://www.chalkbeat.org/newyork/2026/09/09/nyc-schools-mamdani-ai-enrollment-special-education/"
+   },
+   {
+    "outlet": "Chalkbeat New York (first day of school under the AI and screen-time limits; parent reaction)",
+    "url": "https://www.chalkbeat.org/newyork/2026/09/10/nyc-parents-applaud-back-to-school-ai-screen-time-limits/"
    }
   ]
  },
@@ -8857,7 +8879,7 @@ const DATA = [
   "jur": "DE",
   "stage": "comment-open",
   "deadline": "2026-10-01",
-  "days": 15,
+  "days": 14,
   "action": "Proposed in the Delaware Register of Regulations Vol. 30, Issue 3, 2026-09-01; written comments due 4:30 p.m. 2026-10-01 (17 business days). Verified this run from the Register PDF (pages 118-119 synopses and the printed 1528 text).",
   "action_date": "2026-09-01",
   "source": "Delaware Register of Regulations, September 2026 issue (regulations.delaware.gov) — cross-engine sweep (Opus + Codex), not a wired source",
@@ -9036,7 +9058,7 @@ const DATA = [
   "jur": "IN",
   "stage": "comment-open",
   "deadline": "2026-10-02",
-  "days": 16,
+  "days": 15,
   "action": "Public comment open through 5:00 p.m. ET 2026-10-02 (18 business days) via the Jotform links in the 2026-09-04 SAMS newsletter; final recommendations then go to the State Board of Education. Verified this run from the newsletter PDF.",
   "action_date": "2026-09-04",
   "source": "IDOE 'School and Member Support' (SAMS) newsletter, 2026-09-04 (PDF), Office of Educator Preparation — cross-engine sweep (Codex; verified by Opus and this session)",
@@ -9122,7 +9144,7 @@ const DATA = [
   "action": "First discussion held 2026-09-09 (State Board agenda Item F); the Department's accessible first-discussion document with full rule text was posted at nj.gov/education/code/proposed and read this run. Next expected event: second discussion / proposal level at a later monthly meeting, then N.J. Register publication with a 60-day comment period. Chapter sunset 2027-07-06.",
   "action_date": "2026-09-09",
   "source": "NJ State Board of Education September 9, 2026 agenda, Item F (Educator Effectiveness) PDF and meeting notice — cross-engine sweep (Codex; verified by Opus and this session)",
-  "status": "UPDATED",
+  "status": null,
   "movement": null,
   "coverage": [
    {
@@ -9198,7 +9220,7 @@ const DATA = [
   "jur": "NJ",
   "stage": "notice",
   "deadline": "2026-09-22",
-  "days": 8,
+  "days": 7,
   "action": "Continuation applications due 2026-09-22 (10 business days); eligibility limited to prior awardees. Verified this run from both NGO pages.",
   "action_date": "2026-09-02",
   "source": "NJDOE Office of Grants Management, FY2027 NGO pages 27-ET07-G03 and 27-TL08-G03 — cross-engine sweep (Codex; verified by this session)",
@@ -9224,7 +9246,7 @@ const DATA = [
   "jur": "TX",
   "stage": "announced-plan",
   "deadline": "2026-12-01",
-  "days": 55,
+  "days": 57,
   "action": "Application window 2026-09-23 through 2026-12-01 5:00 p.m. CT; portfolio detail pending on the LASO webpage. Verified this run from the TAA letter.",
   "action_date": "2026-09-03",
   "source": "TEA To the Administrator Addressed correspondence, 2026-09-03 — cross-engine sweep (Codex; verified by this session)",
@@ -9541,7 +9563,7 @@ const DATA = [
   "jur": "NY",
   "stage": "comment-open",
   "deadline": "2026-09-27",
-  "days": 11,
+  "days": 10,
   "action": "Proposed rule published 2026-07-29 (NYS Register Vol. XLVIII Issue 30, EDU-30-26-00007-P); comments accepted for 60 days after publication, i.e., through 2026-09-27 (a Sunday; 12 business days to Friday 09-25), to William P. Murphy, Deputy Commissioner, Office of Higher Education, OHERegcomments@nysed.gov. Permanent adoption anticipated at the October 2026 Regents meeting, effective 2026-10-21. Verified this run from the July 29 Register PDF and the September 9 pending-actions index.",
   "action_date": "2026-07-29",
   "source": "NYS Register 2026-07-29 (proposed rule making, PDF) and 2026-09-09 (Action Pending Index) — cross-engine sweep (Opus; verified by this session)",
@@ -9671,7 +9693,7 @@ const DATA = [
   "jur": "NY",
   "stage": "announced",
   "deadline": "2026-09-15",
-  "days": 3,
+  "days": 2,
   "action": "Announcement posted 2026-09-08; voucher survey opens 2026-09-15 (4 business days). Verified this run from the NYSED page.",
   "action_date": "2026-09-08",
   "source": "NYSED Office of Teacher and Leader Development news page — cross-engine sweep (Opus + Codex; verified by this session)",
@@ -9711,7 +9733,7 @@ const DATA = [
   "action": "Press release 2026-09-09; TQP and SEED award announcements expected 'in the coming weeks' (no date given).",
   "action_date": "2026-09-09",
   "source": "ED press release (primary, read this run)",
-  "status": "NEW",
+  "status": null,
   "movement": null,
   "dims": {
    "relay_surface": 3,
@@ -9765,7 +9787,7 @@ const DATA = [
   "action": "Playbook released 2026-09-09 with a companion pilot-state release.",
   "action_date": "2026-09-09",
   "source": "ED press release (primary, read this run)",
-  "status": "NEW",
+  "status": null,
   "movement": null,
   "dims": {
    "relay_surface": 1,
@@ -9803,7 +9825,7 @@ const DATA = [
   "action": "Announced 2026-09-09; protections available to districts from 2026-11-01 (per K-12 Dive).",
   "action_date": "2026-09-09",
   "source": "K-12 Dive and Politico (secondary)",
-  "status": "NEW",
+  "status": null,
   "movement": null,
   "dims": {
    "relay_surface": 1,
@@ -9824,6 +9846,64 @@ const DATA = [
   "text_analysis": null,
   "stage_line": null,
   "leader_brief": null
+ },
+ {
+  "id": "govinfo_bills:hr10315ih",
+  "title": "H.R. 10315 'AI LABS Act' — competitive grants to states for K-12 artificial-intelligence curricula and teacher professional education on AI (introduced Sept 8, bipartisan)",
+  "url": "https://www.govinfo.gov/app/details/BILLS-119hr10315ih",
+  "desc": "Introduced 2026-09-08 by Rep. Josh Gottheimer (D-NJ) with Rep. Jay Obernolte (R-CA) as original cosponsor; referred to the Committee on Education and Workforce. Section 2 directs the Secretary of Education to make competitive grants to states to establish or expand artificial-intelligence educational programs in elementary and secondary schools through (1) dedicated curricula teaching students to use and understand AI and (2) professional education for teachers to understand AI and incorporate it into teaching workflows. The Secretary must study which states receive funds and how they use them, and report to the House Education and Workforce and Senate HELP committees within one year of enactment. No authorization amount is stated; 'artificial intelligence' takes the 15 U.S.C. 9401 definition and school terms follow ESEA section 8101.",
+  "angle": "Teacher professional education on AI is one of the bill's two authorized uses, which is Relay's Teacher Professional Education line, and the grants would flow through states in Relay's footprint. A two-member bipartisan bill at introduction with no dollar figure is a marker, not a vehicle; watch whether it is folded into a House AI or ESEA package. It joins the state-level AI-in-schools dockets already on the board (NJ eight-bill docket; PA, DE, DC, NY bills; GaPSC AI endorsement).",
+  "rec": "SCAN",
+  "impact": 40,
+  "dims": {
+   "relay_surface": 2,
+   "momentum": 1,
+   "jurisdiction_depth": 4,
+   "ecosystem_reach": 2,
+   "actionability": 0,
+   "signal_quality": 5
+  },
+  "cls": "LEGISLATION",
+  "jur": "US",
+  "stage": "introduced",
+  "deadline": "",
+  "days": null,
+  "action": "Introduced 2026-09-08 (Gottheimer + Obernolte), referred to House Education and Workforce. Verified this run from the GPO introduced text (BILLS-119hr10315ih).",
+  "action_date": "2026-09-08",
+  "source": "GovInfo (GPO) — BILLS-119hr10315ih",
+  "status": "NEW",
+  "movement": null,
+  "coverage": [],
+  "implications": []
+ },
+ {
+  "id": "nctq:raises-without-gains-2609",
+  "title": "Teacher pay in 133 large districts rose 33% in a decade but lost ground to inflation; 49 districts pay beginning teachers below a regional living wage (per NCTQ)",
+  "url": "https://www.nctq.org/research-insights/raises-without-gains-teachers-salaries-increased-but-many-dont-make-a-living-wage/",
+  "desc": "NCTQ District Trendline published 2026-09-10 (Katherine Bowser), drawing on the District Policy Pathfinder salary schedules for 133 of the largest U.S. districts. Key takeaways as stated: average teacher salaries rose 33% between 2014-15 and 2024-25; after inflation, teachers had less buying power in 2024-25 than in 2014-15; more than a third of sampled districts (49) pay beginning teachers below NCTQ's regional living-wage benchmark, and a handful pay 25-year veterans below it. Commentary, not a policy action.",
+  "angle": "Starting pay is the recruitment argument Relay's partner districts make to residency candidates, and the NYC class-size and paraprofessional bonus rows on this board are the same pressure from the district side. Useful as a citation in partnership and advocacy conversations; it changes nothing by itself.",
+  "rec": "SCAN",
+  "impact": 30,
+  "dims": {
+   "relay_surface": 1,
+   "momentum": 0,
+   "jurisdiction_depth": 3,
+   "ecosystem_reach": 2,
+   "actionability": 0,
+   "signal_quality": 3
+  },
+  "cls": "COMMENTARY",
+  "jur": "US",
+  "stage": "published",
+  "deadline": "",
+  "days": null,
+  "action": "Published 2026-09-10; key takeaways read from the NCTQ page this run.",
+  "action_date": "2026-09-10",
+  "source": "NCTQ District Trendline (cross-engine sweep: Opus + Codex; page fetched raw)",
+  "status": "NEW",
+  "movement": null,
+  "coverage": [],
+  "implications": []
  }
 ];
 // ── HISTORY: the longitudinal record (derived from state/scored-*.json by
@@ -9831,113 +9911,227 @@ const DATA = [
 //    memory behind it, read only by the Archive view. ──
 const HISTORY = {
  "meta": {
-  "runs": 22,
+  "runs": 23,
   "date_range": [
    "2026-08-05",
-   "2026-09-10"
+   "2026-09-11"
   ],
-  "items_tracked": 137,
-  "ledger_keyed": 79,
-  "editorial_keyed": 58,
-  "events": 246,
+  "items_tracked": 139,
+  "ledger_keyed": 80,
+  "editorial_keyed": 59,
+  "events": 253,
   "by_kind": {
-   "first-seen": 137,
-   "changed": 88,
+   "first-seen": 139,
+   "changed": 93,
    "left-board": 21
   }
  },
  "items": [
   {
-   "id": "future_ed:a200bbdae8a08c9c",
-   "title": "The AI-in-education evidence turns cautionary (per Future Ed, CRPE, Bellwether, Brookings)",
-   "url": "https://www.future-ed.org/when-teachers-rely-on-ai-student-engagement-drops-study-finds/",
+   "id": "fedreg:2026-14053",
+   "title": "PSLF/TEPSLF certification & application forms — comment window closes today, Sept 11",
+   "url": "https://www.federalregister.gov/documents/2026/07/13/2026-14053/agency-information-collection-activities-comment-request-public-service-loan-forgiveness-pslf-and",
    "jur": "US",
-   "cls": "COMMENTARY",
-   "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "cls": "REGULATION",
+   "first_seen": "2026-08-05",
+   "last_seen": "2026-09-11",
    "events": [
     {
-     "date": "2026-08-10",
-     "id": "future_ed:a200bbdae8a08c9c",
+     "date": "2026-08-05",
+     "id": "fedreg:2026-14053",
      "kind": "first-seen",
      "rec": "SCAN",
-     "stage": "",
-     "note": "Nine items published between 2026-07-20 and 2026-08-05",
+     "stage": "comment-open",
+     "note": "ICR comment request published",
      "changes": []
     },
     {
      "date": "2026-08-13",
-     "id": "future_ed:a200bbdae8a08c9c",
+     "id": "fedreg:2026-14053",
      "kind": "changed",
      "rec": "SCAN",
-     "stage": "",
-     "note": "new coverage attached",
+     "stage": "comment-open",
+     "note": "comment window: 21 business days left",
      "changes": [
       {
        "field": "movement",
        "label": "Movement",
        "from": "",
-       "to": "new coverage attached"
+       "to": "comment window: 21 business days left"
       }
      ]
     },
     {
      "date": "2026-08-14",
-     "id": "future_ed:a200bbdae8a08c9c",
+     "id": "fedreg:2026-14053",
      "kind": "changed",
      "rec": "SCAN",
-     "stage": "",
-     "note": "Nine items published between 2026-07-20 and 2026-08-05",
+     "stage": "comment-open",
+     "note": "ICR comment request published",
      "changes": [
       {
        "field": "movement",
        "label": "Movement",
-       "from": "new coverage attached",
+       "from": "comment window: 21 business days left",
        "to": null
       }
      ]
     },
     {
-     "date": "2026-08-19",
-     "id": "future_ed:a200bbdae8a08c9c",
+     "date": "2026-09-11",
+     "id": "fedreg:2026-14053",
      "kind": "changed",
      "rec": "SCAN",
-     "stage": "",
-     "note": "Twelve items published between 2026-07-20 and 2026-08-18",
+     "stage": "comment-open",
+     "note": "ICR comment request published 2026-07-13; comments due on or before September 11, 2026 (DATES paragraph re-read from the Federal Register full text this run; docket ED-2026-SCC-2443)",
      "changes": [
       {
        "field": "action",
        "label": "Latest action",
-       "from": "Nine items published between 2026-07-20 and 2026-08-05",
-       "to": "Twelve items published between 2026-07-20 and 2026-08-18"
+       "from": "ICR comment request published",
+       "to": "ICR comment request published 2026-07-13; comments due on or before September 11, 2026 (DATES paragraph re-read from the Federal Register full text this run; docket ED-2026-SCC-2443)"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "x:c56960a8",
+   "title": "GA HB1030 'Math Matters Act' — Professional Standards Commission ordered to rewrite elementary teacher certification and educator-preparation program standards around math",
+   "url": "https://www.legis.ga.gov/legislation/68537",
+   "jur": "GA",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-08-14",
+   "last_seen": "2026-09-11",
+   "events": [
+    {
+     "date": "2026-08-14",
+     "id": "x:c56960a8",
+     "kind": "first-seen",
+     "rec": "ACT",
+     "stage": "passed",
+     "note": "Effective Date 2026-07-01",
+     "changes": []
+    },
+    {
+     "date": "2026-08-21",
+     "id": "x:c56960a8",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "passed",
+     "note": "enacted, rule unwritten -> implementing rules proposed, comment open through 2026-08-29",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "Effective Date 2026-07-01",
+       "to": "GaPSC initiated implementing rule amendments (505-3-.14, 505-3-.27, 505-3-.92); 30-day public comment open 2026-07-31 through 2026-08-29"
       },
       {
        "field": "action_date",
        "label": "Action date",
-       "from": "2026-08-05",
-       "to": "2026-08-18"
+       "from": "2026-05-05",
+       "to": "2026-07-31"
+      },
+      {
+       "field": "deadline",
+       "label": "Deadline",
+       "from": null,
+       "to": "2026-08-29"
+      },
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": null,
+       "to": "enacted, rule unwritten -> implementing rules proposed, comment open through 2026-08-29"
+      },
+      {
+       "field": "impact",
+       "label": "Impact score",
+       "from": 84,
+       "to": 88
       }
      ]
     },
     {
-     "date": "2026-09-10",
-     "id": "future_ed:a200bbdae8a08c9c",
+     "date": "2026-08-31",
+     "id": "x:c56960a8",
      "kind": "changed",
-     "rec": "SCAN",
-     "stage": "",
-     "note": "Fourteen items published between 2026-07-20 and 2026-09-09",
+     "rec": "ACT",
+     "stage": "passed",
+     "note": "GaPSC comment window closed 2026-08-29 -> adoption vote 2026-09-10",
      "changes": [
       {
        "field": "action",
        "label": "Latest action",
-       "from": "Twelve items published between 2026-07-20 and 2026-08-18",
-       "to": "Fourteen items published between 2026-07-20 and 2026-09-09"
+       "from": "GaPSC initiated implementing rule amendments (505-3-.14, 505-3-.27, 505-3-.92); 30-day public comment open 2026-07-31 through 2026-08-29",
+       "to": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission adoption vote scheduled 2026-09-10; rules effective 2026-10-15"
       },
       {
        "field": "action_date",
        "label": "Action date",
-       "from": "2026-08-18",
-       "to": "2026-09-09"
+       "from": "2026-07-31",
+       "to": "2026-08-29"
+      },
+      {
+       "field": "deadline",
+       "label": "Deadline",
+       "from": "2026-08-29",
+       "to": "2026-09-10"
+      },
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "enacted, rule unwritten -> implementing rules proposed, comment open through 2026-08-29",
+       "to": "GaPSC comment window closed 2026-08-29 -> adoption vote 2026-09-10"
+      }
+     ]
+    },
+    {
+     "date": "2026-09-01",
+     "id": "x:c56960a8",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "passed",
+     "note": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission adoption vote scheduled 2026-09-10; rules effective 2026-10-15",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "GaPSC comment window closed 2026-08-29 -> adoption vote 2026-09-10",
+       "to": null
+      }
+     ]
+    },
+    {
+     "date": "2026-09-04",
+     "id": "x:c56960a8",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "passed",
+     "note": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; the 2026-09-10 Commission agenda (read this run) carries 'Preview of Rules and Proposed Rules Adoption'; rules effective 2026-10-15 if adopted",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission adoption vote scheduled 2026-09-10; rules effective 2026-10-15",
+       "to": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; the 2026-09-10 Commission agenda (read this run) carries 'Preview of Rules and Proposed Rules Adoption'; rules effective 2026-10-15 if adopted"
+      }
+     ]
+    },
+    {
+     "date": "2026-09-11",
+     "id": "x:c56960a8",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "passed",
+     "note": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission met 2026-09-10 on 'Preview of Rules and Proposed Rules Adoption'; no report or minutes posted as of 2026-09-11 08:00 ET (Commission page re-read this run); rules effective 2026-10-15 if adopted.",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; the 2026-09-10 Commission agenda (read this run) carries 'Preview of Rules and Proposed Rules Adoption'; rules effective 2026-10-15 if adopted",
+       "to": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission met 2026-09-10 on 'Preview of Rules and Proposed Rules Adoption'; no report or minutes posted as of 2026-09-11 08:00 ET (Commission page re-read this run); rules effective 2026-10-15 if adopted."
       }
      ]
     }
@@ -9950,7 +10144,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "REGULATION",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -10036,6 +10230,22 @@ const HISTORY = {
        "to": "comment-open -> adoption item posted (SBEC 09-18, staff recommends no changes)"
       }
      ]
+    },
+    {
+     "date": "2026-09-11",
+     "id": "tx_sbec_proposed_rules:aeeaaa3c8eb3c6ea",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "comment-open",
+     "note": "Adoption item posted: the September 18, 2026 SBEC agenda (read this run from the TEA meeting page and the Item 6 PDF) carries 'Adoption of Proposed Amendments to 19 TAC Chapter 229' as Item 6 under Discussion and Action. Staff recommend no changes since published as proposed, with additional changes possible at the meeting based on public comment; the motion approves adoption subject to State Board of Education review, with a proposed effective date of December 27, 2026 (20 days after filing the adoption notice with the Texas Register). Comments received through the September 14 close are provided to the Board under separate cover, and registered oral and written comment is taken at the meeting. The same agenda opens a four-year rule review of Chapter 233 (Categories of Classroom Teaching Certificates, Item 4) and proposes an amendment to §231.1 on personnel-assignment criteria (Item 5).",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "comment-open -> adoption item posted (SBEC 09-18, staff recommends no changes)",
+       "to": null
+      }
+     ]
     }
    ]
   },
@@ -10046,7 +10256,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "AGENCY",
    "first_seen": "2026-08-21",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-21",
@@ -10172,6 +10382,194 @@ const HISTORY = {
        "to": "2026-09-10"
       }
      ]
+    },
+    {
+     "date": "2026-09-11",
+     "id": "ga_psc_meetings:7a70e2d834bf496f",
+     "kind": "changed",
+     "rec": "ACT",
+     "stage": "comment-open",
+     "note": "Commission met 2026-09-10 (1:15 pm) on 'Preview of Rules and Proposed Rules Adoption'. As of 2026-09-11 08:00 ET the GaPSC Commission page lists only the 09-10 agenda, the 09-09 EPCC report and the EERC chart for September — no Commission report or minutes — and the proposed-rules page still carries the July package at the 2026-10-15 proposed effective date. Vote result unverified; check Monday 09-14.",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "Adoption vote today: the Commission meets 2026-09-10 at 1:15 pm on 'Preview of Rules and Proposed Rules Adoption' (agenda read 09-04); the GaPSC proposed-rules page still shows the package as initiated July 9 with a proposed effective date of October 15, 2026, and no Commission report for today's meeting was posted at run time. The Educator Preparation and Certification Committee Report for 2026-09-09 (read this run) records that the Committee recommends Developmental Approval of the Artificial Intelligence for Educators Endorsement and the Foundations of Artificial Intelligence in Education Micro-Endorsement for both Middle Georgia RESA and Northwest Georgia RESA.",
+       "to": "Commission met 2026-09-10 (1:15 pm) on 'Preview of Rules and Proposed Rules Adoption'. As of 2026-09-11 08:00 ET the GaPSC Commission page lists only the 09-10 agenda, the 09-09 EPCC report and the EERC chart for September — no Commission report or minutes — and the proposed-rules page still carries the July package at the 2026-10-15 proposed effective date. Vote result unverified; check Monday 09-14."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "chalkbeat_national:d970f4a3b88d0b87",
+   "title": "CO: State Board opens homeschool-enrichment rulemaking after ERBOCES dissolution — private-provider question and a 180-hour funding floor on the table; rules final by December for 2027-28 (per Chalkbeat)",
+   "url": "https://www.chalkbeat.org/colorado/2026/09/10/state-officials-debate-homeschool-enrichment-rules/",
+   "jur": "CO",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
+   "events": [
+    {
+     "date": "2026-09-10",
+     "id": "chalkbeat_national:d970f4a3b88d0b87",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Rulemaking opened at the 2026-09-09 State Board meeting per Chalkbeat; two CDE draft versions presented; rules to be finalized by end of December 2026, effective 2027-28. The CDE rulemaking page (read this run) does not yet list a homeschool ruleset or hearing date; the sweep's 'hearing noticed for October 14-15' claim is NOT confirmed (that date is the READ Act rules hearing).",
+     "changes": []
+    },
+    {
+     "date": "2026-09-11",
+     "id": "chalkbeat_national:d970f4a3b88d0b87",
+     "kind": "changed",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Rulemaking opened at the 2026-09-09 State Board meeting per Chalkbeat; two CDE draft versions presented; rules to be finalized by end of December 2026, effective 2027-28. The CDE rulemaking page (read this run) does not yet list a homeschool ruleset or hearing date; the sweep's 'hearing noticed for October 14-15' claim is NOT confirmed (that date is the READ Act rules hearing).",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "dissolution reported -> State Board rulemaking opened (per Chalkbeat)",
+       "to": null
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "govinfo_bills:458729cf7bf96372",
+   "title": "H.R. 10315 'AI LABS Act' — competitive grants to states for K-12 artificial-intelligence curricula and teacher professional education on AI (introduced Sept 8, bipartisan)",
+   "url": "https://www.govinfo.gov/app/details/BILLS-119hr10315ih",
+   "jur": "US",
+   "cls": "LEGISLATION",
+   "first_seen": "2026-09-11",
+   "last_seen": "2026-09-11",
+   "events": [
+    {
+     "date": "2026-09-11",
+     "id": "govinfo_bills:458729cf7bf96372",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "introduced",
+     "note": "Introduced 2026-09-08 (Gottheimer + Obernolte), referred to House Education and Workforce. Verified this run from the GPO introduced text (BILLS-119hr10315ih).",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "x:810efb94",
+   "title": "Teacher pay in 133 large districts rose 33% in a decade but lost ground to inflation; 49 districts pay beginning teachers below a regional living wage (per NCTQ)",
+   "url": "https://www.nctq.org/research-insights/raises-without-gains-teachers-salaries-increased-but-many-dont-make-a-living-wage/",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-09-11",
+   "last_seen": "2026-09-11",
+   "events": [
+    {
+     "date": "2026-09-11",
+     "id": "x:810efb94",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "published",
+     "note": "Published 2026-09-10; key takeaways read from the NCTQ page this run.",
+     "changes": []
+    }
+   ]
+  },
+  {
+   "id": "future_ed:a200bbdae8a08c9c",
+   "title": "The AI-in-education evidence turns cautionary (per Future Ed, CRPE, Bellwether, Brookings)",
+   "url": "https://www.future-ed.org/when-teachers-rely-on-ai-student-engagement-drops-study-finds/",
+   "jur": "US",
+   "cls": "COMMENTARY",
+   "first_seen": "2026-08-10",
+   "last_seen": "2026-09-11",
+   "events": [
+    {
+     "date": "2026-08-10",
+     "id": "future_ed:a200bbdae8a08c9c",
+     "kind": "first-seen",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Nine items published between 2026-07-20 and 2026-08-05",
+     "changes": []
+    },
+    {
+     "date": "2026-08-13",
+     "id": "future_ed:a200bbdae8a08c9c",
+     "kind": "changed",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "new coverage attached",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "",
+       "to": "new coverage attached"
+      }
+     ]
+    },
+    {
+     "date": "2026-08-14",
+     "id": "future_ed:a200bbdae8a08c9c",
+     "kind": "changed",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Nine items published between 2026-07-20 and 2026-08-05",
+     "changes": [
+      {
+       "field": "movement",
+       "label": "Movement",
+       "from": "new coverage attached",
+       "to": null
+      }
+     ]
+    },
+    {
+     "date": "2026-08-19",
+     "id": "future_ed:a200bbdae8a08c9c",
+     "kind": "changed",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Twelve items published between 2026-07-20 and 2026-08-18",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "Nine items published between 2026-07-20 and 2026-08-05",
+       "to": "Twelve items published between 2026-07-20 and 2026-08-18"
+      },
+      {
+       "field": "action_date",
+       "label": "Action date",
+       "from": "2026-08-05",
+       "to": "2026-08-18"
+      }
+     ]
+    },
+    {
+     "date": "2026-09-10",
+     "id": "future_ed:a200bbdae8a08c9c",
+     "kind": "changed",
+     "rec": "SCAN",
+     "stage": "",
+     "note": "Fourteen items published between 2026-07-20 and 2026-09-09",
+     "changes": [
+      {
+       "field": "action",
+       "label": "Latest action",
+       "from": "Twelve items published between 2026-07-20 and 2026-08-18",
+       "to": "Fourteen items published between 2026-07-20 and 2026-09-09"
+      },
+      {
+       "field": "action_date",
+       "label": "Action date",
+       "from": "2026-08-18",
+       "to": "2026-09-09"
+      }
+     ]
     }
    ]
   },
@@ -10182,7 +10580,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "REGULATION",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10246,7 +10644,7 @@ const HISTORY = {
    "jur": "PA",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10276,33 +10674,13 @@ const HISTORY = {
    ]
   },
   {
-   "id": "chalkbeat_national:d970f4a3b88d0b87",
-   "title": "CO: State Board opens homeschool-enrichment rulemaking after ERBOCES dissolution — private-provider question and a 180-hour funding floor on the table; rules final by December for 2027-28 (per Chalkbeat)",
-   "url": "https://www.chalkbeat.org/colorado/2026/09/10/state-officials-debate-homeschool-enrichment-rules/",
-   "jur": "CO",
-   "cls": "COMMENTARY",
-   "first_seen": "2026-09-10",
-   "last_seen": "2026-09-10",
-   "events": [
-    {
-     "date": "2026-09-10",
-     "id": "chalkbeat_national:d970f4a3b88d0b87",
-     "kind": "first-seen",
-     "rec": "SCAN",
-     "stage": "",
-     "note": "Rulemaking opened at the 2026-09-09 State Board meeting per Chalkbeat; two CDE draft versions presented; rules to be finalized by end of December 2026, effective 2027-28. The CDE rulemaking page (read this run) does not yet list a homeschool ruleset or hearing date; the sweep's 'hearing noticed for October 14-15' claim is NOT confirmed (that date is the READ Act rules hearing).",
-     "changes": []
-    }
-   ]
-  },
-  {
    "id": "ed_press:57e46c66f51d7c68",
    "title": "ED steers educator-prep grants to the Science of Reading: 12 new Teacher Quality Partnership awards (~$70M) and 16 SEED awards (~$90M) coming 'in the coming weeks' under the Secretary's literacy priority",
    "url": "https://www.ed.gov/about/news/press-release/building-strong-readers-how-trump-administration-supercharging-evidence-based-literacy-combat-reading-crisis",
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-09-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-10",
@@ -10322,7 +10700,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-09-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-10",
@@ -10342,7 +10720,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-09-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-10",
@@ -10407,7 +10785,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-08",
@@ -10513,7 +10891,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "REGULATION",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10533,7 +10911,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10553,7 +10931,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10573,7 +10951,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "REGULATION",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10593,7 +10971,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "REGULATION",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10613,7 +10991,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "AGENCY",
    "first_seen": "2026-09-09",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-09",
@@ -10633,7 +11011,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-07",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-07",
@@ -10669,7 +11047,7 @@ const HISTORY = {
    "jur": "DE",
    "cls": "REGULATION",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10689,7 +11067,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10709,7 +11087,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10729,7 +11107,7 @@ const HISTORY = {
    "jur": "CA",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10749,7 +11127,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "REGULATION",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10769,7 +11147,7 @@ const HISTORY = {
    "jur": "IN",
    "cls": "AGENCY",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10789,7 +11167,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "AGENCY",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10809,7 +11187,7 @@ const HISTORY = {
    "jur": "CT",
    "cls": "AGENCY",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10829,7 +11207,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "AGENCY",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10849,7 +11227,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "AGENCY",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10869,7 +11247,7 @@ const HISTORY = {
    "jur": "CA",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-08",
@@ -10889,7 +11267,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -11297,7 +11675,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-07",
@@ -11371,139 +11749,13 @@ const HISTORY = {
    ]
   },
   {
-   "id": "x:c56960a8",
-   "title": "GA HB1030 'Math Matters Act' — Professional Standards Commission ordered to rewrite elementary teacher certification and educator-preparation program standards around math",
-   "url": "https://www.legis.ga.gov/legislation/68537",
-   "jur": "GA",
-   "cls": "LEGISLATION",
-   "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
-   "events": [
-    {
-     "date": "2026-08-14",
-     "id": "x:c56960a8",
-     "kind": "first-seen",
-     "rec": "ACT",
-     "stage": "passed",
-     "note": "Effective Date 2026-07-01",
-     "changes": []
-    },
-    {
-     "date": "2026-08-21",
-     "id": "x:c56960a8",
-     "kind": "changed",
-     "rec": "ACT",
-     "stage": "passed",
-     "note": "enacted, rule unwritten -> implementing rules proposed, comment open through 2026-08-29",
-     "changes": [
-      {
-       "field": "action",
-       "label": "Latest action",
-       "from": "Effective Date 2026-07-01",
-       "to": "GaPSC initiated implementing rule amendments (505-3-.14, 505-3-.27, 505-3-.92); 30-day public comment open 2026-07-31 through 2026-08-29"
-      },
-      {
-       "field": "action_date",
-       "label": "Action date",
-       "from": "2026-05-05",
-       "to": "2026-07-31"
-      },
-      {
-       "field": "deadline",
-       "label": "Deadline",
-       "from": null,
-       "to": "2026-08-29"
-      },
-      {
-       "field": "movement",
-       "label": "Movement",
-       "from": null,
-       "to": "enacted, rule unwritten -> implementing rules proposed, comment open through 2026-08-29"
-      },
-      {
-       "field": "impact",
-       "label": "Impact score",
-       "from": 84,
-       "to": 88
-      }
-     ]
-    },
-    {
-     "date": "2026-08-31",
-     "id": "x:c56960a8",
-     "kind": "changed",
-     "rec": "ACT",
-     "stage": "passed",
-     "note": "GaPSC comment window closed 2026-08-29 -> adoption vote 2026-09-10",
-     "changes": [
-      {
-       "field": "action",
-       "label": "Latest action",
-       "from": "GaPSC initiated implementing rule amendments (505-3-.14, 505-3-.27, 505-3-.92); 30-day public comment open 2026-07-31 through 2026-08-29",
-       "to": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission adoption vote scheduled 2026-09-10; rules effective 2026-10-15"
-      },
-      {
-       "field": "action_date",
-       "label": "Action date",
-       "from": "2026-07-31",
-       "to": "2026-08-29"
-      },
-      {
-       "field": "deadline",
-       "label": "Deadline",
-       "from": "2026-08-29",
-       "to": "2026-09-10"
-      },
-      {
-       "field": "movement",
-       "label": "Movement",
-       "from": "enacted, rule unwritten -> implementing rules proposed, comment open through 2026-08-29",
-       "to": "GaPSC comment window closed 2026-08-29 -> adoption vote 2026-09-10"
-      }
-     ]
-    },
-    {
-     "date": "2026-09-01",
-     "id": "x:c56960a8",
-     "kind": "changed",
-     "rec": "ACT",
-     "stage": "passed",
-     "note": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission adoption vote scheduled 2026-09-10; rules effective 2026-10-15",
-     "changes": [
-      {
-       "field": "movement",
-       "label": "Movement",
-       "from": "GaPSC comment window closed 2026-08-29 -> adoption vote 2026-09-10",
-       "to": null
-      }
-     ]
-    },
-    {
-     "date": "2026-09-04",
-     "id": "x:c56960a8",
-     "kind": "changed",
-     "rec": "ACT",
-     "stage": "passed",
-     "note": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; the 2026-09-10 Commission agenda (read this run) carries 'Preview of Rules and Proposed Rules Adoption'; rules effective 2026-10-15 if adopted",
-     "changes": [
-      {
-       "field": "action",
-       "label": "Latest action",
-       "from": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; Commission adoption vote scheduled 2026-09-10; rules effective 2026-10-15",
-       "to": "GaPSC rulemaking implementing the Act: public comment closed 2026-08-29; the 2026-09-10 Commission agenda (read this run) carries 'Preview of Rules and Proposed Rules Adoption'; rules effective 2026-10-15 if adopted"
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "x:3096eea0",
    "title": "NYC Public Schools AI and screen-time policy in force for 2026-27: student-facing generative AI banned 2-K through grade 8, five high-school pilots, teachers barred from AI grading, behavior monitoring and student decisions",
    "url": "https://www.schools.nyc.gov/about-us/vision-and-mission/artificial-intelligence/guidance-on-artificial-intelligence",
    "jur": "NY",
    "cls": "AGENCY",
    "first_seen": "2026-09-03",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-03",
@@ -11539,7 +11791,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "COMMENTARY",
    "first_seen": "2026-09-04",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-04",
@@ -11559,7 +11811,7 @@ const HISTORY = {
    "jur": "PA",
    "cls": "COMMENTARY",
    "first_seen": "2026-09-04",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-04",
@@ -11579,7 +11831,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-09-03",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-03",
@@ -11628,7 +11880,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -11704,7 +11956,7 @@ const HISTORY = {
    "jur": "DC",
    "cls": "AGENCY",
    "first_seen": "2026-09-02",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-02",
@@ -11724,7 +11976,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "LEGISLATION",
    "first_seen": "2026-09-02",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-02",
@@ -11744,7 +11996,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "COMMENTARY",
    "first_seen": "2026-09-02",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-02",
@@ -11764,7 +12016,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -11894,7 +12146,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-07",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-07",
@@ -12118,7 +12370,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -12332,7 +12584,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "COMMENTARY",
    "first_seen": "2026-09-01",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-09-01",
@@ -12352,7 +12604,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -12418,7 +12670,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-20",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-20",
@@ -12482,7 +12734,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-31",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-31",
@@ -12502,7 +12754,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-31",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-31",
@@ -12522,7 +12774,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-31",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-31",
@@ -12542,7 +12794,7 @@ const HISTORY = {
    "jur": "DC",
    "cls": "AGENCY",
    "first_seen": "2026-08-31",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-31",
@@ -12707,7 +12959,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-21",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-21",
@@ -12727,7 +12979,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-21",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-21",
@@ -12747,7 +12999,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-08-21",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-21",
@@ -12767,7 +13019,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-21",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-21",
@@ -12787,7 +13039,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-21",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-21",
@@ -12807,7 +13059,7 @@ const HISTORY = {
    "jur": "PA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -12883,7 +13135,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-20",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-20",
@@ -12903,7 +13155,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-08-20",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-20",
@@ -12923,7 +13175,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-19",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-19",
@@ -12943,7 +13195,7 @@ const HISTORY = {
    "jur": "CT",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-19",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-19",
@@ -12963,7 +13215,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "AGENCY",
    "first_seen": "2026-08-19",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-19",
@@ -12983,7 +13235,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-19",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-19",
@@ -13003,7 +13255,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-19",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-19",
@@ -13023,7 +13275,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-18",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-18",
@@ -13043,7 +13295,7 @@ const HISTORY = {
    "jur": "IN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13063,7 +13315,7 @@ const HISTORY = {
    "jur": "IN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13083,7 +13335,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13103,7 +13355,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13123,7 +13375,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13143,7 +13395,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13163,7 +13415,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "AGENCY",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13183,7 +13435,7 @@ const HISTORY = {
    "jur": "IN",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-17",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-17",
@@ -13342,65 +13594,13 @@ const HISTORY = {
    ]
   },
   {
-   "id": "fedreg:2026-14053",
-   "title": "PSLF/TEPSLF certification & application forms — comment window open",
-   "url": "https://www.federalregister.gov/documents/2026/07/13/2026-14053/agency-information-collection-activities-comment-request-public-service-loan-forgiveness-pslf-and",
-   "jur": "US",
-   "cls": "REGULATION",
-   "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
-   "events": [
-    {
-     "date": "2026-08-05",
-     "id": "fedreg:2026-14053",
-     "kind": "first-seen",
-     "rec": "SCAN",
-     "stage": "comment-open",
-     "note": "ICR comment request published",
-     "changes": []
-    },
-    {
-     "date": "2026-08-13",
-     "id": "fedreg:2026-14053",
-     "kind": "changed",
-     "rec": "SCAN",
-     "stage": "comment-open",
-     "note": "comment window: 21 business days left",
-     "changes": [
-      {
-       "field": "movement",
-       "label": "Movement",
-       "from": "",
-       "to": "comment window: 21 business days left"
-      }
-     ]
-    },
-    {
-     "date": "2026-08-14",
-     "id": "fedreg:2026-14053",
-     "kind": "changed",
-     "rec": "SCAN",
-     "stage": "comment-open",
-     "note": "ICR comment request published",
-     "changes": [
-      {
-       "field": "movement",
-       "label": "Movement",
-       "from": "comment window: 21 business days left",
-       "to": null
-      }
-     ]
-    }
-   ]
-  },
-  {
    "id": "chalkbeat_national:8f7097356221fc11",
    "title": "IL: Chicago school board weighs two November revenue referendums (per Chalkbeat)",
    "url": "https://www.chalkbeat.org/chicago/2026/08/10/chicago-public-schools-board-weighs-two-referendums/",
    "jur": "IL",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-11",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-11",
@@ -13452,7 +13652,7 @@ const HISTORY = {
    "jur": "CO",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -13488,7 +13688,7 @@ const HISTORY = {
    "jur": "CO",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -13524,7 +13724,7 @@ const HISTORY = {
    "jur": "CT",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -13560,7 +13760,7 @@ const HISTORY = {
    "jur": "DE",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -13596,7 +13796,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13616,7 +13816,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13636,7 +13836,7 @@ const HISTORY = {
    "jur": "CT",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13656,7 +13856,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13676,7 +13876,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13696,7 +13896,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13716,7 +13916,7 @@ const HISTORY = {
    "jur": "CO",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-14",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-14",
@@ -13736,7 +13936,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-12",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-12",
@@ -13772,7 +13972,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-12",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-12",
@@ -13808,7 +14008,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -13828,7 +14028,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-13",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-13",
@@ -13848,7 +14048,7 @@ const HISTORY = {
    "jur": "IN",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-12",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-12",
@@ -13897,7 +14097,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -13933,7 +14133,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -13969,7 +14169,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-11",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-11",
@@ -13989,7 +14189,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-11",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-11",
@@ -14009,7 +14209,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-11",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-11",
@@ -14029,7 +14229,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-11",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-11",
@@ -14049,7 +14249,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-08",
@@ -14085,7 +14285,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14105,7 +14305,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14125,7 +14325,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14145,7 +14345,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14165,7 +14365,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14185,7 +14385,7 @@ const HISTORY = {
    "jur": "PA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14205,7 +14405,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14225,7 +14425,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-10",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-10",
@@ -14245,7 +14445,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-08",
@@ -14265,7 +14465,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "COMMENTARY",
    "first_seen": "2026-08-08",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-08",
@@ -14285,7 +14485,7 @@ const HISTORY = {
    "jur": "US",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14305,7 +14505,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14325,7 +14525,7 @@ const HISTORY = {
    "jur": "TX",
    "cls": "AGENCY",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14345,7 +14545,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "REGULATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14365,7 +14565,7 @@ const HISTORY = {
    "jur": "GA",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14385,7 +14585,7 @@ const HISTORY = {
    "jur": "CO",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14405,7 +14605,7 @@ const HISTORY = {
    "jur": "NJ",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14425,7 +14625,7 @@ const HISTORY = {
    "jur": "IL",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14445,7 +14645,7 @@ const HISTORY = {
    "jur": "TN",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14465,7 +14665,7 @@ const HISTORY = {
    "jur": "NY",
    "cls": "LEGISLATION",
    "first_seen": "2026-08-05",
-   "last_seen": "2026-09-10",
+   "last_seen": "2026-09-11",
    "events": [
     {
      "date": "2026-08-05",
@@ -14481,7 +14681,7 @@ const HISTORY = {
  ]
 };
 
-const META = {updated: "2026-09-10 · 44 candidates scanned · 116 surfaced (3 new)"};
+const META = {updated: "2026-09-11 · 35 candidates scanned · 118 surfaced (2 new)"};
 
 // ── Team triage (repo-backed, ported from v1; same storage keys so both prototypes share
 //    state). Shared via triage.json in the dashboard's own GitHub repo; read-state per-viewer. ──
