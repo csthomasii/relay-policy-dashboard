@@ -5,7 +5,7 @@
 # is authoritative; this tool reads ../relay-grant-finder/config/relay-profile.yaml).
 
 meta:
-  updated: "2026-08-05"
+  updated: "2026-09-20"   # liveness gate: AGENCY clause added (operator-directed, Jev dry run advised ARCHIVE on agency items the rule never named)
   principle: "A loud headline must never mask a jurisdiction, stage, or relevance miss; a quiet rule change in a core topic outranks a national think-piece."
   verify_rule: "Bill stage, latest action, effective dates, and comment deadlines come from the PRIMARY source (legislature site, register page) every run — never from a press summary. COMMENTARY items are reported as 'per <outlet>', never as fact."
 
@@ -18,11 +18,11 @@ signal_classes:
 # ── STEP 1: RELEVANCE GATES ── any fail => ARCHIVE (logged, not surfaced). No score computed.
 gates:
   - id: jurisdiction
-    rule: "Federal, or one of Relay's authorized jurisdictions (CO, CT, DE, GA, IL, NJ, NY, PA, RI, TN, TX, DC, IN; CA = pending_watch, surfaces at SCAN max). Other states only via COMMENTARY when a national trend."
+    rule: "Federal, or one of Relay's authorized jurisdictions (CO, CT, DE, GA, IL, NJ, NY, PA, RI, TN, TX, DC, IN; CA = pending_watch: items that set the rules for preparation-program sponsors in California (CTC initial institutional and program approval, preparation and credential-program standards, program-sponsor processes, and statutes that rewrite them) score as an authorized state, because Relay is seeking CTC initial institutional approval; all other CA items surface at SCAN max). Other states only via COMMENTARY when a national trend."
   - id: topic_floor
     rule: "Matches >=1 taxonomy topic (config/topics.yaml). Context-tier-only matches cap at SCAN unless momentum is exceptional."
   - id: liveness
-    rule: "LEGISLATION: current session and not dead (adjourned-without-action = ARCHIVE with a one-line note if core-tier). REGULATION: comment window open, pending finalization, or effective date in the future. COMMENTARY older than 30 days: ARCHIVE."
+    rule: "LEGISLATION: current session and not dead (adjourned-without-action = ARCHIVE with a one-line note if core-tier). REGULATION: comment window open, pending finalization, or effective date in the future. AGENCY: live unless superseded or withdrawn (a board agenda, memo, guidance, budget proposal, or press release stays live as context). COMMENTARY older than 30 days: ARCHIVE."
   - id: dedup_cluster
     rule: "Same underlying policy event across sources (a bill + its press coverage + a think-tank take) clusters into ONE surfaced item; the primary source leads, secondaries attach as 'coverage'."
 
@@ -32,7 +32,7 @@ gates:
 dimensions:
   - { id: relay_surface,     weight: 30, anchor5: "Directly regulates Relay's operations: EPP approval/accountability, cert/licensure rules, residency/apprenticeship funding, Title II, program-approval standards" }
   - { id: momentum,          weight: 20, anchor5: "Enacted/final, or passed a chamber / final-rule stage imminent; 0-1 = introduced-and-parked, think-piece" }
-  - { id: jurisdiction_depth,weight: 15, anchor5: "Federal with direct effect, or a state where Relay has deep partnerships (NY, NJ, TX, TN, IL); 2-3 = other authorized states; 1 = CA watch / national trend" }
+  - { id: jurisdiction_depth,weight: 15, anchor5: "Federal with direct effect, or a state where Relay has deep partnerships (NY, NJ, TX, TN, IL); 2-3 = other authorized states, and CA preparation-program-sponsor items (CTC approval and standards); 1 = other CA items / national trend" }
   - { id: ecosystem_reach,   weight: 15, anchor5: "Reshapes funding or staffing across many districts Relay serves (formula rewrite, class-size mandate, salary floor)" }
   - { id: actionability,     weight: 10, anchor5: "Relay can respond NOW: open comment period, testimony window, program-design opportunity, partnership angle" }
   - { id: signal_quality,    weight: 10, anchor5: "Primary source verified this run; 0-1 = single secondary source, unconfirmed" }
@@ -121,3 +121,4 @@ tuning:
     - "2026-08-07 usability pass (operator-directed): what_it_does formalized as memo-grade (mechanism verbs, affected parties, amounts); relay_implications typed list added; legislative metadata block (sponsors/chamber/committee/votes) sourced exclusively from runner/billdetail.py — verified-only, never authored. Memo compiler (runner/compose_memo.py) added downstream."
     - "2026-08-11 leadership layer (operator-directed): leader_brief field added — plain-language summary + prose implications + questions for consideration, authored for ACT items and fresh/moved TRACK items, rendered by compose_memo.py --mode leaders into a standalone leadership briefing."
     - "2026-08-11 text deep-read (operator-directed, same day): runner/billtext.py fetches actual bill text (LegiScan getBillText / GovInfo), preserves amendment markup, segments sections, emits topic-filtered judgment excerpts; text_analysis field added for section-level change-direction verdicts. First use: IL HB5552 enrolled text — resolved the open loosening-vs-tightening question."
+    - "2026-10-20 California carve-out (operator-directed, session b2dee8ae): relay.edu/relay-at-a-glance states Relay is seeking CTC initial institutional approval and posts its Stage II and Stage III documents, so CTC approval, preparation-standards and program-sponsor items (and statutes rewriting them) now score as an authorized state at jurisdiction_depth 2-3; other CA items keep the SCAN cap and depth 1."
